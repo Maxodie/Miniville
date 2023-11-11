@@ -1,4 +1,3 @@
-public class Player
-{
-    
+public class Player {
+    public int coins;
 }
