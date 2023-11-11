@@ -27,6 +27,7 @@
 
 # Visual Studio cache directory
 .vs/
+/Settings.json
 
 # Gradle cache directory
 .gradle/
