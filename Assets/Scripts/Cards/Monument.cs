@@ -1,12 +1,12 @@
 public class Monument : Card
 {
-    public Monument(string cardName, string cardEffectDescription, int constructionCost, int gains)
-        : base(cardName, cardEffectDescription, constructionCost, gains)
+    public Monument(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType)
+        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType)
     {
         
     }
 
-    public override PeformSpecial(Player player, Player target)
+    public override void PerformSpecial(Player player, Player target)
     {
         
     }
