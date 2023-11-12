@@ -1,10 +1,11 @@
 public enum CardType
 {
-    Production,
-    Business,
-    Industry,
-    cityLife,
-    farm,
-    groceryProduction,
-    groceryStore
+    NONE,
+    PRODUCTION,
+    BUSINESS,
+    INDUSTRY,
+    CITYLIFE,
+    FARM,
+    GROCERYPRODUCTION,
+    GROCERYSTORE
 }
