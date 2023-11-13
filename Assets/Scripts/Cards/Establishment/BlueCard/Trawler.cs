@@ -8,6 +8,11 @@ public class Trawler : BlueCard
     
         public override void PerformSpecial(Player player, Player target)
         {
-            
+            // if the player owns a port then the trawler remunerates the player owning it with the value of the dice throw
+            foreach (var monument in player.monumentCards)
+            {
+                if (monument.cardName == "Port")
+                    player.coins += player.ThrowDice(2);
+            }
         }
 }
