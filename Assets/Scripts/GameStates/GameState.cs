@@ -23,5 +23,6 @@ public class GameState {
 
     protected void EndState() {
         endState = true;
+        game.ChangeCurrentState();
     }
 }
