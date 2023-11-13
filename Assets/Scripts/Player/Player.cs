@@ -42,9 +42,10 @@ public class Player
 
     public int ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
+        throwValue = 0;
         for (int i = 0; i < diceChoice; i++)
         {
-            throwValue += Random.Range(0, 7);
+            throwValue += Random.Range(1, 7);
         }
 
         return throwValue;
