@@ -1,6 +1,6 @@
-public class TrainStation : Monument
+public class RadioTower : Monument
 {
-    public TrainStation(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
+    public RadioTower(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
         CardType requiredCardType, bool built)
         : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
