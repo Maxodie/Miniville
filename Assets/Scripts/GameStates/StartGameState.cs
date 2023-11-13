@@ -9,8 +9,8 @@ public class StartGameState : GameState {
     [SerializeField] Button startBtn;
     
     // Cards given to new player
-    [SerializeField] List<Card> initialDeck; // add to UML
-    [SerializeField] Card[] initialMonuments; // add to UML
+    [SerializeField] List<Establishment> initialDeck; // add to UML
+    [SerializeField] Monument[] initialMonuments; // add to UML
 
     //temp
     [SerializeField] Button addPlayerBtn;
