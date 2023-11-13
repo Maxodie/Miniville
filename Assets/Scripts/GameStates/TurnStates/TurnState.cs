@@ -74,7 +74,7 @@ public class TurnState : GameState {
     }
 
     public override void Update(float dt) {
-
+        currentTurnState.Update(dt);
     }
 
     public override void OnQuit() {
@@ -109,11 +109,11 @@ public class TurnState : GameState {
         currentTurnState = throwDiceBehaviour;
     }
 
-    void Transactions(int diceResult) {
+    public void Transactions() {
         currentTurnState = transactionBehaviour;
     }
 
-    void Build() {
+    public void Build() {
         currentTurnState = buildBehaviour;
     }
 }

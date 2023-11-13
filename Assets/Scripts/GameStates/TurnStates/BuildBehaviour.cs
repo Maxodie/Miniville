@@ -1,4 +1,6 @@
 using UnityEngine;
+
+[System.Serializable]
 public class BuildBehaviour : ITurnState {
     GameData gameData;
     int playerTurn;
@@ -10,6 +12,10 @@ public class BuildBehaviour : ITurnState {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+    }
+
+    public void Start() {
+        
     }
 
     public void Update(float dt) {

@@ -18,7 +18,9 @@ public class ThrowDiceBehaviour : ITurnState {
         this.turnState = turnState;
 
         InitButtons();
+    }
 
+    public void Start() {
         playerDicePanel.SetActive(true);
     }
     
@@ -33,13 +35,16 @@ public class ThrowDiceBehaviour : ITurnState {
 
     public void QuitState() {
         playerDicePanel.SetActive(false);
+        turnState.Transactions();
     }
 
     public void PlayerThrowOneDice() {
         gameData.players[playerTurn].ThrowDice(1);
+        QuitState();
     }
 
     public void PlayerThrowTwoDice() {
         gameData.players[playerTurn].ThrowDice(2);
+        QuitState();
     }
 }
