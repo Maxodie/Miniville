@@ -1,6 +1,11 @@
+using UnityEngine;
 public class GameState {
-    GameData gameData;
-    bool endState;
+    protected GameData gameData;
+    [HideInInspector] public bool endState = false;
+    
+    public virtual void InitGameState(ref GameData gameData) {
+        this.gameData = gameData;
+    }
 
     public virtual void Start() {
 
@@ -11,10 +16,10 @@ public class GameState {
     }
 
     public virtual void OnQuit() {
-
+        endState = false;
     }
 
     protected void EndState() {
-
+        endState = true;
     }
 }
