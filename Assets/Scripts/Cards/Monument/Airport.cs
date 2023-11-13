@@ -9,6 +9,9 @@ public class Airport : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        if (!player.hasBuild)
+        {
+            player.coins += 10;
+        }
     }
 }

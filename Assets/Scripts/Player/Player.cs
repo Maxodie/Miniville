@@ -7,6 +7,7 @@ public class Player
     public int coins;
     public int maxDices; //add
     public int throwValue; //add
+    public bool hasBuild; //add
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
     
@@ -39,7 +40,7 @@ public class Player
         return count;
     }
 
-    public int ThrowDice(int diceChoice)
+    public int ThrowDice(int diceChoice) //Add //We perform a throw depending on how much dices the player want to throw
     {
         for (int i = 0; i < diceChoice; i++)
         {
