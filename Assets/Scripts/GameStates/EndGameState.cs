@@ -5,11 +5,13 @@ public class EndGameState : GameState {
         base.InitGameState(ref gameData);
     }
 
-    public override void Start() {
+    public override void Start() 
+    {
 
     }
 
-    public override void Update(float dt) {
+    public override void Update(float dt) 
+    {
 
     }
 
