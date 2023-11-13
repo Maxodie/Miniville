@@ -8,6 +8,15 @@ public class RedCard : Establishment
     
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        if (target.coins <= gains)
+        {
+            target.coins -= target.coins;
+        }
+        else
+        {
+            target.coins -= gains;
+        }
+
+        player.coins += gains;
     }
 }

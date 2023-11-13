@@ -12,8 +12,8 @@ public class EndGameState : GameState
     [SerializeField] Button restartButton;
     [SerializeField] Button quitButton;
 
-    public override void InitGameState(ref GameData gameData){
-        base.InitGameState(ref gameData);
+    public override void InitGameState(ref GameData gameData, Game game){
+        base.InitGameState(ref gameData, game);
     }
     
     void InitButtons() {

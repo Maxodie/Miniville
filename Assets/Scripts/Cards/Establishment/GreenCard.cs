@@ -8,6 +8,6 @@ public class GreenCard : Establishment
     
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        player.coins += gains;
     }
 }

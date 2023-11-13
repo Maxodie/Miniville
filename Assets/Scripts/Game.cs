@@ -6,7 +6,7 @@ public class Game : MonoBehaviour {
     GameState[] states;
     GameData gameData;
 
-    int maxPlayer = 4;
+    public int maxPlayer = 4;
     int playerMonumentNb = 4;
     [SerializeField] StartGameState startGameState;
     [SerializeField] TurnState turnState;
@@ -17,9 +17,9 @@ public class Game : MonoBehaviour {
     }
 
     void Start() {
-        startGameState.InitGameState(ref gameData);
-        turnState.InitGameState(ref gameData);
-        endGameState.InitGameState(ref gameData);
+        startGameState.InitGameState(ref gameData,  this);
+        turnState.InitGameState(ref gameData, this);
+        endGameState.InitGameState(ref gameData, this);
         states = new GameState[]{startGameState, turnState, endGameState};
         currentStateId = 0;
         states[currentStateId].Start();
