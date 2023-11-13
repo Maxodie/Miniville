@@ -16,8 +16,8 @@ public class StartGameState : GameState {
     [SerializeField] TMPro.TMP_Text playerNbText;
     int playerNb = 1;
 
-    public override void InitGameState(ref GameData gameData) {
-        base.InitGameState(ref gameData);
+    public override void InitGameState(ref GameData gameData, Game game) {
+        base.InitGameState(ref gameData, game);
         InitButtons();
     }
 
@@ -49,6 +49,8 @@ public class StartGameState : GameState {
     }
 
     public void AddPlayerNb() {
+        if (playerNb >= game.maxPlayer) return;
+        
         playerNb ++;
         playerNbText.text = $"Player : {playerNb}";
     }
