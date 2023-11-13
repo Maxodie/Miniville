@@ -10,7 +10,7 @@ public class RedCard : Establishment
     {
         if (target.coins <= gains)
         {
-            target.coins - target.coins;
+            target.coins -= target.coins;
         }
         else
         {

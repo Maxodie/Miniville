@@ -8,9 +8,10 @@
     
     public override void PerformSpecial(Player player, Player target)
     {
-            if (player.monumentCards.Countains(new Port("Port", NONE, "gaming", 1, 1, NONE)))
-            {
+        foreach (var monument in player.monumentCards)
+        {
+            if (monument.cardName == "Port")
                 player.coins += gains;
-            }
+        }
     }
 }
