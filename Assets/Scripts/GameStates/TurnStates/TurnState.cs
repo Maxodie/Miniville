@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,11 @@ public class TurnState : GameState {
     ITurnState currentTurnState;
 
     //Add to upml
-    ThrowDiceBehaviour throwDiceBehaviour;
-    InteractionBehaviour interactionBehaviour;
-    TransactionBehaviour transactionBehaviour;
-    BuildBehaviour buildBehaviour;
+    [SerializeField] ThrowDiceBehaviour throwDiceBehaviour;
+    [SerializeField] InteractionBehaviour interactionBehaviour;
+    [SerializeField] TransactionBehaviour transactionBehaviour;
+    [SerializeField] BuildBehaviour buildBehaviour;
+    //
 
     //Temp
     [SerializeField] GameObject playerBoardPrefab;
@@ -51,10 +53,10 @@ public class TurnState : GameState {
     void PerformTurn() {
         playerDicePanel.SetActive(true);
 
-        throwDiceBehaviour = new ThrowDiceBehaviour(gameData, currentPlayerId, this);
-        interactionBehaviour = new InteractionBehaviour(gameData, currentPlayerId, this);
-        transactionBehaviour = new TransactionBehaviour(gameData, currentPlayerId, this);
-        buildBehaviour = new BuildBehaviour(gameData, currentPlayerId, this);
+        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
+        interactionBehaviour.InitState(gameData, currentPlayerId, this);
+        transactionBehaviour.InitState(gameData, currentPlayerId, this);
+        buildBehaviour.InitState(gameData, currentPlayerId, this);
     }
 
     void FinishTurn() {//Add to uml
@@ -73,14 +75,14 @@ public class TurnState : GameState {
 
     void ThrowDice() {
         //give to the player his current dice result
-    //    gameData.players[currentPlayerId].currentDice = Random.Range(0, 7);
+        currentTurnState = throwDiceBehaviour;
     }
 
     void Transactions(int diceResult) {
-
+        currentTurnState = transactionBehaviour;
     }
 
     void Build() {
-        
+        currentTurnState = buildBehaviour;
     }
 }
