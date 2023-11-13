@@ -44,7 +44,7 @@ public class StartGameState : GameState {
         startPanel.SetActive(false);
 
         for(int i=0; i<playerNb; i++)
-            gameData.players.Add(new Player($"Player {i}", 4, 1, initialDeck, initialMonuments));
+            gameData.players.Add(new Player($"Player {i}", 4, 2, 1, initialDeck, initialMonuments));
 
         EndState();
     }
