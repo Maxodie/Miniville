@@ -41,9 +41,10 @@ public class Player
 
     public int ThrowDice(int diceChoice)
     {
+        throwValue = 0;
         for (int i = 0; i < diceChoice; i++)
         {
-            throwValue += Random.Range(0, 7);
+            throwValue += Random.Range(1, 7);
         }
 
         return throwValue;
