@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
+[System.Serializable]
 public class StartScreenManager
 {
-    public Dictionary<Button, Image[]> startButtons = new();
+    [SerializeField] ButtonImage[] startButtons;
 
     public void SelectButton() {
         
     }
+}
+
+[System.Serializable]
+public class ButtonImage {
+    [SerializeField] Button btn;
+    [SerializeField] Image leftImg;
+    [SerializeField] Image rightImg;
 }

@@ -1,7 +1,7 @@
 public class GreenCard : Establishment
 {
-    public GreenCard(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType)
-        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType)
+    public GreenCard(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType, CardPriority cardPriority)
+        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, cardPriority)
     {
         
     }

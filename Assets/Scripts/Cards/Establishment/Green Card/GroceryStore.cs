@@ -1,7 +1,7 @@
 public class GroceryStore : GreenCard
 {
-    public GroceryStore(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType)
-        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType)
+    public GroceryStore(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType, CardPriority cardPriority)
+        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, cardPriority)
     {
         
     }
