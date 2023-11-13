@@ -1,6 +1,6 @@
-public class Port : Monument
+public class TrainStation : Monument
 {
-    public Port(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
+    public TrainStation(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
         CardType requiredCardType, bool built)
         : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
@@ -9,10 +9,6 @@ public class Port : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        if (player.throwValue >= 10)
-        {
-            player.throwValue += 2;
-        }
-            
+        
     }
 }

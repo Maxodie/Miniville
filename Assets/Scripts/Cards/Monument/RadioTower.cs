@@ -1,6 +1,6 @@
-public class CityHall : Monument
+public class RadioTower : Monument
 {
-    public CityHall(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
+    public RadioTower(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
         CardType requiredCardType, bool built)
         : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
@@ -9,9 +9,10 @@ public class CityHall : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        if (player.coins == 0)
+        if (player.throwValue >= 10)
         {
-            player.coins++;
+            player.throwValue += 2;
         }
+            
     }
 }

@@ -20,6 +20,7 @@ public class TurnState : GameState {
     [SerializeField] GameObject playerBoardPrefab;
     [SerializeField] GameObject playerDicePanel;
     [SerializeField] Button throwDiceBtn;
+    [SerializeField] Button throwTwoDiceBtn;
     [SerializeField] Button endTurnBtn;
 
     public override void InitGameState(ref GameData gameData, Game game){
@@ -29,7 +30,8 @@ public class TurnState : GameState {
     }
 
     void InitButtons() {//add to uml
-        throwDiceBtn.onClick.AddListener(ThrowDice);
+        throwDiceBtn.onClick.AddListener(delegate{ThrowDice(1);});
+        throwTwoDiceBtn.onClick.AddListener(delegate{ThrowDice(2);});
         endTurnBtn.onClick.AddListener(FinishTurn);
     }
 
@@ -102,7 +104,7 @@ public class TurnState : GameState {
         PerformTurn();
     }
 
-    void ThrowDice() {
+    void ThrowDice(int nbDice) {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
     }
