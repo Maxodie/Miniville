@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +17,6 @@ public class TurnState : GameState {
     //Temp
     [SerializeField] GameObject playerBoardPrefab;
     [SerializeField] GameObject playerDicePanel;
-    [SerializeField] Button throwDiceBtn;
     [SerializeField] Button endTurnBtn;
 
     public override void InitGameState(ref GameData gameData, Game game){
@@ -29,7 +26,6 @@ public class TurnState : GameState {
     }
 
     void InitButtons() {//add to uml
-        throwDiceBtn.onClick.AddListener(ThrowDice);
         endTurnBtn.onClick.AddListener(FinishTurn);
     }
 
@@ -72,7 +68,7 @@ public class TurnState : GameState {
     }
 
     public override void Update(float dt) {
-
+        currentTurnState.Update(dt);
     }
 
     public override void OnQuit() {
@@ -86,6 +82,8 @@ public class TurnState : GameState {
         interactionBehaviour.InitState(gameData, currentPlayerId, this);
         transactionBehaviour.InitState(gameData, currentPlayerId, this);
         buildBehaviour.InitState(gameData, currentPlayerId, this);
+
+        ThrowDice();
     }
 
     void FinishTurn() {//Add to uml
@@ -107,11 +105,11 @@ public class TurnState : GameState {
         currentTurnState = throwDiceBehaviour;
     }
 
-    void Transactions(int diceResult) {
+    public void Transactions() {
         currentTurnState = transactionBehaviour;
     }
 
-    void Build() {
+    public void Build() {
         currentTurnState = buildBehaviour;
     }
 }

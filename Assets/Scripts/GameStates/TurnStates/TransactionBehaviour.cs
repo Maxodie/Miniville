@@ -1,4 +1,6 @@
 using UnityEngine;
+
+[System.Serializable]
 public class TransactionBehaviour : ITurnState {
     GameData gameData;
     int playerTurn;
@@ -12,15 +14,20 @@ public class TransactionBehaviour : ITurnState {
         this.turnState = turnState;
     }
 
+    public void Start() {
+        transactionPanel.SetActive(true);
+    }
+
     public void Update(float dt) {
 
     }
 
     public void QuitState() {
-        
+        transactionPanel.SetActive(false);
+        turnState.Build();
     }
 
     void Transactions() {
-
+        QuitState();
     }
 }

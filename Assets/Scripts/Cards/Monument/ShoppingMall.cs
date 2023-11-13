@@ -1,6 +1,6 @@
-public class Airport : Monument
+public class ShoppingMall : Monument
 {
-    public Airport(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
+    public ShoppingMall(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
         CardType requiredCardType, bool built)
         : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
