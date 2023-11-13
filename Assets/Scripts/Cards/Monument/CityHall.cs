@@ -9,6 +9,9 @@ public class CityHall : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        if (player.coins == 0)
+        {
+            player.coins++;
+        }
     }
 }
