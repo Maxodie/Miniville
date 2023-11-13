@@ -7,6 +7,12 @@ public class TurnState : GameState {
     int currentPlayerId;
     ITurnState currentTurnState;
 
+    //Add to upml
+    ThrowDiceBehaviour throwDiceBehaviour;
+    InteractionBehaviour interactionBehaviour;
+    TransactionBehaviour transactionBehaviour;
+    BuildBehaviour buildBehaviour;
+
     //Temp
     [SerializeField] GameObject playerBoardPrefab;
     [SerializeField] GameObject playerDicePanel;
@@ -44,6 +50,11 @@ public class TurnState : GameState {
 
     void PerformTurn() {
         playerDicePanel.SetActive(true);
+
+        throwDiceBehaviour = new ThrowDiceBehaviour(gameData, currentPlayerId, this);
+        interactionBehaviour = new InteractionBehaviour(gameData, currentPlayerId, this);
+        transactionBehaviour = new TransactionBehaviour(gameData, currentPlayerId, this);
+        buildBehaviour = new BuildBehaviour(gameData, currentPlayerId, this);
     }
 
     void FinishTurn() {//Add to uml
@@ -56,6 +67,8 @@ public class TurnState : GameState {
 
         if(currentPlayerId > gameData.players.Count -1)
             currentPlayerId = 0;
+
+        PerformTurn();
     }
 
     void ThrowDice() {
