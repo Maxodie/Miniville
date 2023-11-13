@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class StartGameState : GameState {
@@ -13,7 +14,7 @@ public class StartGameState : GameState {
 
     //temp
     [SerializeField] Button addPlayerBtn;
-    [SerializeField] TMPro.TMP_Text playerNbText;
+    [SerializeField] TMP_Text playerNbText;
     int playerNb = 1;
 
     public override void InitGameState(ref GameData gameData, Game game) {

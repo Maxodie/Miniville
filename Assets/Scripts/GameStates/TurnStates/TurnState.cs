@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,13 @@ public class TurnState : GameState {
     int currentPlayerId;
     ITurnState currentTurnState;
     float playerBoardDistanceToCenter = 4.5f;
+
+    //Add to upml
+    [SerializeField] ThrowDiceBehaviour throwDiceBehaviour;
+    [SerializeField] InteractionBehaviour interactionBehaviour;
+    [SerializeField] TransactionBehaviour transactionBehaviour;
+    [SerializeField] BuildBehaviour buildBehaviour;
+    //
 
     //Temp
     [SerializeField] GameObject playerBoardPrefab;
@@ -73,6 +81,11 @@ public class TurnState : GameState {
 
     void PerformTurn() {
         playerDicePanel.SetActive(true);
+
+        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
+        interactionBehaviour.InitState(gameData, currentPlayerId, this);
+        transactionBehaviour.InitState(gameData, currentPlayerId, this);
+        buildBehaviour.InitState(gameData, currentPlayerId, this);
     }
 
     void FinishTurn() {//Add to uml
@@ -85,18 +98,20 @@ public class TurnState : GameState {
 
         if(currentPlayerId > gameData.players.Count -1)
             currentPlayerId = 0;
+
+        PerformTurn();
     }
 
     void ThrowDice() {
         //give to the player his current dice result
-    //    gameData.players[currentPlayerId].currentDice = Random.Range(0, 7);
+        currentTurnState = throwDiceBehaviour;
     }
 
     void Transactions(int diceResult) {
-
+        currentTurnState = transactionBehaviour;
     }
 
     void Build() {
-        
+        currentTurnState = buildBehaviour;
     }
 }

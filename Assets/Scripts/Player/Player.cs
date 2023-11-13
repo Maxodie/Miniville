@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Player
 {
     public string name;
     public int coins;
     public int maxDices; //add
-    public int currentDice; //add
+    public int throwValue; //add
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
     
@@ -14,7 +15,6 @@ public class Player
         this.name = name;
         this.coins = coins;
         this.maxDices = maxDices; 
-        this.currentDice = currentDice; 
         this.buildingCards = deck;
         this.monumentCards = monument;
     }
@@ -37,5 +37,15 @@ public class Player
         }
 
         return count;
+    }
+
+    public int ThrowDice(int diceChoice)
+    {
+        for (int i = 0; i < diceChoice; i++)
+        {
+            throwValue += Random.Range(0, 7);
+        }
+
+        return throwValue;
     }
 }

@@ -1,9 +1,12 @@
+using UnityEngine;
 public class TransactionBehaviour : ITurnState {
     GameData gameData;
     int playerTurn;
     TurnState turnState;
 
-    public TransactionBehaviour(GameData gameData, int playerTurn, TurnState turnState) {
+    [SerializeField] GameObject transactionPanel;
+
+    public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
