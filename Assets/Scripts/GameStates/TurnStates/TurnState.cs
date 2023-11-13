@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +13,8 @@ public class TurnState : GameState {
     [SerializeField] Button throwDiceBtn;
     [SerializeField] Button endTurnBtn;
 
-    public override void InitGameState(ref GameData gameData){
-        base.InitGameState(ref gameData);
+    public override void InitGameState(ref GameData gameData, Game game){
+        base.InitGameState(ref gameData, game);
         playerDicePanel.SetActive(false);
         InitButtons();
     }
