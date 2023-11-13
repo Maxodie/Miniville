@@ -1,8 +1,24 @@
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 [System.Serializable]
-public class EndGameState : GameState {
+
+public class EndGameState : GameState
+{
+
+    [SerializeField] Button restartButton;
+    [SerializeField] Button quitButton;
 
     public override void InitGameState(ref GameData gameData){
         base.InitGameState(ref gameData);
+    }
+    
+    void InitButtons() {
+        restartButton.onClick.AddListener(RestartGame);
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     public override void Start() 
@@ -17,5 +33,15 @@ public class EndGameState : GameState {
 
     public override void OnQuit() {
         base.OnQuit();
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene("Pierre");
+    }
+    
+    void QuitGame()
+    {
+        Application.Quit();
     }
 }
