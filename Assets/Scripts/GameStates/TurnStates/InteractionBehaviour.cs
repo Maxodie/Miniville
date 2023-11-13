@@ -46,11 +46,13 @@ public class InteractionBehaviour : ITurnState {
         Establishment currentEstablishment;
 
         for(int i=0; i < currentPlayer.buildingCards.Count; i++) {
-                    currentEstablishment = currentPlayer.buildingCards[i];
+            currentEstablishment = currentPlayer.buildingCards[i];
 
-                    if(currentEstablishment.cardPriority == cardPriority)
-                        currentEstablishment.PerformSpecial(currentPlayer, gameData.players[playerTurn]);
-                }
+            if(currentEstablishment.cardPriority == cardPriority)
+                currentEstablishment.PerformSpecial(currentPlayer, gameData.players[playerTurn]);
+        }
+
+        ConfirmSelection();
     }
 
     void PlayerPaid() {

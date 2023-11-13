@@ -75,7 +75,7 @@ public class TurnState : GameState {
         base.OnQuit();
     }
 
-    void PerformTurn() {
+    public void PerformTurn() {
         playerDicePanel.SetActive(true);
 
         throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
