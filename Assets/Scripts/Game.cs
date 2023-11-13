@@ -27,8 +27,6 @@ public class Game : MonoBehaviour {
 
     void Update() {
         states[currentStateId].Update(Time.deltaTime);
-
-        CheckForEndState();
     }
 
     public void ChangeCurrentState() {
