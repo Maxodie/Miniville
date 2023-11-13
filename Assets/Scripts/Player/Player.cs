@@ -1,3 +1,41 @@
-public class Player {
+using System.Collections.Generic;
+
+public class Player
+{
+    public string name;
     public int coins;
+    public int maxDices; //add
+    public int currentDice; //add
+    public List<Establishment> buildingCards = new List<Establishment>();
+    public Monument[] monumentCards = new Monument[4];
+    
+    public Player(string name, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument) //add
+    {
+        this.name = name;
+        this.coins = coins;
+        this.maxDices = maxDices; 
+        this.currentDice = currentDice; 
+        this.buildingCards = deck;
+        this.monumentCards = monument;
+    }
+    
+    public void AddCard(Establishment establishment) //Méthode à rajouter dans l'UML //The method add a card to the player deck
+    {
+        buildingCards.Add(establishment);
+    }
+    
+    public int GetCardsNbByType(CardType cardType) //Since some cards have effects depending on what number of that precise type of card you have, we need a function that count a specific type of card
+    {
+        int count = 0;
+        
+        foreach (var establishment in buildingCards) //We compare all the card type that the player have with the card type we want to check
+        {
+            if (establishment.cardType == cardType)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }

@@ -1,8 +1,8 @@
 public class Airport : Monument
 {
     public Airport(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
-        CardType requiredCardType)
-        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType)
+        CardType requiredCardType, bool built)
+        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
         
     }

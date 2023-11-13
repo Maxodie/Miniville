@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +7,10 @@ using UnityEngine.UI;
 public class StartGameState : GameState {
     [SerializeField] GameObject startPanel;
     [SerializeField] Button startBtn;
+    
+    // Cards given to new player
+    [SerializeField] List<Establishment> initialDeck; // add to UML
+    [SerializeField] Monument[] initialMonuments; // add to UML
 
     //temp
     [SerializeField] Button addPlayerBtn;
@@ -38,7 +44,7 @@ public class StartGameState : GameState {
         startPanel.SetActive(false);
 
         for(int i=0; i<playerNb; i++)
-            gameData.players.Add(new Player());
+            gameData.players.Add(new Player($"Player {i}", 4, 1, initialDeck, initialMonuments));
 
         EndState();
     }
