@@ -9,6 +9,10 @@ public class RadioTower : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        if (player.throwValue >= 10)
+        {
+            player.throwValue += 2;
+        }
+            
     }
 }

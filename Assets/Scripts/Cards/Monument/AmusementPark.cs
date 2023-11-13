@@ -1,6 +1,6 @@
-public class TrainStation : Monument
+public class AmusementPark : Monument
 {
-    public TrainStation(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
+    public AmusementPark(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
         CardType requiredCardType, bool built)
         : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, built)
     {
@@ -9,10 +9,9 @@ public class TrainStation : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        if (player.throwValue >= 10)
+        if (!player.hasBuild)
         {
-            player.throwValue += 2;
+            player.coins += 10;
         }
-            
     }
 }
