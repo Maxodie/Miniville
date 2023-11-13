@@ -5,9 +5,9 @@ public class Player
 {
     public string name;
     public int coins;
-    public int maxDices; //add
-    public int throwValue; //add
-    public bool hasBuild; //add
+    public int maxDices;
+    public int throwValue; 
+    public bool hasBuild; 
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
     
@@ -20,7 +20,7 @@ public class Player
         this.monumentCards = monument;
     }
     
-    public void AddCard(Establishment establishment) //Méthode à rajouter dans l'UML //The method add a card to the player deck
+    public void AddCard(Establishment establishment) //The method add a card to the player deck
     {
         buildingCards.Add(establishment);
     }
@@ -40,7 +40,7 @@ public class Player
         return count;
     }
 
-    public int ThrowDice(int diceChoice) //Add //We perform a throw depending on how much dices the player want to throw
+    public int ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
         for (int i = 0; i < diceChoice; i++)
         {
