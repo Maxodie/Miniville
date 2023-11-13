@@ -4,20 +4,22 @@ public class Player
 {
     public string name;
     public int coins;
-    public int dices;
+    public int maxDices; //add
+    public int currentDice; //add
     public List<Card> buildingCards = new List<Card>();
     public Card[] monumentCards = new Card[4];
     
-    public Player(string name, int coins, int dices, List<Card> deck, Card[] monument)
+    public Player(string name, int coins, int maxDices, int currentDice, List<Card> deck, Card[] monument) //add
     {
         this.name = name;
         this.coins = coins;
-        this.dices = dices;
+        this.maxDices = maxDices; 
+        this.currentDice = currentDice; 
         this.buildingCards = deck;
         this.monumentCards = monument;
     }
     
-    public void AddCard(Card card) //Méthode à rajouter dans l'UML
+    public void AddCard(Card card) //Méthode à rajouter dans l'UML //The method add a card to the player deck
     {
         buildingCards.Add(card);
     }
