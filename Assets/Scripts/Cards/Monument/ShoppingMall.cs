@@ -9,6 +9,10 @@ public class ShoppingMall : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        
+        foreach (var building in player.buildingCards)
+        {
+            if (building.cardType == CardType.BUSINESS || building.cardType == CardType.GROCERYSTORE)
+                building.gains++;
+        }
     }
 }
