@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -28,6 +29,9 @@ public class GameData {
         
         SetMonumentList(cardsHolder.monumentHolders);
         SetEstablishmentDictionary(cardsHolder.establishmentHolders);
+        
+        Debug.Log(establishments.Keys.ToList()[0].GetType());
+        Debug.Log(establishments.Keys.ToList()[0].cardPriority);
     }
 
     /// <summary>
@@ -61,7 +65,8 @@ public class GameData {
                 card.constructionCost,
                 card.gains,
                 (CardType)card.requiredCardTypeID,
-                false));
+                false,
+                (CardPriority)card.requiredCardTypeID));
         }
     }
 
@@ -112,7 +117,9 @@ public class GameData {
                 card.cardEffectDescription,
                 card.constructionCost,
                 card.gains,
-                (CardType)card.requiredCardTypeID), nbCard);
+                (CardType)card.requiredCardTypeID,
+                (CardPriority)card.cardPriorityID,
+                card.requiredDiceValues), nbCard);
         }
     }
 }

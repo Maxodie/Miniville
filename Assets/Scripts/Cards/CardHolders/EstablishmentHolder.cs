@@ -7,7 +7,9 @@ public class EstablishmentHolder
     public string cardColor;
     public int cardTypeID;
     public string cardEffectDescription;
-    public int[] constructionCost;
+    public int[] requiredDiceValues;
     public int gains;
     public int requiredCardTypeID;
+    public int cardPriorityID;
+    public int constructionCost;
 }

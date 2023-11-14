@@ -1,5 +1,6 @@
 public enum CardPriority
 {
     FIRSt,
-    SECOND
+    SECOND,
+    THiRD
 }

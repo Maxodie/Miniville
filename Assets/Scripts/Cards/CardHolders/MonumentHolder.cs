@@ -8,4 +8,5 @@ public class MonumentHolder
     public int constructionCost;
     public int gains;
     public int requiredCardTypeID;
+    public int cardPriorityID;
 }
