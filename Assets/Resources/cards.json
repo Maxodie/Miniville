@@ -1,0 +1,29 @@
+{
+  "monumentHolders": [
+    {
+      "cardName": "Train station",
+      "cardEffectDescription": "You can throw 2 die.",
+      "constructionCost": 4,
+      "gains": 0,
+      "requiredCardTypeID": 0
+    },{
+      "cardName": "Shopping mall",
+      "cardEffectDescription": "Your BUSINESS and GROCERYSTORE establishments earn an extra coin.",
+      "constructionCost": 10,
+      "gains": 0,
+      "requiredCardTypeID": 0
+    },{
+      "cardName": "Radio tower",
+      "cardEffectDescription": "Once per turn, you can choose to re-roll the dice.",
+      "constructionCost": 22,
+      "gains": 0,
+      "requiredCardTypeID": 0
+    },{
+      "cardName": "Amusement park",
+      "cardEffectDescription": "If your die roll is a double, replay it one turn later.",
+      "constructionCost": 16,
+      "gains": 0,
+      "requiredCardTypeID": 0
+    }
+  ]
+}
