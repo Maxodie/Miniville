@@ -29,9 +29,6 @@ public class GameData {
         
         SetMonumentList(cardsHolder.monumentHolders);
         SetEstablishmentDictionary(cardsHolder.establishmentHolders);
-        
-        Debug.Log(establishments.Keys.ToList()[0].GetType());
-        Debug.Log(establishments.Keys.ToList()[0].cardPriority);
     }
 
     /// <summary>
