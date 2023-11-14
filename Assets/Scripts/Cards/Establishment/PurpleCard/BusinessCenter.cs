@@ -1,7 +1,7 @@
 public class BusinessCenter : PurpleCard
 {
-    public BusinessCenter(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType, CardPriority cardPriority)
-        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, cardPriority)
+    public BusinessCenter(string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType, CardPriority cardPriority, int[] requiredDiceValues)
+        : base(cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, cardPriority, requiredDiceValues)
     {
         
     }

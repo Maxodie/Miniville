@@ -9,6 +9,6 @@ public class TrainStation : Monument
 
     public override void PerformSpecial(Player player, Player target)
     {
-        player.throwValue = ThrowDice(2);
+        player.ThrowDice(2);
     }
 }

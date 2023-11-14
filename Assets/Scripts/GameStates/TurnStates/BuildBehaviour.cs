@@ -18,8 +18,10 @@ public class BuildBehaviour : ITurnState {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+        transactionPanel.SetActive(false);
 
         InitButtons();
+        Start();
     }
 
     void InitButtons() {
@@ -28,6 +30,7 @@ public class BuildBehaviour : ITurnState {
 
     public void Start() {
         transactionPanel.SetActive(true);
+        StartBuild();
     }
 
     public void Update(float dt) {
@@ -58,6 +61,5 @@ public class BuildBehaviour : ITurnState {
     }
 
     void EndBuild() {
-        
     }
 }
