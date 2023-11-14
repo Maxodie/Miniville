@@ -3,27 +3,185 @@
     {
       "cardName": "Train station",
       "cardEffectDescription": "You can throw 2 die.",
-      "constructionCost": 4,
+      "requiredDiceValues": 4,
       "gains": 0,
-      "requiredCardTypeID": 0
+      "requiredCardTypeID": 0,
+      "cardPriorityID": 1
     },{
       "cardName": "Shopping mall",
       "cardEffectDescription": "Your BUSINESS and GROCERYSTORE establishments earn an extra coin.",
-      "constructionCost": 10,
+      "requiredDiceValues": 10,
       "gains": 0,
-      "requiredCardTypeID": 0
+      "requiredCardTypeID": 0,
+      "cardPriorityID": 1
     },{
       "cardName": "Radio tower",
       "cardEffectDescription": "Once per turn, you can choose to re-roll the dice.",
-      "constructionCost": 22,
+      "requiredDiceValues": 22,
       "gains": 0,
-      "requiredCardTypeID": 0
+      "requiredCardTypeID": 0,
+      "cardPriorityID": 1
     },{
       "cardName": "Amusement park",
       "cardEffectDescription": "If your die roll is a double, replay it one turn later.",
-      "constructionCost": 16,
+      "requiredDiceValues": 16,
       "gains": 0,
-      "requiredCardTypeID": 0
+      "requiredCardTypeID": 0,
+      "cardPriorityID": 2
     }
-  ]
+  ],
+  
+    "establishmentHolders": [
+      {
+        "cardName": "Field",
+        "cardColor": "blue",
+        "cardTypeID": 5,
+        "cardEffectDescription": "During any player's turn, earn 1 coin from the bank.",
+        "requiredDiceValues": [1],
+        "gains": 1,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 1
+      },{
+        "cardName": "Farm",
+        "cardColor": "blue",
+        "cardTypeID": 6,
+        "cardEffectDescription": "During any player's turn, earn 1 coin from the bank.",
+        "requiredDiceValues": [2],
+        "gains": 1,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 1
+      },{
+        "cardName": "Bakery",
+        "cardColor": "green",
+        "cardTypeID": 8,
+        "cardEffectDescription": "During your turn, earn 1 coin from the bank.",
+        "requiredDiceValues": [2,3],
+        "gains": 1,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 1
+      },{
+        "cardName": "Coffee Shop",
+        "cardColor": "red",
+        "cardTypeID": 2,
+        "cardEffectDescription": "Earn 1 coin from the player who rolled the dice.",
+        "requiredDiceValues": [3],
+        "gains": 1,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 0,
+        "constructionCost": 2
+      },{
+        "cardName": "Grocery Store",
+        "cardColor": "green",
+        "cardTypeID": 8,
+        "cardEffectDescription": "During your turn, earn 3 coins from the bank.",
+        "requiredDiceValues": [4],
+        "gains": 3,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 2
+      },{
+        "cardName": "Forest",
+        "cardColor": "blue",
+        "cardTypeID": 1,
+        "cardEffectDescription": "During any player's turn, earn 1 coin from the bank",
+        "requiredDiceValues": [5],
+        "gains": 1,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 3
+      },{
+        "cardName": "Stadium",
+        "cardColor": "purple",
+        "cardTypeID": 4,
+        "cardEffectDescription": "During your turn, earn 2 coins from all other players.",
+        "requiredDiceValues": [6],
+        "gains": 2,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 6
+      },{
+        "cardName": "Business Center",
+        "cardColor": "purple",
+        "cardTypeID": 4,
+        "cardEffectDescription": "During your turn, you can trade any establishment that isn't of the CITYLIFE type with the player of your choice",
+        "requiredDiceValues": [6],
+        "gains": 0,
+        "requiredCardTypeID": 4,
+        "cardPriorityID": 1,
+        "constructionCost": 8
+      },{
+        "cardName": "Tv Channel",
+        "cardColor": "purple",
+        "cardTypeID": 4,
+        "cardEffectDescription": "During your turn, earn 5 coins from a player of your choice",
+        "requiredDiceValues": [6],
+        "gains": 5,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 7
+      },{
+        "cardName": "Cheese Factory",
+        "cardColor": "green",
+        "cardTypeID": 8,
+        "cardEffectDescription": "During your turn, earn 3 coins from the bank for each FIELD type establishment you own.",
+        "requiredDiceValues": [7],
+        "gains": 3,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 5
+      },{
+        "cardName": "Furniture Factory",
+        "cardColor": "green",
+        "cardTypeID": 8,
+        "cardEffectDescription": "During your turn, earn 3 coins from the bank for each PRODUCTION type establishment you own.",
+        "requiredDiceValues": [8],
+        "gains": 3,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 3
+      },{
+        "cardName": "Mine",
+        "cardColor": "blue",
+        "cardTypeID": 1,
+        "cardEffectDescription": "During any player's turn, earn 5 coins from the bank",
+        "requiredDiceValues": [9],
+        "gains": 5,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 6
+      },{
+        "cardName": "Restaurant",
+        "cardColor": "red",
+        "cardTypeID": 2,
+        "cardEffectDescription": "Earn 2 coins from the player that rolled the dice.",
+        "requiredDiceValues": [9,10],
+        "gains": 2,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 0,
+        "constructionCost": 3
+      },{
+        "cardName": "Orchard",
+        "cardColor": "blue",
+        "cardTypeID": 5,
+        "cardEffectDescription": "During any player's turn, earn 3 coins from the bank",
+        "requiredDiceValues": [10],
+        "gains": 3,
+        "requiredCardTypeID": 0,
+        "cardPriorityID": 1,
+        "constructionCost": 3
+      },{
+        "cardName": "Grocery Market",
+        "cardColor": "green",
+        "cardTypeID": 7,
+        "cardEffectDescription": "During your turn, earn 2 coins from the bank for each FIELD type establishment you own",
+        "requiredDiceValues": [11,12],
+        "gains": 2,
+        "requiredCardTypeID": 5,
+        "cardPriorityID": 1,
+        "constructionCost": 2
+      }
+    ]
 }

@@ -26,7 +26,7 @@ public class ThrowDiceBehaviour : ITurnState {
     public void Start() {
         playerDicePanel.SetActive(true);
 
-        if(gameData.players[playerTurn].maxDices > 1)
+        if(gameData.players[playerTurn].maxDice > 1)
             throwTwoDice.interactable = true;
         else
             throwTwoDice.interactable = false;
