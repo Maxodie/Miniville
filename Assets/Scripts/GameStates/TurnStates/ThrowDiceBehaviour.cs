@@ -18,6 +18,9 @@ public class ThrowDiceBehaviour : ITurnState {
         this.turnState = turnState;
 
         InitButtons();
+        playerDicePanel.SetActive(false);
+
+        Start();
     }
 
     public void Start() {

@@ -39,14 +39,12 @@ public class Player
         return count;
     }
 
-    public int ThrowDice(int diceChoice)
+    public void ThrowDice(int diceChoice)
     {
         throwValue = 0;
         for (int i = 0; i < diceChoice; i++)
         {
             throwValue += Random.Range(1, 7);
         }
-
-        return throwValue;
     }
 }

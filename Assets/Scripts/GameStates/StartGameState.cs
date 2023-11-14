@@ -15,6 +15,10 @@ public class StartGameState : GameState {
     //temp
     [SerializeField] Button addPlayerBtn;
     [SerializeField] TMP_Text playerNbText;
+
+    //MainMenu UI
+    [SerializeField] StartScreenManager startScreenManager;
+
     int playerNb = 1;
 
     public override void InitGameState(ref GameData gameData, Game game) {

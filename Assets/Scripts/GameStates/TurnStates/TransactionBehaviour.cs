@@ -12,6 +12,9 @@ public class TransactionBehaviour : ITurnState {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+
+        Start();
+        QuitState();
     }
 
     public void Start() {
