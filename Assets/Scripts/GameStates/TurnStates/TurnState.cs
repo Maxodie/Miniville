@@ -108,6 +108,12 @@ public class TurnState : GameState {
         transactionBehaviour.InitState(gameData, currentPlayerId, this);
     }
 
+    public void Interaction()
+    {
+        currentTurnState = interactionBehaviour;
+        interactionBehaviour.InitState(gameData, currentPlayerId, this);
+    }
+
     public void Build() {
         currentTurnState = buildBehaviour;
         buildBehaviour.InitState(gameData, currentPlayerId, this);
