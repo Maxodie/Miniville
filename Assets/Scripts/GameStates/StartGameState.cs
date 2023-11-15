@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,8 +11,7 @@ public class StartGameState : GameState {
     [SerializeField] Button startBtn;
     
     // Cards given to new player
-    [SerializeField] List<Establishment> initialDeck; // add to UML
-    [SerializeField] Monument[] initialMonuments; // add to UML
+    [SerializeField] Establishment[] initialDeck; // add to UML
 
     //temp
     [SerializeField] Button addPlayerBtn;
@@ -24,11 +25,25 @@ public class StartGameState : GameState {
     public override void InitGameState(ref GameData gameData, Game game) {
         base.InitGameState(ref gameData, game);
         InitButtons();
+        InitInitialEstablishments();
     }
 
     void InitButtons() {
         startBtn.onClick.AddListener(LoadPlayersBoards);
         addPlayerBtn.onClick.AddListener(AddPlayerNb);
+    }
+
+    void InitInitialEstablishments()
+    {
+        string[] initialCardsName = { "FIELD", "BAKERY" };
+        initialDeck = new Establishment[initialCardsName.Length];
+        for (int i = 0; i < initialCardsName.Length; i++)
+        {
+            initialDeck[i] = gameData.establishments
+                .Select(k => k.Key)
+                .First(k => k.cardName
+                    .ToUpper() == initialCardsName[i]);
+        }
     }
 
     public override void Start() {
@@ -47,8 +62,9 @@ public class StartGameState : GameState {
     void LoadPlayersBoards() {
         startPanel.SetActive(false);
 
+        gameData.players = new Player[playerNb];
         for(int i=0; i<playerNb; i++)
-            gameData.players.Add(new Player($"Player {i}", 4, 2, 1, initialDeck, initialMonuments));
+            gameData.players[i] = new Player($"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments);
 
         EndState();
     }

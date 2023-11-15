@@ -6,8 +6,8 @@ using System.Reflection;
 using UnityEngine;
 
 public class GameData {
-    public List<Player> players = new List<Player>();
-    public List<Monument> monuments = new List<Monument>();
+    public Player[] players;
+    public Monument[] monuments = new Monument[4];
     public Dictionary<Establishment, int> establishments = new Dictionary<Establishment, int>();
     
     const string jsonPath = "cards";
@@ -55,7 +55,7 @@ public class GameData {
             }
             
             // Create instance of each card with right Type and add it to monuments List
-            monuments.Add((Monument)Activator.CreateInstance(monumentType, 
+            monuments[i] = (Monument)Activator.CreateInstance(monumentType, 
                 card.cardName,
                 CardType.CITYLIFE,
                 card.cardEffectDescription,
@@ -63,7 +63,7 @@ public class GameData {
                 card.gains,
                 (CardType)card.requiredCardTypeID,
                 false,
-                (CardPriority)card.requiredCardTypeID));
+                (CardPriority)card.requiredCardTypeID);
         }
     }
 

@@ -35,7 +35,7 @@ public class TurnState : GameState {
         Quaternion boardRotation = new Quaternion();
         
         //Load players board
-        for(int i=0; i < gameData.players.Count; i++) {
+        for(int i=0; i < gameData.players.Length; i++) {
             GameObject playerBoard = MonoBehaviour.Instantiate(playerBoardPrefab);
             
             // Define position and rotation of players' board
@@ -91,7 +91,7 @@ public class TurnState : GameState {
     void SwitchCurrentPlayer() {//Add to uml
         currentPlayerId ++;
 
-        if(currentPlayerId > gameData.players.Count -1)
+        if(currentPlayerId > gameData.players.Length -1)
             currentPlayerId = 0;
 
         PerformTurn();
