@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class StartGameState : GameState {
     [SerializeField] Button startBtn;
     
     // Cards given to new player
-    [SerializeField] List<Establishment> initialDeck; // add to UML
+    [SerializeField] Establishment[] initialDeck; // add to UML
 
     //temp
     [SerializeField] Button addPlayerBtn;
@@ -34,13 +35,14 @@ public class StartGameState : GameState {
 
     void InitInitialEstablishments()
     {
-        string[] initialCardsName = new[] { "FIELD", "BAKERY" };
-        foreach (string cardName in initialCardsName)
+        string[] initialCardsName = { "FIELD", "BAKERY" };
+        initialDeck = new Establishment[initialCardsName.Length];
+        for (int i = 0; i < initialCardsName.Length; i++)
         {
-            initialDeck = gameData.establishments
+            initialDeck[i] = gameData.establishments
                 .Select(k => k.Key)
-                .Where(k => k.cardName.ToUpper() == cardName)
-                .ToList();
+                .First(k => k.cardName
+                    .ToUpper() == initialCardsName[i]);
         }
     }
 
@@ -62,7 +64,7 @@ public class StartGameState : GameState {
 
         gameData.players = new Player[playerNb];
         for(int i=0; i<playerNb; i++)
-            gameData.players[i] = new Player($"Player {i}", 4, 2, 1, initialDeck, gameData.monuments);
+            gameData.players[i] = new Player($"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments);
 
         EndState();
     }
