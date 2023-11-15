@@ -5,9 +5,12 @@ public class Player
 {
     public string name;
     public int coins;
-    public int maxDice; //add
-    public int throwValue; //add
-    public bool hasBuild; 
+    public int maxDice; 
+    public int totalThrowValue;
+    public int throwValue1; 
+    public int throwValue2; 
+    public bool hasBuild;
+    public bool canReplay = false;
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
     
@@ -42,10 +45,14 @@ public class Player
     
     public void ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
-        throwValue = 0;
-        for (int i = 0; i < diceChoice; i++)
+        int throwValue1 = 0;
+        int throwValue2 = 0;
+        throwValue1 += Random.Range(1, 7);
+        if (diceChoice == 2)
         {
-            throwValue += Random.Range(1, 7);
+            throwValue2 += Random.Range(1, 7);
         }
+
+        totalThrowValue = throwValue1 + throwValue2;
     }
 }

@@ -6,7 +6,7 @@ public class BusinessCenter : PurpleCard
         
     }
     
-    public override void PerformSpecial(Player player, Player target)
+    public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         
     }

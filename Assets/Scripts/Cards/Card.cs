@@ -19,7 +19,7 @@ public class Card
         this.cardPriority = cardPriority;
     }
 
-    public virtual void PerformSpecial(Player player, Player target)
+    public virtual void PerformSpecial(Player player, Player target, Player[] players)
     {
         
     }

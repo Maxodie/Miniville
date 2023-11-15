@@ -7,7 +7,7 @@ public class TrainStation : Monument
         
     }
 
-    public override void PerformSpecial(Player player, Player target)
+    public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         player.maxDice = 2;
     }

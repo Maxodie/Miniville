@@ -7,7 +7,7 @@ public class RadioTower : Monument
         
     }
 
-    public override void PerformSpecial(Player player, Player target)
+    public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         player.ThrowDice(player.maxDice);
     }

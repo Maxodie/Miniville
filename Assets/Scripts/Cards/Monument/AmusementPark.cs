@@ -7,11 +7,11 @@ public class AmusementPark : Monument
         
     }
 
-    public override void PerformSpecial(Player player, Player target)
+    public override void PerformSpecial(Player player, Player target, Player[] players)
     {
-        if (!player.hasBuild)
+        if (player.throwValue1 == player.throwValue2)
         {
-            player.coins += 10;
+            player.canReplay = true;
         }
     }
 }
