@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,10 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private Transform cardSelection;
     [SerializeField] private GameObject playerChoiceButton;
     [SerializeField] private GameObject cardChoiceButton;
+    [SerializeField] private GameObject ownCardChoiceButton;
+
+    private Card selectedCard;
+    private Card playerCard;
     private int selectedPlayer;
     
     public void InitState(GameData gameData, int playerTurn, TurnState turnState)
@@ -38,7 +43,7 @@ public class InteractionBehaviour : ITurnState
                 continue;
 
             Button btn = Object.Instantiate(playerChoiceButton, playerSelection).GetComponent<Button>();
-            btn.onClick.AddListener(()=>
+            btn.onClick.AddListener(() =>
             {
                 SelectPlayer(i);
             });   
@@ -52,14 +57,43 @@ public class InteractionBehaviour : ITurnState
 
     public void QuitState()
     {
-        
+        Dispose();
+        uiPanel.SetActive(false);
+        turnState.Build();
     }
     
-
     void SelectPlayer(int playerId)
     {
         Dispose();
-        
+        foreach (var t in gameData.players[playerId].buildingCards)
+        {
+            Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
+            btn.onClick.AddListener(() =>
+            {
+                selectedCard = t;
+                SelectOwnCard(i);
+            });
+        }
+    }
+
+    void SelectOwnCard(int cardId)
+    {
+        Dispose();
+        foreach (var t in gameData.players[playerTurn].buildingCards)
+        {
+            Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
+            btn.onClick.AddListener(() =>
+            {
+                playerCard = t;
+                SwitchCards();
+            });
+        }
+    }
+
+    void SwitchCards()
+    {
+        (selectedCard, playerCard) = (playerCard, selectedCard);
+        QuitState();
     }
 
     void Dispose()
