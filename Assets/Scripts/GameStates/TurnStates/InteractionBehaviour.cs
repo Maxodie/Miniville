@@ -45,7 +45,7 @@ public class InteractionBehaviour : ITurnState
             Button btn = Object.Instantiate(playerChoiceButton, playerSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
-                SelectPlayer(i);
+                SelectTargetCard(i);
             });   
         }
     }
@@ -62,11 +62,14 @@ public class InteractionBehaviour : ITurnState
         turnState.Build();
     }
     
-    void SelectPlayer(int playerId)
+    void SelectTargetCard(int playerId)
     {
         Dispose();
         foreach (var t in gameData.players[playerId].buildingCards)
         {
+            if (t.cardType == CardType.CITYLIFE)
+                continue;
+            
             Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
@@ -81,6 +84,9 @@ public class InteractionBehaviour : ITurnState
         Dispose();
         foreach (var t in gameData.players[playerTurn].buildingCards)
         {
+            if (t.cardType == CardType.CITYLIFE)
+                continue;
+            
             Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
