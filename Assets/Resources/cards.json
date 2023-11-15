@@ -106,7 +106,7 @@
         "cardName": "Business Center",
         "cardColor": "purple",
         "cardTypeID": 4,
-        "cardEffectDescription": "You can trade with any one player an establishement whose type isn't CITYLIFE.",
+        "cardEffectDescription": "You can trade with any one player an establishment whose type isn't CITYLIFE.",
         "requiredDiceValues": [6],
         "gains": 0,
         "requiredCardTypeID": 4,
