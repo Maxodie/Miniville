@@ -32,7 +32,7 @@ public class InteractionBehaviour : ITurnState
 
     public void LoadPlayers()
     {
-        for (int i = 0; i < gameData.players.Count; i++)
+        for (int i = 0; i < gameData.players.Length; i++)
         {
             if (i == playerTurn)
                 continue;
