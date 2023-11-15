@@ -30,7 +30,7 @@ public class InteractionBehaviour : ITurnState {
         Player currentPlayer;
 
         //Check red cards on other players 
-        for(int i=gameData.players.Count-1; i >= 0; i--) {
+        for(int i=gameData.players.Length-1; i >= 0; i--) {
             currentPlayer = gameData.players[i];
 
             //don't active currentPlayer red cards
