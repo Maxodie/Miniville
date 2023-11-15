@@ -8,9 +8,22 @@ public class Stadium : PurpleCard
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
-        foreach (var VARIABLE in GameData)
+        for (int i = 0; i < players.Length; i++)
         {
-            
+            if (players[i] != player)
+            {
+                if (players[i].coins >= 2)
+                {
+                    players[i].coins -= 2;
+                    player.coins += 2;
+                }
+                else
+                {
+                    player.coins += players[i].coins;
+                    players[i].coins = 0;
+
+                }
+            }
         }
     }
 }

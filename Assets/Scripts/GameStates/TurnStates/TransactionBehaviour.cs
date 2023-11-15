@@ -100,7 +100,7 @@ public class TransactionBehaviour : ITurnState {
         foreach (var t in currentPlayer.buildingCards)
         {
             if(t.cardPriority == cardPriority)
-                t.PerformSpecial(gameData.players[playerTurn], currentPlayer);
+                t.PerformSpecial(gameData.players[playerTurn], currentPlayer, gameData.players);
         }
     }
 
