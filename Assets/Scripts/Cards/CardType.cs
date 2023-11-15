@@ -5,8 +5,8 @@ public enum CardType
     BUSINESS,
     INDUSTRY,
     CITYLIFE,
+    FIELD,
     FARM,
-    ANIMALFARM,
-    GROCERYPRODUCTION,
+    MARKET,
     GROCERYSTORE
 }

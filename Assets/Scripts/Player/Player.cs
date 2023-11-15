@@ -5,8 +5,8 @@ public class Player
 {
     public string name;
     public int coins;
-    public int maxDices;
-    public int throwValue; 
+    public int maxDice; //add
+    public int throwValue; //add
     public bool hasBuild; 
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
@@ -15,7 +15,7 @@ public class Player
     {
         this.name = name;
         this.coins = coins;
-        this.maxDices = maxDices; 
+        this.maxDice = maxDices; 
         this.buildingCards = deck;
         this.monumentCards = monument;
     }
@@ -39,15 +39,13 @@ public class Player
 
         return count;
     }
-
-    public int ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
+    
+    public void ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
         throwValue = 0;
         for (int i = 0; i < diceChoice; i++)
         {
             throwValue += Random.Range(1, 7);
         }
-
-        return throwValue;
     }
 }

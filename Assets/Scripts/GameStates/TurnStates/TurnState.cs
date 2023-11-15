@@ -75,13 +75,10 @@ public class TurnState : GameState {
         base.OnQuit();
     }
 
-    void PerformTurn() {
+    public void PerformTurn() {
         playerDicePanel.SetActive(true);
 
-        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
         interactionBehaviour.InitState(gameData, currentPlayerId, this);
-        transactionBehaviour.InitState(gameData, currentPlayerId, this);
-        buildBehaviour.InitState(gameData, currentPlayerId, this);
 
         ThrowDice();
     }
@@ -103,13 +100,22 @@ public class TurnState : GameState {
     void ThrowDice() {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
+        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
     }
 
     public void Transactions() {
         currentTurnState = transactionBehaviour;
+        transactionBehaviour.InitState(gameData, currentPlayerId, this);
+    }
+
+    public void Interaction()
+    {
+        currentTurnState = interactionBehaviour;
+        interactionBehaviour.InitState(gameData, currentPlayerId, this);
     }
 
     public void Build() {
         currentTurnState = buildBehaviour;
+        buildBehaviour.InitState(gameData, currentPlayerId, this);
     }
 }
