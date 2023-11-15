@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +18,8 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private GameObject cardChoiceButton;
     private int selectedPlayer;
     
-    public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
+    public void InitState(GameData gameData, int playerTurn, TurnState turnState)
+    {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
@@ -55,7 +58,21 @@ public class InteractionBehaviour : ITurnState
 
     void SelectPlayer(int playerId)
     {
+        Dispose();
         
+    }
+
+    void Dispose()
+    {
+        foreach (GameObject button in playerSelection)
+        {
+            Object.Destroy(button);
+        }
+
+        foreach (GameObject button in cardSelection)
+        {
+            Object.Destroy(button);
+        }
     }
 
     void ConfirmSelection()
