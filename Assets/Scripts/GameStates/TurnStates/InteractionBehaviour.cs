@@ -71,12 +71,12 @@ public class InteractionBehaviour : ITurnState
             btn.onClick.AddListener(() =>
             {
                 selectedCard = t;
-                SelectOwnCard(i);
+                SelectOwnCard();
             });
         }
     }
 
-    void SelectOwnCard(int cardId)
+    void SelectOwnCard()
     {
         Dispose();
         foreach (var t in gameData.players[playerTurn].buildingCards)
