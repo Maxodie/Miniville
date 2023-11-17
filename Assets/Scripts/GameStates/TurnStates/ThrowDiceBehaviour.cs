@@ -1,9 +1,9 @@
-using System;
 using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
 public class ThrowDiceBehaviour : ITurnState {
+    bool isBtnInit = false;
     GameData gameData;
     int playerTurn;
     TurnState turnState;
@@ -18,7 +18,6 @@ public class ThrowDiceBehaviour : ITurnState {
         this.turnState = turnState;
 
         InitButtons();
-        playerDicePanel.SetActive(false);
 
         Start();
     }
@@ -33,8 +32,12 @@ public class ThrowDiceBehaviour : ITurnState {
     }
     
     void InitButtons() {
+        if(isBtnInit) return;
+
         throwOneDice.onClick.AddListener(PlayerThrowOneDice);
         throwTwoDice.onClick.AddListener(PlayerThrowTwoDice);
+
+        isBtnInit = true;
     }
 
     public void Update(float dt) {

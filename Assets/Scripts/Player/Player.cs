@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player
 {
-    public string name;
+    public string playerName;
     public int coins;
     public int maxDice; 
     public int totalThrowValue;
@@ -14,9 +14,9 @@ public class Player
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
     
-    public Player(string name, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument) //add
+    public Player(string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument) //add
     {
-        this.name = name;
+        this.playerName = playerName;
         this.coins = coins;
         this.maxDice = maxDices; 
         this.buildingCards = deck;

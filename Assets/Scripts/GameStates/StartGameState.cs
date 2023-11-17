@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,14 +33,17 @@ public class StartGameState : GameState {
 
     void InitInitialEstablishments()
     {
-        string[] initialCardsName = { "FIELD", "BAKERY" };
-        initialDeck = new Establishment[initialCardsName.Length];
-        for (int i = 0; i < initialCardsName.Length; i++)
+        initialDeck = new Establishment[gameData.establishments.Count(k => k.Key.startCard)];
+        Establishment[] keys = gameData.establishments.Keys.ToArray();
+        Debug.Log(initialDeck.Length);
+        int j = 0;
+        for (int i = 0; i < gameData.establishments.Count; i++) 
         {
-            initialDeck[i] = gameData.establishments
-                .Select(k => k.Key)
-                .First(k => k.cardName
-                    .ToUpper() == initialCardsName[i]);
+            
+            if(keys[i].startCard) {
+                initialDeck[j] = keys[i];
+                j++;
+            }
         }
     }
 

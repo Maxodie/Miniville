@@ -28,6 +28,8 @@ public class InteractionBehaviour : ITurnState
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+
+        Start();
     }
 
     public void Start()

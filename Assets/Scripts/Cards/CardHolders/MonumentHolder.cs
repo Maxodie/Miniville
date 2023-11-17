@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public class MonumentHolder
 {
+    public string cardImgPath;
     public string cardName;
     public string cardEffectDescription;
     public int constructionCost;

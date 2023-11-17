@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,8 @@ public class TurnState : GameState {
     [SerializeField] GameObject playerDicePanel;
     [SerializeField] Button endTurnBtn;
 
+    [SerializeField] TMP_Text playerCoins;
+
     public override void InitGameState(ref GameData gameData, Game game){
         base.InitGameState(ref gameData, game);
         playerDicePanel.SetActive(false);
@@ -36,7 +39,7 @@ public class TurnState : GameState {
         
         //Load players board
         for(int i=0; i < gameData.players.Length; i++) {
-            GameObject playerBoard = MonoBehaviour.Instantiate(playerBoardPrefab);
+            GameObject playerBoard = Object.Instantiate(playerBoardPrefab);
             
             // Define position and rotation of players' board
             switch (i)
@@ -78,8 +81,6 @@ public class TurnState : GameState {
     public void PerformTurn() {
         playerDicePanel.SetActive(true);
 
-        interactionBehaviour.InitState(gameData, currentPlayerId, this);
-
         ThrowDice();
     }
 
@@ -117,5 +118,9 @@ public class TurnState : GameState {
     public void Build() {
         currentTurnState = buildBehaviour;
         buildBehaviour.InitState(gameData, currentPlayerId, this);
+    }
+
+    public void UpdateCoinText() {
+        playerCoins.text = $"player : {gameData.players[currentPlayerId].playerName} Coins : {gameData.players[currentPlayerId].coins}";
     }
 }

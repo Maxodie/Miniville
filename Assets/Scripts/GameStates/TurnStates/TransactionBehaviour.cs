@@ -45,6 +45,8 @@ public class TransactionBehaviour : ITurnState {
         // current player's id
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+
+        Start();
     }
 
     public void Start() {
@@ -106,6 +108,7 @@ public class TransactionBehaviour : ITurnState {
 
     void PlayerPaid() {
         MoneyTransaction(CardPriority.SECOND, gameData.players[playerTurn]);
+        turnState.UpdateCoinText();
         QuitState();
     }
 }

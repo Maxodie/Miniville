@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameData {
     public Player[] players;
@@ -56,6 +54,7 @@ public class GameData {
             
             // Create instance of each card with right Type and add it to monuments List
             monuments[i] = (Monument)Activator.CreateInstance(monumentType, 
+                card.cardImgPath,
                 card.cardName,
                 CardType.CITYLIFE,
                 card.cardEffectDescription,
@@ -108,7 +107,8 @@ public class GameData {
             }
             
             // Create instance of each card with right Type and add it to establishment Dictionary
-            establishments.Add((Establishment)Activator.CreateInstance(establishmentType, 
+            establishments.Add((Establishment)Activator.CreateInstance(establishmentType,
+                card.cardImgPath, 
                 card.cardName,
                 (CardType)card.cardTypeID,
                 card.cardEffectDescription,
@@ -116,7 +116,8 @@ public class GameData {
                 card.gains,
                 (CardType)card.requiredCardTypeID,
                 (CardPriority)card.cardPriorityID,
-                card.requiredDiceValues), nbCard);
+                card.requiredDiceValues, card.startCard), nbCard
+                );
         }
     }
 }
