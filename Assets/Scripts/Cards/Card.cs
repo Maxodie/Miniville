@@ -14,7 +14,6 @@ public class Card
 
     public Card(string cardImgPath, string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,CardType requiredCardType, CardPriority cardPriority)
     {
-        Debug.Log(cardImgPath);
         this.cardSprite = Resources.Load<Sprite>(cardImgPath);
         this.cardName = cardName; 
         this.cardType = cardType;

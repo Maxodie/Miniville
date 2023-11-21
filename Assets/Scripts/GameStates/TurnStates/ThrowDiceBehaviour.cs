@@ -36,6 +36,7 @@ public class ThrowDiceBehaviour : ITurnState {
 
         throwOneDice.onClick.AddListener(PlayerThrowOneDice);
         throwTwoDice.onClick.AddListener(PlayerThrowTwoDice);
+        Debug.Log("rr");
 
         isBtnInit = true;
     }

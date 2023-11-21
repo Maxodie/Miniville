@@ -7,4 +7,12 @@ public class Monument : Card
     {
         this.built = built;
     }
+
+    public static bool operator==(Monument a, Monument b) {
+        return a.GetType() == b.GetType();
+    }
+
+    public static bool operator!=(Monument a, Monument b) {
+        return a.GetType() != b.GetType();
+    }
 }

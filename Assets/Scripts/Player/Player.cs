@@ -27,6 +27,13 @@ public class Player
     {
         buildingCards.Add(establishment);
     }
+
+    public void BuildMonument(Monument monument) {
+        for(int i=0; i<monumentCards.Length; i++) {
+            if(monumentCards[i] == monument)
+                monumentCards[i].built = true;
+        }
+    }
     
     public int GetCardsNbByType(CardType cardType) //Since some cards have effects depending on what number of that precise type of card you have, we need a function that count a specific type of card
     {

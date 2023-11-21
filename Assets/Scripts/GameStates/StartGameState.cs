@@ -35,7 +35,6 @@ public class StartGameState : GameState {
     {
         initialDeck = new Establishment[gameData.establishments.Count(k => k.Key.startCard)];
         Establishment[] keys = gameData.establishments.Keys.ToArray();
-        Debug.Log(initialDeck.Length);
         int j = 0;
         for (int i = 0; i < gameData.establishments.Count; i++) 
         {
