@@ -6,6 +6,7 @@ using TMPro;
 [System.Serializable]
 public class StartGameState : GameState {
     [SerializeField] GameObject startPanel;
+    [SerializeField] GameObject playerCanvasPrefab;
     [SerializeField] Button startBtn;
     
     // Cards given to new player
@@ -18,7 +19,7 @@ public class StartGameState : GameState {
     //MainMenu UI
     [SerializeField] StartScreenManager startScreenManager;
 
-    int playerNb = 1;
+    int playerNb = 2;
 
     public override void InitGameState(ref GameData gameData, Game game) {
         base.InitGameState(ref gameData, game);
@@ -47,7 +48,6 @@ public class StartGameState : GameState {
     }
 
     public override void Start() {
-        startPanel.SetActive(true);
         playerNbText.text = $"Player : {playerNb}";
     }
 
@@ -63,8 +63,17 @@ public class StartGameState : GameState {
         startPanel.SetActive(false);
 
         gameData.players = new Player[playerNb];
-        for(int i=0; i<playerNb; i++)
-            gameData.players[i] = new Player($"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments);
+
+        playerCanvasPrefab.SetActive(false);
+
+        for(int i=0; i<playerNb; i++) {
+            //TODO load canvas and put it in player
+            if(i==0)
+                gameData.players[i] = new Player(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
+            else
+                gameData.players[i] = new AIPlayer(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
+        
+        }
 
         EndState();
     }

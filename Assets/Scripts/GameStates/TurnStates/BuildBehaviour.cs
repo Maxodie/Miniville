@@ -11,8 +11,8 @@ public class BuildBehaviour : ITurnState {
 
     [SerializeField] GameObject transactionPanel;
     [SerializeField] Button stopBuildBtn;
-    [SerializeField] GameObject buildableEstablishmentBtnPrefab;
-    [SerializeField] GameObject buildableMonumentBtnPrefab;
+    [SerializeField] CardUIData cardPrefab;
+    [SerializeField] CardUIData buildableMonumentBtnPrefab;
     [SerializeField] Transform buildableEstablishmentSpawnPoint;
     [SerializeField] Transform buildableMonumentSpawnPoint;
 
@@ -39,6 +39,8 @@ public class BuildBehaviour : ITurnState {
     public void Start() {
         transactionPanel.SetActive(true);
         StartBuild();
+
+        gameData.players[playerTurn].OptionalPlayerBuild(this);
     }
 
     public void Update(float dt) {
@@ -54,32 +56,26 @@ public class BuildBehaviour : ITurnState {
         Establishment[] et = gameData.establishments.Keys.ToArray();
         cardPrefabs = new CardPrefab[et.Length + gameData.monuments.Length];
 
-        for(int i=0; i<gameData.establishments.Count; i++) {
+        for(int i=0; i<et.Length; i++) {
             int j = i;
-            Button cardBtn = Object.Instantiate(buildableEstablishmentBtnPrefab, buildableEstablishmentSpawnPoint).GetComponent<Button>();
-            cardBtn.interactable = CanBuild(et[i]);
+            cardPrefabs[j] = new CardPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
+            cardPrefabs[j].loadedBtn.interactable = CanBuild(et[i]);
 
             if(gameData.establishments[et[i]] <= 0)
-                cardBtn.interactable  = false;
+                cardPrefabs[j].loadedBtn.interactable  = false;
 
-            cardBtn.onClick.AddListener(delegate {BuildEstablishmentCard(gameData.establishments.Keys.ToArray()[j]);});
-            
-            //init card prefab
-            cardPrefabs[j] = new CardPrefab(et[i], cardBtn.gameObject);
+            cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(gameData.establishments.Keys.ToArray()[j]);});
         }
 
         for(int i=0; i<gameData.monuments.Length; i++) {
             int j = i;
-            Button cardBtn = Object.Instantiate(buildableMonumentBtnPrefab, buildableMonumentSpawnPoint).GetComponent<Button>();
-            cardBtn.interactable = CanBuild(gameData.monuments[i]);
+            cardPrefabs[et.Length + j] = new CardPrefab(cardPrefab, buildableMonumentSpawnPoint, gameData.monuments[i]);
+            cardPrefabs[et.Length + j].loadedBtn.interactable = CanBuild(gameData.monuments[i]);
 
             if(gameData.players[playerTurn].monumentCards[i].built)
-                cardBtn.interactable = false;
+                cardPrefabs[et.Length + j].loadedBtn.interactable = false;
 
-            cardBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
-            
-            //init card prefab
-            cardPrefabs[et.Length + j] = new CardPrefab(et[i], cardBtn.gameObject);
+            cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
         }
     }
 
@@ -92,6 +88,8 @@ public class BuildBehaviour : ITurnState {
     void BuilddMonumentCard(Monument card) {
         card.built = false;
         gameData.players[playerTurn].BuildMonument(card);
+        
+        card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
         EndBuild();
     }
 

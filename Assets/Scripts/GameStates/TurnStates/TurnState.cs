@@ -24,7 +24,7 @@ public class TurnState : GameState {
 
     public override void InitGameState(ref GameData gameData, Game game){
         base.InitGameState(ref gameData, game);
-        playerDicePanel.SetActive(false);
+        
         InitButtons();
     }
 
@@ -34,6 +34,9 @@ public class TurnState : GameState {
 
     public override void Start()
     {
+        if(gameData.players[currentPlayerId].isRealPlayer)
+            gameData.players[currentPlayerId].playerCanvas.SetActive(true);
+            
         Vector3 boardPosition = new Vector3();
         Quaternion boardRotation = new Quaternion();
         
@@ -90,6 +93,12 @@ public class TurnState : GameState {
     }
 
     void SwitchCurrentPlayer() {//Add to uml
+        if(gameData.players[currentPlayerId].canReplay) {
+            currentPlayerId --;
+            gameData.players[currentPlayerId].canReplay = false;
+        }
+
+        gameData.players[currentPlayerId].playerCanvas.SetActive(false);
         currentPlayerId ++;
 
         if(currentPlayerId > gameData.players.Length -1)

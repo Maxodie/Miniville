@@ -15,4 +15,12 @@ public class Monument : Card
     public static bool operator!=(Monument a, Monument b) {
         return a.GetType() != b.GetType();
     }
+
+    public override bool Equals(object obj) {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
 }

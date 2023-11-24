@@ -9,9 +9,11 @@ public class AmusementPark : Monument
 
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
-        if (player.throwValue1 == player.throwValue2)
-        {
-            player.canReplay = true;
+        if(player.throwValue.Length > 1) {
+            if (player.throwValue[0] == player.throwValue[1])
+            {
+                player.canReplay = true;
+            }
         }
     }
 }

@@ -5,22 +5,28 @@ public class Player
 {
     public string playerName;
     public int coins;
+    public int currentDice; 
     public int maxDice; 
     public int totalThrowValue;
-    public int throwValue1; 
-    public int throwValue2; 
+    public int[] throwValue;
     public bool hasBuild;
     public bool canReplay = false;
     public List<Establishment> buildingCards = new List<Establishment>();
     public Monument[] monumentCards = new Monument[4];
+
+    public GameObject playerCanvas;
+    public bool isRealPlayer {get; private set;}
     
-    public Player(string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument) //add
+    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
     {
+        this.isRealPlayer = isRealPlayer;
         this.playerName = playerName;
         this.coins = coins;
         this.maxDice = maxDices; 
+        this.currentDice = currentDice;
         this.buildingCards = deck;
         this.monumentCards = monument;
+        this.playerCanvas = playerCanvas;
     }
     
     public void AddCard(Establishment establishment) //The method add a card to the player deck
@@ -50,16 +56,17 @@ public class Player
         return count;
     }
     
-    public void ThrowDice(int diceChoice) //We perform a throw depending on how much dices the player want to throw
+    public void ThrowDice(int[] diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
-        int throwValue1 = 0;
-        int throwValue2 = 0;
-        throwValue1 += Random.Range(1, 7);
-        if (diceChoice == 2)
-        {
-            throwValue2 += Random.Range(1, 7);
+        totalThrowValue = 0;
+        throwValue = new int[diceChoice.Length];
+        for(int i=0; i < diceChoice.Length; i++) {
+            throwValue[i] = diceChoice[i];
+            totalThrowValue += throwValue[i];
         }
-
-        totalThrowValue = throwValue1 + throwValue2;
     }
+
+    public virtual void OptionalPlayerThrowDice(ITurnState turnState) { }
+    public virtual void OptionalPlayerBuild(ITurnState turnState) { }
+    public virtual void OptionalPlayerInteraction(ITurnState turnState) { }
 }

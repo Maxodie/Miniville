@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 [System.Serializable]
 public class TransactionBehaviour : ITurnState {
@@ -35,23 +37,35 @@ public class TransactionBehaviour : ITurnState {
     }
     */
     
+    [SerializeField] MonoBehaviour context;
     GameData gameData;
     int playerTurn;
     TurnState turnState;
-
     [SerializeField] GameObject turnInfoPanel; 
+    [SerializeField] TMP_Text firstDice;
+    [SerializeField] TMP_Text secondDice;
+    WaitForSeconds waitForTransaction;
+    [SerializeField] float timeBetweenTransactions = 1f;
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
         // current player's id
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+        waitForTransaction = new WaitForSeconds(timeBetweenTransactions);
 
         Start();
     }
 
     public void Start() {
+        ref int[] throwValue = ref gameData.players[playerTurn].throwValue;
+        firstDice.text = "D1 : " + throwValue[0];
+        if(throwValue.Length > 1)
+            secondDice.text = "D2 : " + gameData.players[playerTurn].throwValue[1];
+        else
+            secondDice.text = "";
+
         turnInfoPanel.SetActive(true);
-        PayTransaction();
+        context.StartCoroutine(PayTransaction());
     }
 
     public void Update(float dt)
@@ -80,7 +94,7 @@ public class TransactionBehaviour : ITurnState {
         turnState.Build();
     }
 
-    void PayTransaction()
+    IEnumerator PayTransaction()
     {
         Player currentPlayer;
 
@@ -90,24 +104,25 @@ public class TransactionBehaviour : ITurnState {
 
             //don't active currentPlayer red cards
             if(i != playerTurn) {
-                MoneyTransaction(CardPriority.FIRSt, currentPlayer);
+                yield return context.StartCoroutine(MoneyTransaction(CardPriority.FIRSt, currentPlayer));
             }
         }
 
-        PlayerPaid();
+        context.StartCoroutine(PlayerPaid());
     }
 
-    void MoneyTransaction(CardPriority cardPriority, Player currentPlayer)
+    IEnumerator MoneyTransaction(CardPriority cardPriority, Player currentPlayer)
     {
         foreach (var t in currentPlayer.buildingCards)
         {
-            if(t.cardPriority == cardPriority)
+            yield return waitForTransaction;
+            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue))
                 t.PerformSpecial(gameData.players[playerTurn], currentPlayer, gameData.players);
         }
     }
 
-    void PlayerPaid() {
-        MoneyTransaction(CardPriority.SECOND, gameData.players[playerTurn]);
+    IEnumerator PlayerPaid() {
+        yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[playerTurn]));
         turnState.UpdateCoinText();
         QuitState();
     }

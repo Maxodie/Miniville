@@ -6,7 +6,6 @@ public class Game : MonoBehaviour {
     GameData gameData;
 
     public int maxPlayer = 4;
-    int playerMonumentNb = 4;
     [SerializeField] StartGameState startGameState;
     [SerializeField] TurnState turnState;
     [SerializeField] EndGameState endGameState;

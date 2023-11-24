@@ -1,6 +1,3 @@
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +32,7 @@ public class InteractionBehaviour : ITurnState
     public void Start()
     {
         uiPanel.SetActive(true);
+        gameData.players[playerTurn].OptionalPlayerInteraction(this);
     }
 
     public void LoadPlayers()

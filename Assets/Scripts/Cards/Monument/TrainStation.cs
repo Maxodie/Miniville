@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using UnityEngine;
 public class TrainStation : Monument
 {
     public TrainStation(string cardImgPath, string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
@@ -9,6 +11,7 @@ public class TrainStation : Monument
 
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
-        player.maxDice = 2;
+        player.currentDice = 2;
+        UnityEngine.Debug.Log("tee");
     }
 }

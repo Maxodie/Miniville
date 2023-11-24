@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class RadioTower : Monument
 {
     public RadioTower(string cardImgPath, string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains,
@@ -9,6 +11,6 @@ public class RadioTower : Monument
 
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
-        player.ThrowDice(player.maxDice);
+        //player.ThrowDice(player.maxDice);
     }
 }

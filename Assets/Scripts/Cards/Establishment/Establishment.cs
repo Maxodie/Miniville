@@ -9,4 +9,13 @@ public class Establishment : Card
         this.requiredDiceValues = requiredDiceValues;
         this.startCard = startCard;
     }
+
+    public bool canPerformEffect(int diceResult) {
+        for(int i=0; i < requiredDiceValues.Length; i++) {
+            if(requiredDiceValues[i] == diceResult)
+                return true;
+        }
+
+        return false;
+    }
 }

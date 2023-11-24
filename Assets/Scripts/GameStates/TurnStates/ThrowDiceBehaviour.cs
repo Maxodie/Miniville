@@ -11,6 +11,7 @@ public class ThrowDiceBehaviour : ITurnState {
     [SerializeField] Button throwTwoDice;
 
     [SerializeField] GameObject playerDicePanel;
+    [SerializeField] PlayerDice playerDice;
 
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
@@ -25,10 +26,13 @@ public class ThrowDiceBehaviour : ITurnState {
     public void Start() {
         playerDicePanel.SetActive(true);
 
-        if(gameData.players[playerTurn].maxDice > 1)
+        throwOneDice.interactable = true;
+        if(gameData.players[playerTurn].currentDice > 1) 
             throwTwoDice.interactable = true;
         else
             throwTwoDice.interactable = false;
+
+        gameData.players[playerTurn].OptionalPlayerThrowDice(this);
     }
     
     void InitButtons() {
@@ -36,7 +40,6 @@ public class ThrowDiceBehaviour : ITurnState {
 
         throwOneDice.onClick.AddListener(PlayerThrowOneDice);
         throwTwoDice.onClick.AddListener(PlayerThrowTwoDice);
-        Debug.Log("rr");
 
         isBtnInit = true;
     }
@@ -51,12 +54,17 @@ public class ThrowDiceBehaviour : ITurnState {
     }
 
     public void PlayerThrowOneDice() {
-        gameData.players[playerTurn].ThrowDice(1);
-        QuitState();
+        playerDice.ThrowDice(1, gameData.players[playerTurn].ThrowDice, QuitState);
+        DisableBtn();
     }
 
     public void PlayerThrowTwoDice() {
-        gameData.players[playerTurn].ThrowDice(2);
-        QuitState();
+        playerDice.ThrowDice(2, gameData.players[playerTurn].ThrowDice, QuitState);
+        DisableBtn();
+    }
+
+    void DisableBtn() {
+        throwOneDice.interactable = false;
+        throwTwoDice.interactable = false;
     }
 }
