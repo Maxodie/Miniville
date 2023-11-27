@@ -87,7 +87,7 @@ public class Player
 
         for(int i=0; i< cardSpawned.Count; i++) {
             if(cardSpawned[i].cardName == cardToBuild.cardName) {
-                pos = cardSpawned[i].spawnedGoCard.transform.position + new Vector3(0f, 0f, 0.1f);
+                pos = cardSpawned[i].spawnedGoCard.transform.position + new Vector3(0f, 0f, 0.5f);
                 spawnBuilding = false;
             }
         }
