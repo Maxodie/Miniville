@@ -19,12 +19,12 @@ public class Player
     public GameObject playerBoard;
     public bool isRealPlayer {get; private set;}
     
-    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
+    public Player(bool isRealPlayer, string playerName, int coins, int maxDice, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
     {
         this.isRealPlayer = isRealPlayer;
         this.playerName = playerName;
         this.coins = coins;
-        this.maxDice = maxDices; 
+        this.maxDice = maxDice; 
         this.currentDice = currentDice;
         this.buildingCards = deck;
         this.monumentCards = monument;
@@ -96,7 +96,7 @@ public class Player
         cardSpawned.Add(cardToBuild);
     }
 
-    public virtual void OptionalPlayerThrowDice(ITurnState turnState) { }
-    public virtual void OptionalPlayerBuild(ITurnState turnState) { }
+    public virtual void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDice) { }
+    public virtual void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { }
     public virtual void OptionalPlayerInteraction(ITurnState turnState) { }
 }
