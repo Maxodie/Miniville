@@ -2,53 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/*
-public class CardPrefab {
-    public Button btn;
-    GameObject gameObject;
-
-    public CardPrefab(Card card, GameObject gameObject) {
-        LoadGoCard(card, gameObject);
-    }
-
-    public void LoadGoCard(Card card, GameObject gameObject) {
-        this.gameObject = gameObject;
-
-        for(int i=0; i <gameObject.transform.childCount; i++) {
-            Transform child = gameObject.transform.GetChild(i);
-
-            switch (child.tag)
-            {
-                case "CardImg":
-                    child.GetComponent<Image>().sprite = card.cardSprite;
-                    break;
-                case "TypeIconImg":
-                    child.GetComponent<Image>().sprite = card.cardTypeIcon;
-                    break;
-                case "CardTextName":
-                    child.GetComponent<TMP_Text>().text = card.cardName;
-                    break;
-                case "DescriptionText":
-                    child.GetComponent<TMP_Text>().text = card.cardEffectDescription;
-                    break;
-            }
-        }
-    }
-
-    public void Destroy() {
-        Object.Destroy(gameObject);
-    }
-}
-*/
-
-public class CardPrefab {
+public class CardUIPrefab {
     GameObject loadedGo;
     [HideInInspector] public Button loadedBtn;
     public Image cardImg;
     public Image iconType;
     public TMP_Text cardName;
     public TMP_Text cardDescription;
-    public CardPrefab(CardUIData cardUIData, Transform spawnPoint, Card card) {
+    public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card) {
         loadedGo = Object.Instantiate(cardUIData.objectPrefab, spawnPoint);
         LoadGoCard(cardUIData, card);;
     }

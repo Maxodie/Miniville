@@ -68,6 +68,7 @@ public class TurnState : GameState {
             // Apply position and rotation
             playerBoard.transform.position = boardPosition;
             playerBoard.transform.rotation = boardRotation;
+            gameData.players[currentPlayerId].playerBoard = playerBoard;
         }
 
         PerformTurn();
@@ -107,7 +108,7 @@ public class TurnState : GameState {
         PerformTurn();
     }
 
-    void ThrowDice() {
+    public void ThrowDice() {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
         throwDiceBehaviour.InitState(gameData, currentPlayerId, this);

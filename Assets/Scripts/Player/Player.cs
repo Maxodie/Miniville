@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +13,10 @@ public class Player
     public bool hasBuild;
     public bool canReplay = false;
     public List<Establishment> buildingCards = new List<Establishment>();
+    List<Card> cardSpawned = new List<Card>();
     public Monument[] monumentCards = new Monument[4];
-
     public GameObject playerCanvas;
+    public GameObject playerBoard;
     public bool isRealPlayer {get; private set;}
     
     public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
@@ -40,6 +42,16 @@ public class Player
                 monumentCards[i].built = true;
         }
     }
+
+    public bool GetMonumentBuiltByType(Type monumentType) {
+        for(int i=0; i < monumentCards.Length; i++) {
+            if(monumentCards[i].GetType() == monumentType) {
+                return monumentCards[i].built;
+            }
+        }
+
+        return false;
+    }
     
     public int GetCardsNbByType(CardType cardType) //Since some cards have effects depending on what number of that precise type of card you have, we need a function that count a specific type of card
     {
@@ -64,6 +76,24 @@ public class Player
             throwValue[i] = diceChoice[i];
             totalThrowValue += throwValue[i];
         }
+    }
+
+    public void BuildCardForPlayer(Card cardToBuild) {
+        Vector3 pos = Vector3.zero;
+        bool spawnBuilding = true;
+
+        if(cardSpawned.Count > 0)
+            pos = cardSpawned[cardSpawned.Count - 1].spawnedGoCard.transform.position + new Vector3(0f, 0f, 2f);
+
+        for(int i=0; i< cardSpawned.Count; i++) {
+            if(cardSpawned[i].cardName == cardToBuild.cardName) {
+                pos = cardSpawned[i].spawnedGoCard.transform.position + new Vector3(0f, 0f, 0.1f);
+                spawnBuilding = false;
+            }
+        }
+
+        cardToBuild.InstantiateCard(playerBoard.transform.position + pos, playerBoard.transform.rotation, spawnBuilding);
+        cardSpawned.Add(cardToBuild);
     }
 
     public virtual void OptionalPlayerThrowDice(ITurnState turnState) { }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdf9a2a35fa11942a74c592c34af097, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  cardName: Forest
+  cardGo: {fileID: 2455056337841767781, guid: d66875accb7d5e4449dcc2e50e3ec487, type: 3}
+  buildingGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19,
+    type: 3}

@@ -16,7 +16,7 @@ public class BuildBehaviour : ITurnState {
     [SerializeField] Transform buildableEstablishmentSpawnPoint;
     [SerializeField] Transform buildableMonumentSpawnPoint;
 
-    CardPrefab[] cardPrefabs;
+    CardUIPrefab[] cardPrefabs;
 
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
@@ -54,11 +54,11 @@ public class BuildBehaviour : ITurnState {
 
     void StartBuild() {
         Establishment[] et = gameData.establishments.Keys.ToArray();
-        cardPrefabs = new CardPrefab[et.Length + gameData.monuments.Length];
+        cardPrefabs = new CardUIPrefab[et.Length + gameData.monuments.Length];
 
         for(int i=0; i<et.Length; i++) {
             int j = i;
-            cardPrefabs[j] = new CardPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
+            cardPrefabs[j] = new CardUIPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
             cardPrefabs[j].loadedBtn.interactable = CanBuild(et[i]);
 
             if(gameData.establishments[et[i]] <= 0)
@@ -69,7 +69,7 @@ public class BuildBehaviour : ITurnState {
 
         for(int i=0; i<gameData.monuments.Length; i++) {
             int j = i;
-            cardPrefabs[et.Length + j] = new CardPrefab(cardPrefab, buildableMonumentSpawnPoint, gameData.monuments[i]);
+            cardPrefabs[et.Length + j] = new CardUIPrefab(cardPrefab, buildableMonumentSpawnPoint, gameData.monuments[i]);
             cardPrefabs[et.Length + j].loadedBtn.interactable = CanBuild(gameData.monuments[i]);
 
             if(gameData.players[playerTurn].monumentCards[i].built)
@@ -82,6 +82,7 @@ public class BuildBehaviour : ITurnState {
     void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
         gameData.players[playerTurn].AddCard(card);
+        gameData.players[playerTurn].BuildCardForPlayer(card);
         EndBuild();
     }
 
@@ -90,6 +91,7 @@ public class BuildBehaviour : ITurnState {
         gameData.players[playerTurn].BuildMonument(card);
         
         card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
+        gameData.players[playerTurn].BuildCardForPlayer(card);
         EndBuild();
     }
 
