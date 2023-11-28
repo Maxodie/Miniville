@@ -9,9 +9,11 @@ public class CardUIPrefab {
     public Image iconType;
     public TMP_Text cardName;
     public TMP_Text cardDescription;
+    public Card card;
     public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card) {
         loadedGo = Object.Instantiate(cardUIData.objectPrefab, spawnPoint);
-        LoadGoCard(cardUIData, card);;
+        LoadGoCard(cardUIData, card);
+        this.card = card;
     }
 
     public void LoadGoCard(CardUIData cardUIData, Card card) {

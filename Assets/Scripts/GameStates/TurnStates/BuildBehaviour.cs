@@ -16,7 +16,7 @@ public class BuildBehaviour : ITurnState {
     [SerializeField] Transform buildableEstablishmentSpawnPoint;
     [SerializeField] Transform buildableMonumentSpawnPoint;
 
-    CardUIPrefab[] cardPrefabs;
+    public CardUIPrefab[] cardPrefabs;
 
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
@@ -75,18 +75,18 @@ public class BuildBehaviour : ITurnState {
             if(gameData.players[playerTurn].monumentCards[i].built)
                 cardPrefabs[et.Length + j].loadedBtn.interactable = false;
 
-            cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
+            cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuildMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
         }
     }
 
-    void BuildEstablishmentCard(Establishment card) {
+    public void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
         gameData.players[playerTurn].AddCard(card);
         gameData.players[playerTurn].BuildCardForPlayer(card);
         EndBuild();
     }
 
-    void BuilddMonumentCard(Monument card) {
+    public void BuildMonumentCard(Monument card) {
         card.built = false;
         gameData.players[playerTurn].BuildMonument(card);
         
@@ -95,16 +95,16 @@ public class BuildBehaviour : ITurnState {
         EndBuild();
     }
 
-    bool CanBuild(Card card) {
+    public bool CanBuild(Card card) {
         return gameData.players[playerTurn].coins >= card.constructionCost;
     }
 
-    void EndBuild() {
+    public void EndBuild() {
         turnState.UpdateCoinText();
 
-        for (int i = 0; i < cardPrefabs.Length; i++)
+        foreach (var t in cardPrefabs)
         {
-            cardPrefabs[i].Destroy();
+            t.Destroy();
         }
 
         QuitState();
