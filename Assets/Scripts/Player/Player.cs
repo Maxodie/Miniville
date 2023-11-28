@@ -13,7 +13,7 @@ public class Player
     public bool hasBuild;
     public bool canReplay = false;
     public List<Establishment> buildingCards = new List<Establishment>();
-    List<Card> cardSpawned = new List<Card>();
+    List<List<Card>> cardSpawned = new List<List<Card>>();
     public Monument[] monumentCards = new Monument[4];
     public GameObject playerCanvas;
     public GameObject playerBoard;
@@ -30,6 +30,15 @@ public class Player
         this.monumentCards = monument;
         this.playerCanvas = playerCanvas;
     }
+
+    public void Start(GameObject playerBoard) {
+        this.playerBoard = playerBoard;
+        for(int i=0; i < buildingCards.Count; i++) {
+            BuildCardForPlayer(buildingCards[i]);
+        }
+
+        SpawnMonumentForPlayer();
+    }
     
     public void AddCard(Establishment establishment) //The method add a card to the player deck
     {
@@ -38,8 +47,10 @@ public class Player
 
     public void BuildMonument(Monument monument) {
         for(int i=0; i<monumentCards.Length; i++) {
-            if(monumentCards[i] == monument)
+            if(monumentCards[i] == monument) {
                 monumentCards[i].built = true;
+                monumentCards[i].InstantiateBuilding(playerBoard.transform.position + new Vector3(-10f, 0f, 1f * i) * playerBoard.transform.forward.z, playerBoard.transform.rotation);
+            }
         }
     }
 
@@ -81,19 +92,35 @@ public class Player
     public void BuildCardForPlayer(Card cardToBuild) {
         Vector3 pos = Vector3.zero;
         bool spawnBuilding = true;
+        bool doAnotherColomn = true;
 
         if(cardSpawned.Count > 0)
-            pos = cardSpawned[cardSpawned.Count - 1].spawnedGoCard.transform.position + new Vector3(0f, 0f, 2f);
+            pos = new Vector3(0f, 0f, cardSpawned[cardSpawned.Count - 1][cardSpawned[cardSpawned.Count - 1].Count - 1].spawnedGoCard.transform.position.z + 3f);
 
         for(int i=0; i< cardSpawned.Count; i++) {
-            if(cardSpawned[i].cardName == cardToBuild.cardName) {
-                pos = cardSpawned[i].spawnedGoCard.transform.position + new Vector3(0f, 0f, 0.5f);
+            if(cardSpawned[i][0].cardName == cardToBuild.cardName) {
+                pos = new Vector3(0f, 0f, cardSpawned[i][cardSpawned[i].Count - 1].spawnedGoCard.transform.position.z + 0.5f);
                 spawnBuilding = false;
+                doAnotherColomn = false;
+
+                cardSpawned[i].Add(cardToBuild);
             }
         }
 
+        if(doAnotherColomn) {
+            cardSpawned.Add(new List<Card>());
+            cardSpawned[cardSpawned.Count - 1].Add(cardToBuild);
+        }
+
+        
+
         cardToBuild.InstantiateCard(playerBoard.transform.position + pos, playerBoard.transform.rotation, spawnBuilding);
-        cardSpawned.Add(cardToBuild);
+    }
+
+    void SpawnMonumentForPlayer() {
+        for(int i=0; i < monumentCards.Length; i++) {
+            monumentCards[i].InstantiateCard(playerBoard.transform.position + new Vector3(-10f, 0f, 1f * i) * playerBoard.transform.forward.z, playerBoard.transform.rotation, false);
+        }
     }
 
     public virtual void OptionalPlayerThrowDice(ITurnState turnState) { }

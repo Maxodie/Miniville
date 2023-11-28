@@ -68,7 +68,7 @@ public class TurnState : GameState {
             // Apply position and rotation
             playerBoard.transform.position = boardPosition;
             playerBoard.transform.rotation = boardRotation;
-            gameData.players[currentPlayerId].playerBoard = playerBoard;
+            gameData.players[i].Start(playerBoard);
         }
 
         PerformTurn();
