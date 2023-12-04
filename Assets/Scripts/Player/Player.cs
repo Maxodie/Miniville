@@ -26,6 +26,7 @@ public class Player
     float cardInPackOffset = 0.3f;
     int monumentSpace = -10;
     int currentBuildingXPos = 0;
+    float monumentOffset = 2f;
     float zBoradOffset;
     
     public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
@@ -59,7 +60,8 @@ public class Player
         for(int i=0; i<monumentCards.Length; i++) {
             if(monumentCards[i] == monument) {
                 monumentCards[i].built = true;
-                monumentCards[i].InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * 1f));
+                monumentCards[i].InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
+                Debug.Log("te");
             }
         }
     }
@@ -132,7 +134,7 @@ public class Player
 
     void SpawnMonumentForPlayer() {
         for(int i=0; i < monumentCards.Length; i++) {
-            monumentCards[i].InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * 1f), false);
+            monumentCards[i].InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset), false);
         }
     }
 

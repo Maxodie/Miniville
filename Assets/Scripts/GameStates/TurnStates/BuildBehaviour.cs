@@ -88,10 +88,9 @@ public class BuildBehaviour : ITurnState {
 
     void BuilddMonumentCard(Monument card) {
         card.built = false;
-        gameData.players[playerTurn].BuildMonument(card);
         
-        card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
         gameData.players[playerTurn].BuildMonument(card);
+        card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
         EndBuild();
     }
 

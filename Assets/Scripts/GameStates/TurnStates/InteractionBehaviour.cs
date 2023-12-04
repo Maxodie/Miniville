@@ -33,7 +33,7 @@ public class InteractionBehaviour : ITurnState
     {
         uiPanel.SetActive(true);
         LoadPlayers();
-        
+
         gameData.players[playerTurn].OptionalPlayerInteraction(this);
     }
 
@@ -72,10 +72,11 @@ public class InteractionBehaviour : ITurnState
             if (t.cardType == CardType.CITYLIFE)
                 continue;
             
+            var tCopy = t;
             Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
-                selectedCard = t;
+                selectedCard = tCopy;
                 SelectOwnCard();
             });
         }
@@ -89,10 +90,11 @@ public class InteractionBehaviour : ITurnState
             if (t.cardType == CardType.CITYLIFE)
                 continue;
             
+            var tCopy = t;
             Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
-                playerCard = t;
+                playerCard = tCopy;
                 SwitchCards();
             });
         }
@@ -106,14 +108,14 @@ public class InteractionBehaviour : ITurnState
 
     void Dispose()
     {
-        foreach (GameObject button in playerSelection)
+        for(int i=0; i<playerSelection.childCount; i++)
         {
-            Object.Destroy(button);
+            Object.Destroy(playerSelection.GetChild(0));
         }
 
-        foreach (GameObject button in cardSelection)
+        for(int i=0; i<cardSelection.childCount; i++)
         {
-            Object.Destroy(button);
+            Object.Destroy(cardSelection.GetChild(0));
         }
     }
 
