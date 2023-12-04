@@ -4,7 +4,8 @@ public class Card
 {
     public CardGoPrefab cardGoPrefab;
     public GameObject spawnedGoCard;
-    GameObject spawnedGoBuilding;
+    Animator cardAnim;
+    public GameObject spawnedGoBuilding;
     public Sprite cardSprite;
     public string cardName;
     public CardType cardType;
@@ -36,17 +37,21 @@ public class Card
 
     public virtual void PerformSpecial(Player player, Player target, Player[] players)
     {
-        
+        cardAnim.SetTrigger("ActiveEffect");
     }
 
-    public void InstantiateCard(Vector3 pos, Quaternion rot, bool activeBuilding) {
-        spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, pos, rot);
+    public void InstantiateCard(Transform tr, Vector3 pos, bool activeBuilding) {
+        spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, tr);
+        spawnedGoCard.transform.localPosition = pos;
 
         if(activeBuilding)
-            InstantiateBuilding(pos, rot);
+            InstantiateBuilding(tr, pos);
+
     }
 
-    public void InstantiateBuilding(Vector3 pos, Quaternion rot) {
-        spawnedGoBuilding = Object.Instantiate(cardGoPrefab.buildingGo, pos, rot);
+    public void InstantiateBuilding(Transform tr, Vector3 pos) {
+        spawnedGoBuilding = Object.Instantiate(cardGoPrefab.buildingGo, tr);
+        spawnedGoBuilding.transform.localPosition = pos;
+        cardAnim = spawnedGoBuilding.GetComponent<Animator>();
     }
 }

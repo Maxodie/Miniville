@@ -8,6 +8,8 @@ public class TvStation : PurpleCard
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+
         if (target.coins <= 5)
         {
             player.coins += target.coins;

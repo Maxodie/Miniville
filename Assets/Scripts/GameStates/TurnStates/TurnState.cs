@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TurnState : GameState {
     int currentPlayerId;
     ITurnState currentTurnState;
-    float playerBoardDistanceToCenter = 4.5f;
+    float playerBoardDistanceToCenter = 10.5f;
 
     //Add to upml
     [SerializeField] ThrowDiceBehaviour throwDiceBehaviour;

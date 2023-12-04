@@ -6,6 +6,7 @@ using System.Collections;
 public class PlayerDice {
     [SerializeField] MonoBehaviour context;
     [SerializeField] GameObject diePrefab;
+    [SerializeField] GameObject diceParticleEffect;
     [SerializeField] Transform diceSpawn; 
     Rigidbody[] currentDiceRb;
 
@@ -22,7 +23,7 @@ public class PlayerDice {
             currentSpawn += Vector3.right * i * 3;
             
             currentDiceRb[i] = UnityEngine.Object.Instantiate(diePrefab, currentSpawn, Quaternion.identity).GetComponent<Rigidbody>();
-            currentDiceRb[i].GetComponent<Animator>().SetTrigger("CallAnim");
+            UnityEngine.Object.Destroy(UnityEngine.Object.Instantiate(diceParticleEffect, currentDiceRb[i].position, Quaternion.identity), 2f);
             AddForceToDice(currentDiceRb[i]);
         }
 
@@ -82,7 +83,7 @@ public class PlayerDice {
 
     void DestroyDice() {
         for(int i=0; i<currentDiceRb.Length; i++) {
-            currentDiceRb[i].GetComponent<Animator>().SetTrigger("CallAnim");
+            UnityEngine.Object.Destroy(UnityEngine.Object.Instantiate(diceParticleEffect, currentDiceRb[i].position, Quaternion.identity), 2f);
             UnityEngine.Object.Destroy(currentDiceRb[i].gameObject);
         }
     }

@@ -31,7 +31,7 @@ public class BuildBehaviour : ITurnState {
     void InitButtons() {
         if(isBtnInit) return;
         
-        stopBuildBtn.onClick.AddListener(QuitState);
+        stopBuildBtn.onClick.AddListener(EndBuild);
 
         isBtnInit = true;
     }

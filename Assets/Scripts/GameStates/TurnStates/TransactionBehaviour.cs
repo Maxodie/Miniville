@@ -115,9 +115,10 @@ public class TransactionBehaviour : ITurnState {
     {
         foreach (var t in currentPlayer.buildingCards)
         {
-            yield return waitForTransaction;
-            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue))
+            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue)) {
                 t.PerformSpecial(gameData.players[playerTurn], currentPlayer, gameData.players);
+                yield return waitForTransaction;
+            }
         }
     }
 

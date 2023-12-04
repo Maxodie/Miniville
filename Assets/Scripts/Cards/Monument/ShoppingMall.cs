@@ -9,6 +9,8 @@ public class ShoppingMall : Monument
 
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+        
         foreach (var building in player.buildingCards)
         {
             if (building.cardType == CardType.BUSINESS || building.cardType == CardType.GROCERYSTORE)

@@ -287,14 +287,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.28635725, y: 0, z: 0, w: 0.95812297}
-  m_LocalPosition: {x: 0, y: 6.3, z: -9.05}
+  m_LocalRotation: {x: 0.41905588, y: 0, z: 0, w: 0.9079605}
+  m_LocalPosition: {x: 0, y: 16.21, z: -20.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 33.28, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 49.55, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,6 +1815,8 @@ MonoBehaviour:
         context: {fileID: 1473490035}
         diePrefab: {fileID: 8486940324452403627, guid: e3138cf435b44804caaf7147d4f92a54,
           type: 3}
+        diceParticleEffect: {fileID: 8486940324452403627, guid: 758c8ead9e471664db34ffbbe99937f8,
+          type: 3}
         diceSpawn: {fileID: 664686719}
         rollForce: 2
         torqueAmount: 4
@@ -1839,7 +1841,7 @@ MonoBehaviour:
       turnInfoPanel: {fileID: 1254980544}
       firstDice: {fileID: 1687141216}
       secondDice: {fileID: 694361843}
-      timeBetweenTransactions: 1
+      timeBetweenTransactions: 2
     buildBehaviour:
       transactionPanel: {fileID: 217988277}
       stopBuildBtn: {fileID: 181466508}

@@ -8,6 +8,8 @@ public class Stadium : PurpleCard
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+        
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i] != player)
