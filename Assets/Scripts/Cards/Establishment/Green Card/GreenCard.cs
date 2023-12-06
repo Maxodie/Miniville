@@ -1,3 +1,4 @@
+using UnityEngine;
 public class GreenCard : Establishment
 {
     public GreenCard(CardGoPrefab cardGoPrefab, string cardImgPath, string cardName, CardType cardType, string cardEffectDescription, int constructionCost, int gains, CardType requiredCardType, CardPriority cardPriority, int[] requiredDiceValues, bool startCard)
@@ -10,5 +11,6 @@ public class GreenCard : Establishment
     {
         base.PerformSpecial(player, target, players);
         player.coins += gains;
+        Debug.Log(player.coins + " : green");
     }
 }

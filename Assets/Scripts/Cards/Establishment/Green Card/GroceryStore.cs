@@ -12,8 +12,11 @@ public class GroceryStore : GreenCard
         
         foreach (var building in player.buildingCards)
         {
-            if (building.cardType == CardType.FARM)
-                player.coins += gains;
+            foreach (var card in building)
+            {
+                if (card.cardType == CardType.FARM)
+                    player.coins += gains;
+            }
         }
     }
 }

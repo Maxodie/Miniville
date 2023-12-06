@@ -13,8 +13,11 @@ public class ShoppingMall : Monument
         
         foreach (var building in player.buildingCards)
         {
-            if (building.cardType == CardType.BUSINESS || building.cardType == CardType.GROCERYSTORE)
-                building.gains++;
+            foreach (var card in building)
+            {
+                if (card.cardType == CardType.BUSINESS || card.cardType == CardType.GROCERYSTORE)
+                    card.gains++;
+            }
         }
     }
 }

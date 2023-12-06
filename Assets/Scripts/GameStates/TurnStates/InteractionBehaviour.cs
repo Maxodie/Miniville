@@ -69,16 +69,19 @@ public class InteractionBehaviour : ITurnState
         Dispose();
         foreach (var t in gameData.players[playerId].buildingCards)
         {
-            if (t.cardType == CardType.CITYLIFE)
-                continue;
-            
-            var tCopy = t;
-            Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
-            btn.onClick.AddListener(() =>
+            foreach (var card in t)
             {
-                selectedCard = tCopy;
-                SelectOwnCard();
-            });
+                if (card.cardType == CardType.CITYLIFE)
+                    continue;
+                
+                var cardCopy = card;
+                Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
+                btn.onClick.AddListener(() =>
+                {
+                    selectedCard = cardCopy;
+                    SelectOwnCard();
+                });
+            }
         }
     }
 
@@ -87,16 +90,19 @@ public class InteractionBehaviour : ITurnState
         Dispose();
         foreach (var t in gameData.players[playerTurn].buildingCards)
         {
-            if (t.cardType == CardType.CITYLIFE)
-                continue;
-            
-            var tCopy = t;
-            Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
-            btn.onClick.AddListener(() =>
+            foreach (var card in t)
             {
-                playerCard = tCopy;
-                SwitchCards();
-            });
+                if (card.cardType == CardType.CITYLIFE)
+                    continue;
+                
+                var cardCopy = card;
+                Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
+                btn.onClick.AddListener(() =>
+                {
+                    playerCard = cardCopy;
+                    SwitchCards();
+                });
+            }
         }
     }
 

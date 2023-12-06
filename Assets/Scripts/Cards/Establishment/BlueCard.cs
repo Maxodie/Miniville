@@ -1,4 +1,4 @@
-using Mono.Cecil;
+using UnityEngine;
 
 public class BlueCard : Establishment
 {
@@ -12,5 +12,6 @@ public class BlueCard : Establishment
     {
         base.PerformSpecial(player, target, players);
         player.coins += gains;
+        Debug.Log(player.coins + " : blue");
     }
 }

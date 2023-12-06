@@ -12,12 +12,13 @@ public class Player
     public int[] throwValue;
     public bool hasBuild;
     public bool canReplay = false;
-    public List<Establishment> buildingCards = new List<Establishment>();
-    List<List<Card>> cardSpawned = new List<List<Card>>();
+    public List<List<Establishment>> buildingCards = new List<List<Establishment>>();
     public Monument[] monumentCards = new Monument[4];
     public GameObject playerCanvas;
     public GameObject playerBoard;
     public bool isRealPlayer {get; private set;}
+
+    List<Establishment> startDeck;
 
     //player board offsets
     int cardNewLine = 5;
@@ -29,39 +30,44 @@ public class Player
     float monumentOffset = 2f;
     float zBoradOffset;
     
-    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) //add
+    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> startDeck, Monument[] monument, GameObject playerCanvas) //add
     {
         this.isRealPlayer = isRealPlayer;
         this.playerName = playerName;
         this.coins = coins;
         this.maxDice = maxDices; 
         this.currentDice = currentDice;
-        this.buildingCards = deck;
         this.monumentCards = monument;
         this.playerCanvas = playerCanvas;
+        this.startDeck = startDeck;
+
+        InitMonuments();
     }
 
     public void Start(GameObject playerBoard) {
         this.playerBoard = playerBoard;
         zBoradOffset = (cardNewLine-1) * buildingsZOffsetInRaw / 2;
-        for(int i=0; i < buildingCards.Count; i++) {
-            BuildCardForPlayer(buildingCards[i]);
-        }
-
+        InitStartDeck();
         SpawnMonumentForPlayer();
     }
-    
-    public void AddCard(Establishment establishment) //The method add a card to the player deck
-    {
-        buildingCards.Add(establishment);
+
+    void InitMonuments() {
+        for(int i=0; i < monumentCards.Length; i++) {
+            monumentCards[i].CreateNewCardBehaviour();
+        }
+    }
+
+    void InitStartDeck() {
+        for(int i=0; i < startDeck.Count; i++) {
+            BuildCardForPlayer(startDeck[i]);
+        }
     }
 
     public void BuildMonument(Monument monument) {
         for(int i=0; i<monumentCards.Length; i++) {
             if(monumentCards[i] == monument) {
                 monumentCards[i].built = true;
-                monumentCards[i].InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
-                Debug.Log("te");
+                monumentCards[i].cardBehaviour.InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
             }
         }
     }
@@ -82,7 +88,7 @@ public class Player
         
         foreach (var establishment in buildingCards) //We compare all the card type that the player have with the card type we want to check
         {
-            if (establishment.cardType == cardType)
+            if (establishment[0].cardType == cardType)
             {
                 count++;
             }
@@ -101,40 +107,50 @@ public class Player
         }
     }
 
-    public void BuildCardForPlayer(Card cardToBuild) {
+    public void BuildCardForPlayer(Establishment cardToBuild) {
         Vector3 pos = new Vector3(0f, 0f, -zBoradOffset);
         bool spawnBuilding = true;
         bool doAnotherColomn = true;
+        cardToBuild = cardToBuild.Copy();
+        cardToBuild.CreateNewCardBehaviour();
 
-        if(cardSpawned.Count > 0) {
-            if(cardSpawned.Count % cardNewLine == 0) {
-                currentBuildingXPos = cardSpawned.Count / cardNewLine;
+        if(buildingCards.Count > 0) {
+            if(buildingCards.Count % cardNewLine == 0) {
+                currentBuildingXPos = buildingCards.Count / cardNewLine;
             }
-            
-           pos = new Vector3(currentBuildingXPos * newLineXOffset, 0f, cardSpawned.Count % cardNewLine == 0 ? -zBoradOffset : cardSpawned[cardSpawned.Count - (cardNewLine * currentBuildingXPos) - 1][0].spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in line
+
+            int lastRawBuildingPos = buildingCards.Count - (cardNewLine * currentBuildingXPos) - 1;
+           // if(buildingCards[lastRawBuildingPos][0].cardBehaviour != null) {
+                
+               pos = new Vector3(currentBuildingXPos * newLineXOffset, 0f, buildingCards.Count % cardNewLine == 0 ? -zBoradOffset : buildingCards[lastRawBuildingPos][0].cardBehaviour.spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in line
+            /*}
+            else {
+                cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, pos, spawnBuilding);
+                return;
+            }*/
         }
 
-        for(int i=0; i< cardSpawned.Count; i++) {
-            if(cardSpawned[i][0].cardName == cardToBuild.cardName) {
-                pos = new Vector3(0f, 0f, cardSpawned[i][cardSpawned[i].Count - 1].spawnedGoCard.transform.localPosition.z + cardInPackOffset);
+        for(int i=0; i< buildingCards.Count; i++) {
+            if(buildingCards[i][0].cardName == cardToBuild.cardName) {
+                pos = new Vector3(0f, 0f, buildingCards[i][buildingCards[i].Count - 1].cardBehaviour.spawnedGoCard.transform.localPosition.z + cardInPackOffset);
                 spawnBuilding = false;
                 doAnotherColomn = false;
 
-                cardSpawned[i].Add(cardToBuild);
+                buildingCards[i].Add(cardToBuild);
             }
         }
 
         if(doAnotherColomn) {
-            cardSpawned.Add(new List<Card>());
-            cardSpawned[cardSpawned.Count - 1].Add(cardToBuild);
+            buildingCards.Add(new List<Establishment>());
+            buildingCards[buildingCards.Count - 1].Add(cardToBuild);
         }
 
-        cardToBuild.InstantiateCard(playerBoard.transform, pos, spawnBuilding);
+        cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, pos, spawnBuilding);
     }
 
     void SpawnMonumentForPlayer() {
         for(int i=0; i < monumentCards.Length; i++) {
-            monumentCards[i].InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset), false);
+            monumentCards[i].cardBehaviour.InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset), false);
         }
     }
 

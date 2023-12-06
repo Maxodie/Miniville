@@ -1,11 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Card
 {
+    public CardBehaviour cardBehaviour;
     public CardGoPrefab cardGoPrefab;
-    public GameObject spawnedGoCard;
-    Animator cardAnim;
-    public GameObject spawnedGoBuilding;
     public Sprite cardSprite;
     public string cardName;
     public CardType cardType;
@@ -31,27 +30,34 @@ public class Card
         LoadCardTypeIcon();
     }
 
+    protected Card(Card copyCard) {
+        this.cardGoPrefab = copyCard.cardGoPrefab;
+
+        this.cardBehaviour = copyCard.cardBehaviour;
+        this.cardSprite = copyCard.cardSprite;
+        this.cardName = copyCard.cardName; 
+        this.cardType = copyCard.cardType;
+        this.cardEffectDescription = copyCard.cardEffectDescription;
+        this.constructionCost = copyCard.constructionCost;
+        this.gains = copyCard.gains;
+        this.requiredCardType = copyCard.requiredCardType;
+        this.cardPriority = copyCard.cardPriority;
+    }
+
+    public Card Copy() {
+        return new Card(this);
+    }
+
+    public void CreateNewCardBehaviour() {
+        cardBehaviour = new CardBehaviour(this, cardGoPrefab);
+    }
+
     void LoadCardTypeIcon() {
         cardTypeIcon = Resources.Load<Sprite>($"CardTypeImg/{cardType}");
     }
 
     public virtual void PerformSpecial(Player player, Player target, Player[] players)
     {
-        cardAnim.SetTrigger("ActiveEffect");
-    }
-
-    public void InstantiateCard(Transform tr, Vector3 pos, bool activeBuilding) {
-        spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, tr);
-        spawnedGoCard.transform.localPosition = pos;
-
-        if(activeBuilding)
-            InstantiateBuilding(tr, pos);
-
-    }
-
-    public void InstantiateBuilding(Transform tr, Vector3 pos) {
-        spawnedGoBuilding = Object.Instantiate(cardGoPrefab.buildingGo, tr);
-        spawnedGoBuilding.transform.localPosition = pos;
-        cardAnim = spawnedGoBuilding.GetComponent<Animator>();
+        cardBehaviour.PerformVisualEffect();
     }
 }
