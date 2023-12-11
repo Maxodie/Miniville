@@ -115,14 +115,18 @@ public class TransactionBehaviour : ITurnState {
     {
         foreach (var t in currentPlayer.buildingCards)
         {
-            yield return waitForTransaction;
-            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue))
+            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue)) {
+                Debug.Log("tr : " + gameData.players[playerTurn].playerBoard.name + cardPriority);
                 t.PerformSpecial(gameData.players[playerTurn], currentPlayer, gameData.players);
+                yield return waitForTransaction;
+            }
         }
     }
 
     IEnumerator PlayerPaid() {
+        Debug.Log("t");
         yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[playerTurn]));
+        Debug.Log("tf");
         turnState.UpdateCoinText();
         QuitState();
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class ThrowDiceBehaviour : ITurnState {
     bool isBtnInit = false;
+    bool isThrowDiceRestarted = false;
     GameData gameData;
     int playerTurn;
     TurnState turnState;
@@ -13,10 +14,17 @@ public class ThrowDiceBehaviour : ITurnState {
     [SerializeField] GameObject playerDicePanel;
     [SerializeField] PlayerDice playerDice;
 
+    [Header("Restart ThrowDice")]
+    [SerializeField] GameObject restartPanel;
+    [SerializeField] Button yesRestartBtn;
+    [SerializeField] Button noRestartBtn;
+
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+
+        restartPanel.SetActive(false);
 
         InitButtons();
 
@@ -41,6 +49,9 @@ public class ThrowDiceBehaviour : ITurnState {
         throwOneDice.onClick.AddListener(PlayerThrowOneDice);
         throwTwoDice.onClick.AddListener(PlayerThrowTwoDice);
 
+        yesRestartBtn.onClick.AddListener(YesRestartThrowDice);
+        noRestartBtn.onClick.AddListener(QuitState);
+
         isBtnInit = true;
     }
 
@@ -50,16 +61,33 @@ public class ThrowDiceBehaviour : ITurnState {
 
     public void QuitState() {
         playerDicePanel.SetActive(false);
+        
+        isThrowDiceRestarted = false;
         turnState.Transactions();
     }
 
+    void EndThrow() {
+        if(!isThrowDiceRestarted && gameData.players[playerTurn].GetMonumentBuiltByType(typeof(RadioTower))) {
+            restartPanel.SetActive(true);
+        }
+        else
+            QuitState();
+    }
+
+    void YesRestartThrowDice() {
+        playerDicePanel.SetActive(false);
+
+        isThrowDiceRestarted = true;
+        turnState.ThrowDice();
+    }
+
     public void PlayerThrowOneDice() {
-        playerDice.ThrowDice(1, gameData.players[playerTurn].ThrowDice, QuitState);
+        playerDice.ThrowDice(1, gameData.players[playerTurn].ThrowDice, EndThrow);
         DisableBtn();
     }
 
     public void PlayerThrowTwoDice() {
-        playerDice.ThrowDice(2, gameData.players[playerTurn].ThrowDice, QuitState);
+        playerDice.ThrowDice(2, gameData.players[playerTurn].ThrowDice, EndThrow);
         DisableBtn();
     }
 

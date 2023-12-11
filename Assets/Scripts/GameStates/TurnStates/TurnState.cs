@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TurnState : GameState {
     int currentPlayerId;
     ITurnState currentTurnState;
-    float playerBoardDistanceToCenter = 4.5f;
+    float playerBoardDistanceToCenter = 10.5f;
 
     //Add to upml
     [SerializeField] ThrowDiceBehaviour throwDiceBehaviour;
@@ -68,6 +68,7 @@ public class TurnState : GameState {
             // Apply position and rotation
             playerBoard.transform.position = boardPosition;
             playerBoard.transform.rotation = boardRotation;
+            gameData.players[i].Start(playerBoard);
         }
 
         PerformTurn();
@@ -107,7 +108,7 @@ public class TurnState : GameState {
         PerformTurn();
     }
 
-    void ThrowDice() {
+    public void ThrowDice() {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
         throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
