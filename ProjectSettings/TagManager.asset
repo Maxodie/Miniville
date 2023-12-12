@@ -9,6 +9,7 @@ TagManager:
   - DescriptionText
   - TypeIconImg
   - CostCard
+  - UIPlayerActiveFrame
   layers:
   - Default
   - TransparentFX

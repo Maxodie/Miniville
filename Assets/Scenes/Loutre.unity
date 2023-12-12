@@ -1234,14 +1234,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8631213, b: 0.289854, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: f7a46ddb2d09f4846a8344c910f5ba16, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1617,15 +1617,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Yes
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba85c479d5f764b688994653f81e2781, type: 2}
+  m_sharedMaterial: {fileID: 5352339743835403069, guid: ba85c479d5f764b688994653f81e2781,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1642,8 +1643,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1984,6 +1985,8 @@ MonoBehaviour:
         type: 2}
       buildableEstablishmentSpawnPoint: {fileID: 1817792947}
       buildableMonumentSpawnPoint: {fileID: 1393404831}
+      backEstablishmentSprite: {fileID: 21300000, guid: 20ae4f21455b54fedae4f862fe0c16bd,
+        type: 3}
     playerBoardPrefab: {fileID: 5017871081372686519, guid: 1982786e41663e24f8aec51e10d1d1d4,
       type: 3}
     playerDicePanel: {fileID: 1848321673}
@@ -1991,8 +1994,8 @@ MonoBehaviour:
     playerCoins: {fileID: 1356646079}
   endGameState:
     endState: 0
-    restartButton: {fileID: 0}
-    quitButton: {fileID: 0}
+    restartButton: {fileID: 1958130020}
+    quitButton: {fileID: 1952860797}
   uiData:
     grayBtnSprite: {fileID: 21300000, guid: 6400b95f66ca342e0bf6ff41b88c5373, type: 3}
     redBtnSprite: {fileID: 21300000, guid: f7a46ddb2d09f4846a8344c910f5ba16, type: 3}
@@ -2078,15 +2081,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: No
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba85c479d5f764b688994653f81e2781, type: 2}
+  m_sharedMaterial: {fileID: 5352339743835403069, guid: ba85c479d5f764b688994653f81e2781,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2103,8 +2107,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2641,14 +2645,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.44716978, b: 0.92415917, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 8eee90ebdf37f4b9bbd178785312225a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2848,8 +2852,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Throw dice again ?????
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba85c479d5f764b688994653f81e2781, type: 2}
+  m_sharedMaterial: {fileID: 5352339743835403069, guid: ba85c479d5f764b688994653f81e2781,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3008,6 +3013,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7293315220806673275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952860797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224104940881625742, guid: 48205e52616b7194f9a336bd152c11d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7293315220806673275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1958130020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9153600610319528910, guid: 48205e52616b7194f9a336bd152c11d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7293315220806673275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2145824124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7293315220968508935, guid: 48205e52616b7194f9a336bd152c11d2,
@@ -3021,6 +3050,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246265834826159637, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: UIPlayerActiveFrame
+      objectReference: {fileID: 0}
+    - target: {fileID: 337373768649912422, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: UIPlayerActiveFrame
+      objectReference: {fileID: 0}
+    - target: {fileID: 378726668897373466, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: UIPlayerActiveFrame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011556411462995043, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: UIPlayerActiveFrame
+      objectReference: {fileID: 0}
     - target: {fileID: 5943643144806626772, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
       propertyPath: m_IsActive
@@ -3028,8 +3077,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293315220675069864, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -350
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293315220675069864, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -434
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7293315220752015310, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
@@ -3108,8 +3162,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293315221223062396, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293315221223062396, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -434.00003
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293315221241366002, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7293315221274407661, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
