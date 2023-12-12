@@ -1938,6 +1938,7 @@ MonoBehaviour:
       playerFrame4: {fileID: 1139208052}
   turnState:
     endState: 0
+    playerBoardDistanceToCenter: 10.5
     throwDiceBehaviour:
       throwOneDice: {fileID: 141042900}
       throwTwoDice: {fileID: 1758631944}
@@ -1967,6 +1968,8 @@ MonoBehaviour:
         type: 3}
       ownCardChoiceButton: {fileID: 2732622890101022515, guid: 20ebce6563041f6478e3001b9ae7ad2a,
         type: 3}
+      cardUISelectPrefab: {fileID: 0}
+      stopBtn: {fileID: 0}
     transactionBehaviour:
       context: {fileID: 1473490035}
       turnInfoPanel: {fileID: 1254980544}
