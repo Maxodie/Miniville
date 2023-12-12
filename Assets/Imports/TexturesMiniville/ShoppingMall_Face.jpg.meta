@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ShoppingMall_Face_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3be3b1b45c404fa9b59b75b643d60d2
+      internalID: 1261411414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5fb918c2af50e47c08d2ff2cb294b878
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShoppingMall_Face_0: 1261411414
+      ShoppingMall_Face_1: 2070964194
+      ShoppingMall_Face_10: -1247903722
+      ShoppingMall_Face_11: -1669183737
+      ShoppingMall_Face_12: -1261387526
+      ShoppingMall_Face_13: 185081671
+      ShoppingMall_Face_14: -1422560549
+      ShoppingMall_Face_15: 1013819195
+      ShoppingMall_Face_16: 1128517924
+      ShoppingMall_Face_17: 1424496391
+      ShoppingMall_Face_18: -743471517
+      ShoppingMall_Face_19: 796023883
+      ShoppingMall_Face_2: 1412641704
+      ShoppingMall_Face_20: -908658270
+      ShoppingMall_Face_21: 429403490
+      ShoppingMall_Face_22: -1292457000
+      ShoppingMall_Face_23: -1138420284
+      ShoppingMall_Face_24: 531486771
+      ShoppingMall_Face_25: 1032810648
+      ShoppingMall_Face_26: -612586350
+      ShoppingMall_Face_27: 335357171
+      ShoppingMall_Face_28: 396772448
+      ShoppingMall_Face_29: -1229595646
+      ShoppingMall_Face_3: 1636690142
+      ShoppingMall_Face_30: 1756699604
+      ShoppingMall_Face_31: -2115186253
+      ShoppingMall_Face_32: 959210360
+      ShoppingMall_Face_33: -1567576193
+      ShoppingMall_Face_34: -857265757
+      ShoppingMall_Face_35: -500397751
+      ShoppingMall_Face_36: 1706839799
+      ShoppingMall_Face_37: 453267192
+      ShoppingMall_Face_38: -334947899
+      ShoppingMall_Face_39: -842079490
+      ShoppingMall_Face_4: 1813009458
+      ShoppingMall_Face_40: -1494416844
+      ShoppingMall_Face_41: -2090066961
+      ShoppingMall_Face_42: -1527583442
+      ShoppingMall_Face_43: -1685171905
+      ShoppingMall_Face_44: 2130753252
+      ShoppingMall_Face_45: 1306768392
+      ShoppingMall_Face_46: -376393456
+      ShoppingMall_Face_47: -1209928501
+      ShoppingMall_Face_48: 1289886672
+      ShoppingMall_Face_49: -1428355919
+      ShoppingMall_Face_5: -1075140048
+      ShoppingMall_Face_50: -1939957123
+      ShoppingMall_Face_51: -840793687
+      ShoppingMall_Face_52: -1744856132
+      ShoppingMall_Face_53: 1398613581
+      ShoppingMall_Face_54: 542748377
+      ShoppingMall_Face_55: 573011127
+      ShoppingMall_Face_56: 1124984129
+      ShoppingMall_Face_57: -439014408
+      ShoppingMall_Face_58: -374859333
+      ShoppingMall_Face_59: -596728579
+      ShoppingMall_Face_6: 2126616735
+      ShoppingMall_Face_60: 508064229
+      ShoppingMall_Face_61: -128301909
+      ShoppingMall_Face_62: -955107743
+      ShoppingMall_Face_7: 1299793688
+      ShoppingMall_Face_8: -939760545
+      ShoppingMall_Face_9: -1185238091
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

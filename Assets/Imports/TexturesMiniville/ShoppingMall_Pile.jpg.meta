@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ShoppingMall_Pile_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d8cf61f7b704c96946e10af5a48224
+      internalID: -431119193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e170e25882b34fccacf734ad0c6fff8
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShoppingMall_Pile_0: -431119193
+      ShoppingMall_Pile_1: -105892066
+      ShoppingMall_Pile_10: 522287299
+      ShoppingMall_Pile_11: -645955963
+      ShoppingMall_Pile_12: 1278790289
+      ShoppingMall_Pile_13: -535155675
+      ShoppingMall_Pile_14: 781552835
+      ShoppingMall_Pile_15: -986177170
+      ShoppingMall_Pile_16: -463053513
+      ShoppingMall_Pile_17: -563774359
+      ShoppingMall_Pile_18: 1573700052
+      ShoppingMall_Pile_19: -1205889022
+      ShoppingMall_Pile_2: 2007005151
+      ShoppingMall_Pile_20: 1037021493
+      ShoppingMall_Pile_21: -1022632645
+      ShoppingMall_Pile_22: 2046355975
+      ShoppingMall_Pile_23: -1074928539
+      ShoppingMall_Pile_24: -1624001060
+      ShoppingMall_Pile_25: -755255539
+      ShoppingMall_Pile_26: -1595646643
+      ShoppingMall_Pile_27: -611202861
+      ShoppingMall_Pile_28: -1929357709
+      ShoppingMall_Pile_29: 1413947031
+      ShoppingMall_Pile_3: 1691244541
+      ShoppingMall_Pile_30: -1846097074
+      ShoppingMall_Pile_31: 2031181208
+      ShoppingMall_Pile_32: 194263754
+      ShoppingMall_Pile_33: 278900697
+      ShoppingMall_Pile_34: -1201654823
+      ShoppingMall_Pile_35: -310594273
+      ShoppingMall_Pile_36: -277360771
+      ShoppingMall_Pile_37: -1953856981
+      ShoppingMall_Pile_38: 750369114
+      ShoppingMall_Pile_39: -1213256766
+      ShoppingMall_Pile_4: -188718618
+      ShoppingMall_Pile_40: 1952476219
+      ShoppingMall_Pile_41: -493810021
+      ShoppingMall_Pile_42: -1593609024
+      ShoppingMall_Pile_43: -518691554
+      ShoppingMall_Pile_44: -1786328832
+      ShoppingMall_Pile_45: -1308228429
+      ShoppingMall_Pile_46: -425034053
+      ShoppingMall_Pile_47: 2099544454
+      ShoppingMall_Pile_48: -2057071606
+      ShoppingMall_Pile_49: -1351430788
+      ShoppingMall_Pile_5: -1631671283
+      ShoppingMall_Pile_50: -898246430
+      ShoppingMall_Pile_51: -2040466962
+      ShoppingMall_Pile_52: -1388549424
+      ShoppingMall_Pile_53: -1398844758
+      ShoppingMall_Pile_54: 695897232
+      ShoppingMall_Pile_55: -1513631986
+      ShoppingMall_Pile_56: -2015156683
+      ShoppingMall_Pile_57: 420311749
+      ShoppingMall_Pile_58: 210416437
+      ShoppingMall_Pile_59: -1616020553
+      ShoppingMall_Pile_6: -347498346
+      ShoppingMall_Pile_60: -322404439
+      ShoppingMall_Pile_61: 834690775
+      ShoppingMall_Pile_62: -186355244
+      ShoppingMall_Pile_7: -845206757
+      ShoppingMall_Pile_8: 1485023407
+      ShoppingMall_Pile_9: 1613433068
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

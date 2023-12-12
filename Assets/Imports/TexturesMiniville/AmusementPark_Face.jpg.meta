@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,24 +36,24 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 3222, z: 3204, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,103 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AmusementPark_Face_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a099362adbe14432a50857d99ce2aaa
+      internalID: -1283557559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AmusementPark_Face_0: -1283557559
+      AmusementPark_Face_1: 1929012781
+      AmusementPark_Face_10: 1775991607
+      AmusementPark_Face_11: 1566938810
+      AmusementPark_Face_12: 1111542803
+      AmusementPark_Face_13: -1202703729
+      AmusementPark_Face_14: 1284128964
+      AmusementPark_Face_15: 1926627534
+      AmusementPark_Face_16: -1513579778
+      AmusementPark_Face_17: -1349485393
+      AmusementPark_Face_18: -803759427
+      AmusementPark_Face_19: 811605838
+      AmusementPark_Face_2: 1739941598
+      AmusementPark_Face_20: -1999922680
+      AmusementPark_Face_21: 1491902430
+      AmusementPark_Face_22: -1077855455
+      AmusementPark_Face_23: -974067559
+      AmusementPark_Face_24: 335724142
+      AmusementPark_Face_25: -575196484
+      AmusementPark_Face_26: -362065000
+      AmusementPark_Face_27: -839556866
+      AmusementPark_Face_28: 168471947
+      AmusementPark_Face_29: -464163097
+      AmusementPark_Face_3: -733593234
+      AmusementPark_Face_30: -1892390429
+      AmusementPark_Face_31: 393358840
+      AmusementPark_Face_32: 344142575
+      AmusementPark_Face_33: -1742069790
+      AmusementPark_Face_34: 2003810067
+      AmusementPark_Face_35: -2107680642
+      AmusementPark_Face_36: 264041077
+      AmusementPark_Face_37: -1740266336
+      AmusementPark_Face_38: -373855816
+      AmusementPark_Face_39: -1413582866
+      AmusementPark_Face_4: -862504824
+      AmusementPark_Face_40: 16692166
+      AmusementPark_Face_41: -1768094065
+      AmusementPark_Face_42: -1273237175
+      AmusementPark_Face_43: -1867530101
+      AmusementPark_Face_44: -1371784516
+      AmusementPark_Face_45: 2131884132
+      AmusementPark_Face_46: 487792382
+      AmusementPark_Face_47: 289858346
+      AmusementPark_Face_48: -2100870226
+      AmusementPark_Face_49: -658758983
+      AmusementPark_Face_5: 122153475
+      AmusementPark_Face_50: -9065025
+      AmusementPark_Face_51: 914030330
+      AmusementPark_Face_52: -1607851796
+      AmusementPark_Face_53: -1882736213
+      AmusementPark_Face_54: -1868015009
+      AmusementPark_Face_55: 1372910739
+      AmusementPark_Face_56: -784612685
+      AmusementPark_Face_57: -1058237474
+      AmusementPark_Face_58: -1135511604
+      AmusementPark_Face_59: -1711078372
+      AmusementPark_Face_6: 1115724654
+      AmusementPark_Face_60: 139258099
+      AmusementPark_Face_61: 1960004051
+      AmusementPark_Face_62: 95821162
+      AmusementPark_Face_63: -482874097
+      AmusementPark_Face_7: 1115577349
+      AmusementPark_Face_8: 1099536983
+      AmusementPark_Face_9: 2106322656
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
