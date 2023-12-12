@@ -41,7 +41,7 @@ public class BuildBehaviour : ITurnState {
         transactionPanel.SetActive(true);
         StartBuild();
 
-        gameData.players[playerTurn].OptionalPlayerBuild(this);
+        gameData.players[playerTurn].OptionalPlayerBuild(this, gameData);
     }
 
     public void Update(float dt) {

@@ -41,7 +41,7 @@ public class InteractionBehaviour : ITurnState
         uiPanel.SetActive(true);
         LoadPlayers();
 
-        gameData.players[playerTurn].OptionalPlayerInteraction(this);
+        gameData.players[playerTurn].OptionalPlayerInteraction(this, gameData);
     }
 
     void InitButton() {

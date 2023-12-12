@@ -28,7 +28,7 @@ public class TurnState : GameState {
         InitButtons();
     }
 
-    void InitButtons() {//add to uml
+    void InitButtons() {
         endTurnBtn.onClick.AddListener(FinishTurn);
     }
 
@@ -88,12 +88,28 @@ public class TurnState : GameState {
         ThrowDice();
     }
 
-    void FinishTurn() {//Add to uml
+    void FinishTurn() {
         playerDicePanel.SetActive(false);
+
+        if(WinCheck()) {
+
+        }
+
         SwitchCurrentPlayer();
     }
 
-    void SwitchCurrentPlayer() {//Add to uml
+    bool WinCheck() {
+        bool win = true;
+        for(int i=0; i < gameData.players[currentPlayerId].monumentCards.Length; i++) {
+            if(!gameData.players[currentPlayerId].monumentCards[i].built) {
+                win = false;
+            }
+        }
+
+        return win;
+    }
+
+    void SwitchCurrentPlayer() {
         if(gameData.players[currentPlayerId].canReplay) {
             currentPlayerId --;
             gameData.players[currentPlayerId].canReplay = false;

@@ -235,7 +235,7 @@ public class Player
         }
     }
 
-    public virtual void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour) { }
-    public virtual void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { }
-    public virtual void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour) { }
+    public virtual void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour, GameData gameData) { }
+    public virtual void OptionalPlayerBuild(BuildBehaviour buildBehaviour, GameData gameData) { }
+    public virtual void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour, GameData gameData) { }
 }
