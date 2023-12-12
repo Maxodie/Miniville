@@ -5,6 +5,14 @@ public class CheeseFactory : GreenCard
     {
         
     }
+
+    public CheeseFactory(CheeseFactory copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new CheeseFactory(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
@@ -12,8 +20,11 @@ public class CheeseFactory : GreenCard
         
         foreach (var building in player.buildingCards)
         {
-            if (building.cardType == CardType.FARM)
-                player.coins += gains;
+            foreach (var card in building)
+            {
+                if (card.cardType == CardType.FARM)
+                    player.coins += gains;
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ public class StartGameState : GameState {
         for(int i=0; i<playerNb; i++) {
             //TODO load canvas and put it in player
             if(i==0)
-                gameData.players[i] = new Player(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
+                gameData.players[i] = new Player(true, $"Player {i}", 8, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
             else
                 gameData.players[i] = new AIPlayer(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
         }

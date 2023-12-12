@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,10 +62,12 @@ public class BuildBehaviour : ITurnState {
             cardPrefabs[j] = new CardUIPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
             cardPrefabs[j].loadedBtn.interactable = CanBuild(et[i]);
 
-            if(gameData.establishments[et[i]] <= 0)
-                cardPrefabs[j].loadedBtn.interactable  = false;
+            Establishment establishmentToBuild = gameData.establishments.Keys.ToArray()[j];
 
-            cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(gameData.establishments.Keys.ToArray()[j]);});
+            if(gameData.establishments[et[i]] <= 0 || establishmentToBuild.cardType == CardType.CITYLIFE && gameData.players[playerTurn].ContainCardName(establishmentToBuild))
+                cardPrefabs[j].loadedBtn.interactable  = false;
+            else
+                cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(establishmentToBuild);});
         }
 
         for(int i=0; i<gameData.monuments.Length; i++) {
@@ -74,14 +77,13 @@ public class BuildBehaviour : ITurnState {
 
             if(gameData.players[playerTurn].monumentCards[i].built)
                 cardPrefabs[et.Length + j].loadedBtn.interactable = false;
-
-            cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
+            else
+                cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
         }
     }
 
     void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
-        gameData.players[playerTurn].AddCard(card);
         gameData.players[playerTurn].BuildCardForPlayer(card);
         EndBuild();
     }

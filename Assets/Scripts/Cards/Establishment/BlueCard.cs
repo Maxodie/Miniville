@@ -1,4 +1,4 @@
-using Mono.Cecil;
+using UnityEngine;
 
 public class BlueCard : Establishment
 {
@@ -6,6 +6,14 @@ public class BlueCard : Establishment
         : base(cardGoPrefab, cardImgPath, cardName, cardType, cardEffectDescription, constructionCost, gains, requiredCardType, cardPriority, requiredDiceValues, startCard)
     {
         
+    }
+
+    public BlueCard(BlueCard copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new BlueCard(this);
     }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)

@@ -168,18 +168,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &61285624 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7293315220762953603, guid: 48205e52616b7194f9a336bd152c11d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 7293315220806673275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &141042900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7293315220675069871, guid: 48205e52616b7194f9a336bd152c11d2,
@@ -1782,18 +1770,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1459571926 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7293315221657939885, guid: 48205e52616b7194f9a336bd152c11d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 7293315220806673275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1473490034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1843,8 @@ MonoBehaviour:
         type: 3}
       ownCardChoiceButton: {fileID: 2732622890101022515, guid: 20ebce6563041f6478e3001b9ae7ad2a,
         type: 3}
+      cardUISelectPrefab: {fileID: 11400000, guid: 6a11f4b79b4e3c246a96e3f423ffa328,
+        type: 2}
     transactionBehaviour:
       context: {fileID: 1473490035}
       turnInfoPanel: {fileID: 1254980544}
@@ -1888,8 +1866,8 @@ MonoBehaviour:
     playerCoins: {fileID: 1356646079}
   endGameState:
     endState: 0
-    restartButton: {fileID: 1459571926}
-    quitButton: {fileID: 61285624}
+    restartButton: {fileID: 0}
+    quitButton: {fileID: 0}
 --- !u!4 &1473490036
 Transform:
   m_ObjectHideFlags: 0
@@ -2278,7 +2256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766878752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
