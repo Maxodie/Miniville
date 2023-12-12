@@ -8,7 +8,7 @@ public class GameData {
     public Monument[] monuments = new Monument[4];
     public Dictionary<Establishment, int> establishments = new Dictionary<Establishment, int>();
     public CardGoPrefab[] cardGoPrefabs;
-    
+    public string winPlayerName;
     const string jsonPath = "cards";
 
     public GameData()

@@ -8,7 +8,8 @@ public class AIPlayer : Player {
     }
 
     public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour, GameData gameData) { 
-        if (maxDice == 2)
+        Debug.Log("tt");
+        if (currentDice == 2)
         {
             throwDiceBehaviour.PlayerThrowTwoDice();
         }
@@ -23,6 +24,7 @@ public class AIPlayer : Player {
             if (coins < t.constructionCost) continue;
             buildBehaviour.BuilddMonumentCard(t);
             buildBehaviour.QuitState();
+            return;
         }
         buildBehaviour.QuitState();
     }
@@ -36,6 +38,7 @@ public class AIPlayer : Player {
                 {
                     gameData.players[interactionBehaviour.playerTurn].ExchangeCard(0, e, i);
                     interactionBehaviour.QuitState();
+                    return;
                 }
             }
         }

@@ -92,6 +92,7 @@ public class TransactionBehaviour : ITurnState {
                 
                 if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
                     turnState.Interaction();
+                    Debug.Log("tt");
                     return;
                 }
             }
