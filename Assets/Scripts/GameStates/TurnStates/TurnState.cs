@@ -119,10 +119,13 @@ public class TurnState : GameState {
         }
 
         gameData.players[currentPlayerId].playerCanvas.SetActive(false);
+        
         currentPlayerId ++;
 
         if(currentPlayerId > gameData.players.Length -1)
             currentPlayerId = 0;
+
+        Debug.Log(currentPlayerId);
 
         PerformTurn();
     }

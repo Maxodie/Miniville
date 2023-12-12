@@ -76,7 +76,6 @@ public class TransactionBehaviour : ITurnState {
 
     public void QuitState()
     {
-        Debug.Log("quit transaction");
         turnInfoPanel.SetActive(false);
         QuitPath();
     }
