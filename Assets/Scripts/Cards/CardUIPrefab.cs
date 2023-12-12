@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class CardUIPrefab {
-    GameObject loadedGo;
+    public GameObject loadedGo;
     [HideInInspector] public Button loadedBtn;
     public Image cardImg;
     public Image iconType;
@@ -11,7 +11,7 @@ public class CardUIPrefab {
     public TMP_Text cardDescription;
     public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card) {
         loadedGo = Object.Instantiate(cardUIData.objectPrefab, spawnPoint);
-        LoadGoCard(cardUIData, card);;
+        LoadGoCard(cardUIData, card);
     }
 
     public void LoadGoCard(CardUIData cardUIData, Card card) {

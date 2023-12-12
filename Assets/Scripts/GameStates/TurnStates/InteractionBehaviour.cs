@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,10 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private GameObject playerChoiceButton;
     [SerializeField] private GameObject cardChoiceButton;
     [SerializeField] private GameObject ownCardChoiceButton;
+    [SerializeField] CardUIData cardUISelectPrefab;
 
-    private Card selectedCard;
-    private Card playerCard;
+    int playerCardId;
+    int selectedCardId;
     private int selectedPlayer;
     
     public void InitState(GameData gameData, int playerTurn, TurnState turnState)
@@ -44,10 +46,12 @@ public class InteractionBehaviour : ITurnState
             if (i == playerTurn)
                 continue;
 
+            int iCopy = i;
+
             Button btn = Object.Instantiate(playerChoiceButton, playerSelection).GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
-                SelectTargetCard(i);
+                SelectTargetCard(iCopy);
             });   
         }
     }
@@ -67,16 +71,19 @@ public class InteractionBehaviour : ITurnState
     void SelectTargetCard(int playerId)
     {
         Dispose();
-        foreach (var t in gameData.players[playerId].buildingCards)
+        selectedPlayer = playerId;
+        for (int j=0; j < gameData.players[playerId].buildingCards.Count; j++)
         {
-            if (t.cardType == CardType.CITYLIFE)
+            Establishment cards = gameData.players[playerId].buildingCards[j][0];
+            
+            if (cards.cardType == CardType.CITYLIFE)
                 continue;
             
-            var tCopy = t;
-            Button btn = Object.Instantiate(cardChoiceButton, cardSelection).GetComponent<Button>();
-            btn.onClick.AddListener(() =>
+            int jCopy = j;
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
-                selectedCard = tCopy;
+                selectedCardId = jCopy;
                 SelectOwnCard();
             });
         }
@@ -85,16 +92,17 @@ public class InteractionBehaviour : ITurnState
     void SelectOwnCard()
     {
         Dispose();
-        foreach (var t in gameData.players[playerTurn].buildingCards)
+        for (int j=0; j < gameData.players[playerTurn].buildingCards.Count; j++)
         {
-            if (t.cardType == CardType.CITYLIFE)
+            Establishment cards = gameData.players[playerTurn].buildingCards[j][0];
+            if (cards.cardType == CardType.CITYLIFE)
                 continue;
             
-            var tCopy = t;
-            Button btn = Object.Instantiate(ownCardChoiceButton, cardSelection).GetComponent<Button>();
-            btn.onClick.AddListener(() =>
+            int jCopy = j;
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
-                playerCard = tCopy;
+                playerCardId = jCopy;
                 SwitchCards();
             });
         }
@@ -102,7 +110,7 @@ public class InteractionBehaviour : ITurnState
 
     void SwitchCards()
     {
-        (selectedCard, playerCard) = (playerCard, selectedCard);
+        gameData.players[playerTurn].ExchangeCard(playerCardId, gameData.players[selectedPlayer], selectedCardId);
         QuitState();
     }
 
@@ -110,12 +118,12 @@ public class InteractionBehaviour : ITurnState
     {
         for(int i=0; i<playerSelection.childCount; i++)
         {
-            Object.Destroy(playerSelection.GetChild(0));
+            Object.Destroy(playerSelection.GetChild(i).gameObject);
         }
 
         for(int i=0; i<cardSelection.childCount; i++)
         {
-            Object.Destroy(cardSelection.GetChild(0));
+            Object.Destroy(cardSelection.GetChild(i).gameObject);
         }
     }
 

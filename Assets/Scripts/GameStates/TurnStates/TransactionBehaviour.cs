@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Linq;
 
 [System.Serializable]
 public class TransactionBehaviour : ITurnState {
@@ -81,13 +82,18 @@ public class TransactionBehaviour : ITurnState {
 
     private void QuitPath()
     {
-        foreach (var establishment in gameData.players[playerTurn].buildingCards)
+        Player currentPlayer = gameData.players[playerTurn];
+        for(int i=0; i < currentPlayer.buildingCards.Count; i++)
         {
+            Establishment establishment = currentPlayer.buildingCards[i][0];
             // if current player owns a business center, init the interaction state
             if (establishment.GetType() == typeof(BusinessCenter))
             {
-                turnState.Interaction();
-                return;
+                
+                if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
+                    turnState.Interaction();
+                    return;
+                }
             }
         }
         // else init the build state
@@ -104,29 +110,29 @@ public class TransactionBehaviour : ITurnState {
 
             //don't active currentPlayer red cards
             if(i != playerTurn) {
-                yield return context.StartCoroutine(MoneyTransaction(CardPriority.FIRSt, currentPlayer));
+                yield return context.StartCoroutine(MoneyTransaction(CardPriority.FIRSt, currentPlayer, gameData.players[playerTurn]));
             }
         }
 
         context.StartCoroutine(PlayerPaid());
     }
 
-    IEnumerator MoneyTransaction(CardPriority cardPriority, Player currentPlayer)
+    IEnumerator MoneyTransaction(CardPriority cardPriority, Player currentPlayer, Player target)
     {
-        foreach (var t in currentPlayer.buildingCards)
+        for(int i=0; i < currentPlayer.buildingCards.Count; i++)
         {
-            if(t.cardPriority == cardPriority && t.canPerformEffect(currentPlayer.totalThrowValue)) {
-                Debug.Log("tr : " + gameData.players[playerTurn].playerBoard.name + cardPriority);
-                t.PerformSpecial(gameData.players[playerTurn], currentPlayer, gameData.players);
-                yield return waitForTransaction;
+            for(int j=0; j < currentPlayer.buildingCards[i].Count; j++)
+            {//pn d'enfant qui appel pas perform effect
+                if(currentPlayer.buildingCards[i][j].cardPriority == cardPriority && currentPlayer.buildingCards[i][j].canPerformEffect(currentPlayer.totalThrowValue)) {
+                    currentPlayer.buildingCards[i][j].PerformSpecial(currentPlayer, target, gameData.players);
+                    yield return waitForTransaction;
+                }
             }
         }
     }
 
     IEnumerator PlayerPaid() {
-        Debug.Log("t");
-        yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[playerTurn]));
-        Debug.Log("tf");
+        yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[0], gameData.players[playerTurn]));
         turnState.UpdateCoinText();
         QuitState();
     }
