@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class InteractionBehaviour : ITurnState 
 {
     GameData gameData;
-    int playerTurn;
+    [HideInInspector] public int playerTurn;
     TurnState turnState;
 
     [Header("TransactionUi")]
@@ -118,7 +118,7 @@ public class InteractionBehaviour : ITurnState
         }
     }
 
-    void SwitchCards()
+    public void SwitchCards()
     {
         gameData.players[playerTurn].ExchangeCard(playerCardId, gameData.players[selectedPlayer], selectedCardId);
         QuitState();

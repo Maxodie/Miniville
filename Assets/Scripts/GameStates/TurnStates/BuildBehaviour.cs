@@ -82,14 +82,14 @@ public class BuildBehaviour : ITurnState {
         }
     }
 
-    void BuildEstablishmentCard(Establishment card) {
+    public void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
         gameData.players[playerTurn].BuildCardForPlayer(card);
         gameData.players[playerTurn].AddCoin(-card.constructionCost);
         EndBuild();
     }
 
-    void BuilddMonumentCard(Monument card) {
+    public void BuilddMonumentCard(Monument card) {
         card.built = false;
         
         gameData.players[playerTurn].BuildMonument(card);
