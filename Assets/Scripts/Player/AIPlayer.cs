@@ -7,14 +7,14 @@ public class AIPlayer : Player {
 
     }
 
-    public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour) {
+    public override void OptionalPlayerThrowDice(ITurnState turnState) {
         if (maxDice == 2)
         {
-            throwDiceBehaviour.PlayerThrowTwoDice();
+            //throwDiceBehaviour.PlayerThrowTwoDice();
         }
     }
 
-    public override void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { 
+    public override void OptionalPlayerBuild(ITurnState turnState) { 
         turnState.QuitState();
     }
     public override void OptionalPlayerInteraction(ITurnState turnState) { 

@@ -15,6 +15,9 @@ public class CardBehaviour {
     public void InstantiateCard(Transform tr, Vector3 pos, bool activeBuilding) {
         spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, tr);
         spawnedGoCard.transform.localPosition = pos;
+
+        spawnedGoCard.GetComponentInChildren<SpriteRenderer>().sprite = card.cardSprite;
+
         cardAnim = spawnedGoCard.GetComponent<Animator>();
 
         if(activeBuilding)

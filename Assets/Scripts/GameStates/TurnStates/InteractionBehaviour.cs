@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +16,8 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private GameObject cardChoiceButton;
     [SerializeField] private GameObject ownCardChoiceButton;
     [SerializeField] CardUIData cardUISelectPrefab;
+    [SerializeField] Button stopBtn;
+    bool isBtnInit = false;
 
     int playerCardId;
     int selectedCardId;
@@ -28,6 +29,10 @@ public class InteractionBehaviour : ITurnState
         this.playerTurn = playerTurn;
         this.turnState = turnState;
 
+        if(!isBtnInit) {
+            InitButton();
+        }
+
         Start();
     }
 
@@ -37,6 +42,11 @@ public class InteractionBehaviour : ITurnState
         LoadPlayers();
 
         gameData.players[playerTurn].OptionalPlayerInteraction(this);
+    }
+
+    void InitButton() {
+        stopBtn.onClick.AddListener(() => QuitState());
+        isBtnInit = true;
     }
 
     public void LoadPlayers()
