@@ -7,7 +7,7 @@ public class AIPlayer : Player {
 
     }
 
-    public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour) { 
+    public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour, GameData gameData) { 
         if (maxDice == 2)
         {
             throwDiceBehaviour.PlayerThrowTwoDice();
@@ -16,17 +16,29 @@ public class AIPlayer : Player {
             throwDiceBehaviour.PlayerThrowOneDice();
     }
 
-    public override void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { 
-        for(int i=0; i < monumentCards.Length; i++) {
-            if(coins >= monumentCards[i].constructionCost) {
-                
-            }
+    public override void OptionalPlayerBuild(BuildBehaviour buildBehaviour, GameData gameData)
+    {
+        foreach (var t in monumentCards)
+        {
+            if (coins < t.constructionCost) continue;
+            buildBehaviour.BuilddMonumentCard(t);
+            buildBehaviour.QuitState();
         }
-
         buildBehaviour.QuitState();
     }
 
-    public override void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour) { 
+    public override void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour, GameData gameData) {
+        foreach (var e in gameData.players)
+        {
+            for (int i = 0; i < e.buildingCards.Count; i++)
+            {
+                if (e.buildingCards[i][0].cardType != CardType.CITYLIFE)
+                {
+                    gameData.players[interactionBehaviour.playerTurn].ExchangeCard(0, e, i);
+                    interactionBehaviour.QuitState();
+                }
+            }
+        }
         interactionBehaviour.QuitState();
     }
 }

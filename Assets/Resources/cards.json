@@ -1,7 +1,7 @@
  {
   "monumentHolders": [
     {
-      "cardImgPath" : "CardMonumentImg/tkt",
+      "cardImgPath" : "CardMonumentImg/TrainStation",
       "cardName": "Train Station",
       "cardEffectDescription": "You can throw 2 dice.",
       "requiredDiceValues": 4,
@@ -9,7 +9,7 @@
       "requiredCardTypeID": 0,
       "cardPriorityID": 1
     },{
-      "cardImgPath" : "CardMonumentImg/tkt",
+      "cardImgPath" : "CardMonumentImg/ShoppingMall",
       "cardName": "Shopping Mall",
       "cardEffectDescription": "Your BUSINESS and GROCERYSTORE type establishments' gains are increased by 1.",
       "requiredDiceValues": 10,
@@ -17,7 +17,7 @@
       "requiredCardTypeID": 0,
       "cardPriorityID": 1
     },{
-      "cardImgPath" : "CardMonumentImg/tkt",
+      "cardImgPath" : "CardMonumentImg/RadioTower",
       "cardName": "Radio Tower",
       "cardEffectDescription": "Once per turn, you can re-roll the dice.",
       "requiredDiceValues": 22,
@@ -25,7 +25,7 @@
       "requiredCardTypeID": 0,
       "cardPriorityID": 1
     },{
-      "cardImgPath" : "CardMonumentImg/tkt",
+      "cardImgPath" : "CardMonumentImg/AmusementPark",
       "cardName": "Amusement Park",
       "cardEffectDescription": "If your dice roll is a double, play again.",
       "requiredDiceValues": 16,
@@ -37,7 +37,7 @@
   
     "establishmentHolders": [
       {
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/WheatField",
         "cardName": "Wheat Field",
         "cardColor": "blue",
         "cardTypeID": 5,
@@ -49,7 +49,7 @@
         "constructionCost": 1,
         "startCard": true 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Farm",
         "cardName": "Farm",
         "cardColor": "blue",
         "cardTypeID": 6,
@@ -61,7 +61,7 @@
         "constructionCost": 1,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Bakery",
         "cardName": "Bakery",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -73,7 +73,7 @@
         "constructionCost": 1,
         "startCard": true 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/CoffeeShop",
         "cardName": "Coffee Shop",
         "cardColor": "red",
         "cardTypeID": 2,
@@ -85,7 +85,7 @@
         "constructionCost": 2,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/ConvenienceStore",
         "cardName": "Convenience Store",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -97,7 +97,7 @@
         "constructionCost": 2,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Forest",
         "cardName": "Forest",
         "cardColor": "blue",
         "cardTypeID": 1,
@@ -109,7 +109,7 @@
         "constructionCost": 3,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Stadium",
         "cardName": "Stadium",
         "cardColor": "purple",
         "cardTypeID": 4,
@@ -121,7 +121,7 @@
         "constructionCost": 6,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/BusinessCenter",
         "cardName": "Business Center",
         "cardColor": "purple",
         "cardTypeID": 4,
@@ -133,7 +133,7 @@
         "constructionCost": 8,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/TVStation",
         "cardName": "TV Station",
         "cardColor": "purple",
         "cardTypeID": 4,
@@ -145,7 +145,7 @@
         "constructionCost": 7,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/CheeseFactory",
         "cardName": "Cheese Factory",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -157,7 +157,7 @@
         "constructionCost": 5,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/FurnitureFactory",
         "cardName": "Furniture Factory",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -169,7 +169,7 @@
         "constructionCost": 3,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Mine",
         "cardName": "Mine",
         "cardColor": "blue",
         "cardTypeID": 1,
@@ -181,7 +181,7 @@
         "constructionCost": 6,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Restaurant",
         "cardName": "Restaurant",
         "cardColor": "red",
         "cardTypeID": 2,
@@ -193,7 +193,7 @@
         "constructionCost": 3,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/Orchard",
         "cardName": "Orchard",
         "cardColor": "blue",
         "cardTypeID": 5,
@@ -205,7 +205,7 @@
         "constructionCost": 3,
         "startCard": false 
       },{
-        "cardImgPath" : "CardEstablishmentImg/tkt",
+        "cardImgPath" : "CardEstablishmentImg/GroceryStore",
         "cardName": "Grocery Store",
         "cardColor": "green",
         "cardTypeID": 7,
