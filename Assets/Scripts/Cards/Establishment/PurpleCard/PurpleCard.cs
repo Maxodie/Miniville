@@ -6,10 +6,17 @@ public class PurpleCard : Establishment
     {
         
     }
+
+    public PurpleCard(PurpleCard copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new PurpleCard(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);
-        Debug.Log("purple");
     }
 }

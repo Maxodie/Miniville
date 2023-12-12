@@ -5,6 +5,14 @@ public class RedCard : Establishment
     {
         
     }
+
+    public RedCard(RedCard copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new RedCard(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {

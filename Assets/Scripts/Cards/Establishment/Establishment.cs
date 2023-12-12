@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Establishment : Card
 {
     public int[] requiredDiceValues;
@@ -12,7 +13,7 @@ public class Establishment : Card
         this.startCard = startCard;
     }
 
-    protected Establishment(Establishment copy) : base(copy) {
+    public Establishment(Establishment copy) : base(copy) {
         requiredDiceValues = copy.requiredDiceValues;
         startCard = copy.startCard;
     }
@@ -26,7 +27,7 @@ public class Establishment : Card
         return false;
     }
 
-    public new Establishment Copy() {
+    public virtual Establishment Copy() {
         return new Establishment(this);
     }
 }

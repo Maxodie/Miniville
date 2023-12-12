@@ -82,13 +82,18 @@ public class TransactionBehaviour : ITurnState {
 
     private void QuitPath()
     {
-        foreach (var establishment in gameData.players[playerTurn].buildingCards)
+        Player currentPlayer = gameData.players[playerTurn];
+        for(int i=0; i < currentPlayer.buildingCards.Count; i++)
         {
+            Establishment establishment = currentPlayer.buildingCards[i][0];
             // if current player owns a business center, init the interaction state
             if (establishment.GetType() == typeof(BusinessCenter))
             {
-                turnState.Interaction();
-                return;
+                
+                if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
+                    turnState.Interaction();
+                    return;
+                }
             }
         }
         // else init the build state

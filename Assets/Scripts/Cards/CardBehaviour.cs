@@ -28,9 +28,6 @@ public class CardBehaviour {
     }
 
     public void PerformVisualEffect() {
-        if(!cardAnim)
-            Debug.Log("pt n de sa mere");
-        else
-            cardAnim.SetTrigger("ActiveEffect");
+        cardAnim?.SetTrigger("ActiveEffect");
     }
 }

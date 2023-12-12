@@ -5,6 +5,14 @@ public class Stadium : PurpleCard
     {
         
     }
+
+    public Stadium(Stadium copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new Stadium(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {

@@ -7,11 +7,18 @@ public class BlueCard : Establishment
     {
         
     }
+
+    public BlueCard(BlueCard copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new BlueCard(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);
         player.coins += gains;
-        Debug.Log(player.coins + " : blue");
     }
 }

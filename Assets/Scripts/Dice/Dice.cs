@@ -74,7 +74,7 @@ public class PlayerDice {
         Vector3[] dieFaces = new Vector3[] {-rb.transform.right, -rb.transform.forward, rb.transform.up, -rb.transform.up, rb.transform.forward, rb.transform.right};
         for(int i=0; i < dieFaces.Length; i++) {
             if(Physics.Raycast(rb.transform.position, dieFaces[i], 2, groundLayer)) {
-                return i+1;
+                return 6;//i+1;
             }
         }
 

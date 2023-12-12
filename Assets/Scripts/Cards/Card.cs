@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Card
@@ -30,7 +29,7 @@ public class Card
         LoadCardTypeIcon();
     }
 
-    protected Card(Card copyCard) {
+    public Card(Card copyCard) {
         this.cardGoPrefab = copyCard.cardGoPrefab;
 
         this.cardBehaviour = copyCard.cardBehaviour;
@@ -44,10 +43,6 @@ public class Card
         this.cardPriority = copyCard.cardPriority;
     }
 
-    public Card Copy() {
-        return new Card(this);
-    }
-
     public void CreateNewCardBehaviour() {
         cardBehaviour = new CardBehaviour(this, cardGoPrefab);
     }
@@ -58,6 +53,11 @@ public class Card
 
     public virtual void PerformSpecial(Player player, Player target, Player[] players)
     {
-        cardBehaviour.PerformVisualEffect();
+        cardBehaviour?.PerformVisualEffect();
+    }
+
+    public void DestroyCard() {
+        Object.Destroy(cardBehaviour.spawnedGoBuilding);
+        Object.Destroy(cardBehaviour.spawnedGoCard);
     }
 }

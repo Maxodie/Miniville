@@ -5,6 +5,14 @@ public class GroceryStore : GreenCard
     {
         
     }
+
+    public GroceryStore(GroceryStore copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new GroceryStore(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
