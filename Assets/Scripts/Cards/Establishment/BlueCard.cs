@@ -19,6 +19,6 @@ public class BlueCard : Establishment
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);
-        player.coins += gains;
+        player.AddCoin(gains);
     }
 }

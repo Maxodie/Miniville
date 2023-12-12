@@ -7,17 +7,26 @@ public class AIPlayer : Player {
 
     }
 
-    public override void OptionalPlayerThrowDice(ITurnState turnState) {
+    public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour) { 
         if (maxDice == 2)
         {
-            //throwDiceBehaviour.PlayerThrowTwoDice();
+            throwDiceBehaviour.PlayerThrowTwoDice();
         }
+        else
+            throwDiceBehaviour.PlayerThrowOneDice();
     }
 
-    public override void OptionalPlayerBuild(ITurnState turnState) { 
-        turnState.QuitState();
+    public override void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { 
+        for(int i=0; i < monumentCards.Length; i++) {
+            if(coins >= monumentCards[i].constructionCost) {
+                
+            }
+        }
+
+        buildBehaviour.QuitState();
     }
-    public override void OptionalPlayerInteraction(ITurnState turnState) { 
-        turnState.QuitState();
+
+    public override void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour) { 
+        interactionBehaviour.QuitState();
     }
 }

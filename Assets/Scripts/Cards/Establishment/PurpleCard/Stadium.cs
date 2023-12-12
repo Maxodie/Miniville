@@ -24,12 +24,12 @@ public class Stadium : PurpleCard
             {
                 if (players[i].coins >= 2)
                 {
-                    players[i].coins -= 2;
-                    player.coins += 2;
+                    players[i].AddCoin(-2);
+                    player.AddCoin(2);
                 }
                 else
                 {
-                    player.coins += players[i].coins;
+                    player.AddCoin(players[i].coins);
                     players[i].coins = 0;
 
                 }

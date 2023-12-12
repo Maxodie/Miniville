@@ -53,6 +53,10 @@ public class Player
         SpawnMonumentForPlayer();
     }
 
+    public void AddCoin(int amount) {
+        coins += amount;
+    }
+
     void InitMonuments() {
         for(int i=0; i < monumentCards.Length; i++) {
             monumentCards[i].CreateNewCardBehaviour();
@@ -231,7 +235,7 @@ public class Player
         }
     }
 
-    public virtual void OptionalPlayerThrowDice(ITurnState turnState) { }
-    public virtual void OptionalPlayerBuild(ITurnState turnState) { }
-    public virtual void OptionalPlayerInteraction(ITurnState turnState) { }
+    public virtual void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour) { }
+    public virtual void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { }
+    public virtual void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour) { }
 }

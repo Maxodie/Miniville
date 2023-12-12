@@ -20,13 +20,13 @@ public class TvStation : PurpleCard
 
         if (target.coins <= 5)
         {
-            player.coins += target.coins;
+            player.AddCoin(target.coins);
             target.coins = 0;
         }
         else
         {
-            player.coins += 5;
-            target.coins -= 5;
+            player.AddCoin(5);
+            target.AddCoin(-5);
         }
     }
 }
