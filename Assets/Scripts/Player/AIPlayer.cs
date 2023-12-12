@@ -34,7 +34,8 @@ public class AIPlayer : Player {
             {
                 if (e.buildingCards[i][0].cardType != CardType.CITYLIFE)
                 {
-                    //gameData.players[interactionBehaviour.playerTurn].ExchangeCard(gameData.players[interactionBehaviour.playerTurn].buildingCards[0][0], e.buildingCards[i][0], );
+                    gameData.players[interactionBehaviour.playerTurn].ExchangeCard(0, e, i);
+                    interactionBehaviour.QuitState();
                 }
             }
         }
