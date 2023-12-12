@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player
@@ -32,7 +33,7 @@ public class Player
     float zBoradOffset;
     Vector3 playerBoardCardHoleFromExchange = Vector3.zero;
     
-    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> startDeck, Monument[] monument, GameObject playerCanvas) //add
+    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> startDeck, Monument[] monument, GameObject playerCanvas, GameObject playerFrame, UIPlayerFrameScriptableObject uIPlayerFrameScriptableObject) //add
     {
         this.isRealPlayer = isRealPlayer;
         this.playerName = playerName;
@@ -42,6 +43,9 @@ public class Player
         this.monumentCards = monument;
         this.playerCanvas = playerCanvas;
         this.startDeck = startDeck;
+
+        playerFrame.SetActive(true);
+        this.playerFrame = new PlayerFrame(this, playerFrame, playerName, uIPlayerFrameScriptableObject);
         
         InitMonuments();
     }
@@ -55,6 +59,7 @@ public class Player
 
     public void AddCoin(int amount) {
         coins += amount;
+        playerFrame.UpdateUI();
     }
 
     void InitMonuments() {
@@ -76,6 +81,8 @@ public class Player
                 monumentCards[i].cardBehaviour.InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
             }
         }
+
+        playerFrame.UpdateUI();
     }
 
     public bool GetMonumentBuiltByType(Type monumentType) {
@@ -97,6 +104,17 @@ public class Player
             if (establishment[0].cardName == cardName)
             {
                 count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int GetMonumentBuilt() {
+        int count = 0;
+        for(int i=0; i < monumentCards.Length; i++) {
+            if(monumentCards[i].built) {
+                count ++;
             }
         }
 
@@ -198,6 +216,8 @@ public class Player
             buildingCards[buildingCards.Count - 1].Add(cardToBuild);
             cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, forcedLocalPos, spawnBuilding);
 
+            playerFrame.UpdateUI();
+
             return;
         }
 
@@ -227,6 +247,7 @@ public class Player
         }
 
         cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, pos, spawnBuilding);
+        playerFrame.UpdateUI();
     }
 
     void SpawnMonumentForPlayer() {

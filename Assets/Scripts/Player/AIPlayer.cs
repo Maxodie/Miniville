@@ -2,13 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class AIPlayer : Player {
-    public AIPlayer(bool isCurrentPlayer, string playerName, int coins, int maxDice, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas) : 
-    base(isCurrentPlayer, playerName, coins, maxDice, currentDice, deck, monument, playerCanvas) {
+    public AIPlayer(bool isCurrentPlayer, string playerName, int coins, int maxDice, int currentDice, List<Establishment> deck, Monument[] monument, GameObject playerCanvas, GameObject playerFrame, UIPlayerFrameScriptableObject uIPlayerFrameScriptableObject) : 
+    base(isCurrentPlayer, playerName, coins, maxDice, currentDice, deck, monument, playerCanvas, playerFrame, uIPlayerFrameScriptableObject) {
 
     }
 
     public override void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour, GameData gameData) { 
-        Debug.Log("tt");
         if (currentDice == 2)
         {
             throwDiceBehaviour.PlayerThrowTwoDice();
@@ -23,7 +22,6 @@ public class AIPlayer : Player {
         {
             if (coins < t.constructionCost) continue;
             buildBehaviour.BuilddMonumentCard(t);
-            buildBehaviour.QuitState();
             return;
         }
         buildBehaviour.QuitState();

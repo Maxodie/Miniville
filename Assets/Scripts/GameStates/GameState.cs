@@ -1,7 +1,7 @@
 using UnityEngine;
 public class GameState {
     protected GameData gameData;
-    protected Game game;
+    [HideInInspector] public Game game;
     [HideInInspector] public bool endState = false;
     
     public virtual void InitGameState(ref GameData gameData, Game game) {

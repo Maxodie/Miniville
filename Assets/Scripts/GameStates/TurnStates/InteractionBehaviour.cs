@@ -90,7 +90,7 @@ public class InteractionBehaviour : ITurnState
                 continue;
             
             int jCopy = j;
-            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards, turnState.game);
             cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
                 selectedCardId = jCopy;
@@ -109,7 +109,7 @@ public class InteractionBehaviour : ITurnState
                 continue;
             
             int jCopy = j;
-            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards, turnState.game);
             cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
                 playerCardId = jCopy;

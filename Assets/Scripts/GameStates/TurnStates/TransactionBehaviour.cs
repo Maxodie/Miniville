@@ -92,7 +92,6 @@ public class TransactionBehaviour : ITurnState {
                 
                 if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
                     turnState.Interaction();
-                    Debug.Log("tt");
                     return;
                 }
             }
@@ -134,7 +133,7 @@ public class TransactionBehaviour : ITurnState {
 
     IEnumerator PlayerPaid() {
         yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[0], gameData.players[playerTurn]));
-        turnState.UpdateCoinText();
+        gameData.players[playerTurn].playerFrame.UpdateUI();
         QuitState();
     }
 }
