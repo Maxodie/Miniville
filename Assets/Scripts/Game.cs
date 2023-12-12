@@ -6,9 +6,12 @@ public class Game : MonoBehaviour {
     GameData gameData;
 
     public int maxPlayer = 4;
+    public int minPlayer = 2;
     [SerializeField] StartGameState startGameState;
     [SerializeField] TurnState turnState;
     [SerializeField] EndGameState endGameState;
+    
+    [SerializeField]  public UIData uiData;
 
     void Awake() {
         gameData = new GameData();
