@@ -16,6 +16,7 @@ public class CardUIPrefab {
 
     public void LoadGoCard(CardUIData cardUIData, Card card) {
         loadedBtn = loadedGo.GetComponent<Button>();
+        loadedBtn.image.sprite = card.cardSprite;
         
          for(int i=0; i <loadedGo.transform.childCount; i++) {
             Transform child = loadedGo.transform.GetChild(i);
