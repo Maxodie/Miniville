@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class CardUIPrefab {
     public GameObject loadedGo;
@@ -9,8 +11,12 @@ public class CardUIPrefab {
     public Image iconType;
     public TMP_Text cardName;
     public TMP_Text cardDescription;
-    public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card) {
+    EventTrigger hoverEventCo;
+    MonoBehaviour monoBehaviour;
+    
+    public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card, MonoBehaviour monoBehaviour) {
         loadedGo = Object.Instantiate(cardUIData.objectPrefab, spawnPoint);
+        this.monoBehaviour = monoBehaviour;
         LoadGoCard(cardUIData, card);
     }
 
@@ -36,9 +42,46 @@ public class CardUIPrefab {
             if(cardUIData.costCardTag == child.tag)
                 child.GetComponent<TMP_Text>().text = card.constructionCost.ToString();
         }
+
+        hoverEventCo = loadedGo.GetComponent<EventTrigger>();
+         
+        // Set on pointer enter event listener
+        EventTrigger.Entry hoverEvent = new EventTrigger.Entry()
+        {
+            eventID = EventTriggerType.PointerEnter
+        };
+        hoverEvent.callback.AddListener(StartDisplayCardRoutine);
+        hoverEventCo.triggers.Add(hoverEvent);
+        
+        // Set on pointer exit event listener
+        EventTrigger.Entry hoverExitEvent = new EventTrigger.Entry()
+        {
+            eventID = EventTriggerType.PointerExit
+        };
+        hoverExitEvent.callback.AddListener(StartDisplayCardRoutine);
+        hoverEventCo.triggers.Add(hoverExitEvent);
+        
     }
 
     public void Destroy() {
         Object.Destroy(loadedGo);
+    }
+
+    void StartDisplayCardRoutine(BaseEventData eventData)
+    {
+        Debug.Log("Hey ! Listen");
+        monoBehaviour.StartCoroutine(DisplayCard());
+    }
+
+    void StopDisplayCardRoutine(BaseEventData eventData)
+    {
+        Debug.Log("OK OK JE STOP MA TRUC");
+        monoBehaviour.StopCoroutine(DisplayCard());
+    }
+
+    IEnumerator DisplayCard()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("OUI QUESQUE TU VEU ?");
     }
 }
