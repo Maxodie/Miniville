@@ -40,6 +40,7 @@ public class BuildBehaviour : ITurnState {
     public void Start() {
         transactionPanel.SetActive(true);
         StartBuild();
+        Debug.Log("build");
 
         gameData.players[playerTurn].OptionalPlayerBuild(this, gameData);
     }
@@ -50,7 +51,7 @@ public class BuildBehaviour : ITurnState {
 
     public void QuitState() {
         transactionPanel.SetActive(false);
-        turnState.PerformTurn();
+        turnState.SwitchCurrentPlayer();
     }
 
     void StartBuild() {

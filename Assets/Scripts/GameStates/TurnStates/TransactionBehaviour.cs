@@ -76,6 +76,7 @@ public class TransactionBehaviour : ITurnState {
 
     public void QuitState()
     {
+        Debug.Log("quit transaction");
         turnInfoPanel.SetActive(false);
         QuitPath();
     }
@@ -92,6 +93,7 @@ public class TransactionBehaviour : ITurnState {
                 
                 if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
                     turnState.Interaction();
+                    Debug.Log("tt");
                     return;
                 }
             }

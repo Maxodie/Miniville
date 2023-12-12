@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 
@@ -8,6 +9,7 @@ public class EndGameState : GameState
 {
 
     [SerializeField] Button restartButton;
+    [SerializeField] TMP_Text winText;
     [SerializeField] Button quitButton;
     [SerializeField] GameObject endPanel;
 
@@ -30,6 +32,7 @@ public class EndGameState : GameState
     public override void Start() 
     {
         endPanel.SetActive(true);
+        winText.text = "Winner : " + gameData.winPlayerName;
     }
 
     public override void Update(float dt) 

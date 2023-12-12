@@ -84,16 +84,19 @@ public class TurnState : GameState {
 
     public void PerformTurn() {
         playerDicePanel.SetActive(true);
+        gameData.players[currentPlayerId].playerCanvas.SetActive(true);
+
+        if(WinCheck()) {
+            gameData.winPlayerName = gameData.players[currentPlayerId].playerName;
+            game.ChangeCurrentState();
+            return;
+        }
 
         ThrowDice();
     }
 
     void FinishTurn() {
         playerDicePanel.SetActive(false);
-
-        if(WinCheck()) {
-
-        }
 
         SwitchCurrentPlayer();
     }
@@ -109,7 +112,7 @@ public class TurnState : GameState {
         return win;
     }
 
-    void SwitchCurrentPlayer() {
+    public void SwitchCurrentPlayer() {
         if(gameData.players[currentPlayerId].canReplay) {
             currentPlayerId --;
             gameData.players[currentPlayerId].canReplay = false;
