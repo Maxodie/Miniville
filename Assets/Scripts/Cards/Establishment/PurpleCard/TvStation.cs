@@ -5,18 +5,28 @@ public class TvStation : PurpleCard
     {
         
     }
-    
+
+    public TvStation(TvStation copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new TvStation(this);
+    }
+
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+
         if (target.coins <= 5)
         {
-            player.coins += target.coins;
+            player.AddCoin(target.coins);
             target.coins = 0;
         }
         else
         {
-            player.coins += 5;
-            target.coins -= 5;
+            player.AddCoin(5);
+            target.AddCoin(-5);
         }
     }
 }

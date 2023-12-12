@@ -9,6 +9,8 @@ public class AmusementPark : Monument
 
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+        
         if(player.throwValue.Length > 1) {
             if (player.throwValue[0] == player.throwValue[1])
             {

@@ -40,7 +40,7 @@ public class ThrowDiceBehaviour : ITurnState {
         else
             throwTwoDice.interactable = false;
 
-        gameData.players[playerTurn].OptionalPlayerThrowDice(this);
+        gameData.players[playerTurn].OptionalPlayerThrowDice(this, gameData);
     }
     
     void InitButtons() {

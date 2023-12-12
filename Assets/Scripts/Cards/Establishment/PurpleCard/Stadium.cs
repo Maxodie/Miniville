@@ -5,21 +5,31 @@ public class Stadium : PurpleCard
     {
         
     }
+
+    public Stadium(Stadium copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new Stadium(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
+        
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i] != player)
             {
                 if (players[i].coins >= 2)
                 {
-                    players[i].coins -= 2;
-                    player.coins += 2;
+                    players[i].AddCoin(-2);
+                    player.AddCoin(2);
                 }
                 else
                 {
-                    player.coins += players[i].coins;
+                    player.AddCoin(players[i].coins);
                     players[i].coins = 0;
 
                 }

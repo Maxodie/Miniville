@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class Card
 {
+    public CardBehaviour cardBehaviour;
     public CardGoPrefab cardGoPrefab;
-    public GameObject spawnedGoCard;
-    GameObject spawnedGoBuilding;
     public Sprite cardSprite;
     public string cardName;
     public CardType cardType;
@@ -30,23 +29,35 @@ public class Card
         LoadCardTypeIcon();
     }
 
+    public Card(Card copyCard) {
+        this.cardGoPrefab = copyCard.cardGoPrefab;
+
+        this.cardBehaviour = copyCard.cardBehaviour;
+        this.cardSprite = copyCard.cardSprite;
+        this.cardName = copyCard.cardName; 
+        this.cardType = copyCard.cardType;
+        this.cardEffectDescription = copyCard.cardEffectDescription;
+        this.constructionCost = copyCard.constructionCost;
+        this.gains = copyCard.gains;
+        this.requiredCardType = copyCard.requiredCardType;
+        this.cardPriority = copyCard.cardPriority;
+    }
+
+    public void CreateNewCardBehaviour() {
+        cardBehaviour = new CardBehaviour(this, cardGoPrefab);
+    }
+
     void LoadCardTypeIcon() {
         cardTypeIcon = Resources.Load<Sprite>($"CardTypeImg/{cardType}");
     }
 
     public virtual void PerformSpecial(Player player, Player target, Player[] players)
     {
-        
+        cardBehaviour?.PerformVisualEffect();
     }
 
-    public void InstantiateCard(Vector3 pos, Quaternion rot, bool activeBuilding) {
-        spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, pos, rot);
-
-        if(activeBuilding)
-            InstantiateBuilding(pos, rot);
-    }
-
-    public void InstantiateBuilding(Vector3 pos, Quaternion rot) {
-        spawnedGoBuilding = Object.Instantiate(cardGoPrefab.buildingGo, pos, rot);
+    public void DestroyCard() {
+        Object.Destroy(cardBehaviour.spawnedGoBuilding);
+        Object.Destroy(cardBehaviour.spawnedGoCard);
     }
 }

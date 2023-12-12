@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TourRadio_Face_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d94aaf2053ef4d378b12be1a905c5fb
+      internalID: 996835908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5c68b6184abf14b248209b54a5c561f4
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TourRadio_Face_0: 996835908
+      TourRadio_Face_1: -925631520
+      TourRadio_Face_10: 787253113
+      TourRadio_Face_11: -1136283103
+      TourRadio_Face_12: -1553500049
+      TourRadio_Face_13: -362229400
+      TourRadio_Face_14: -2085045822
+      TourRadio_Face_15: 650097739
+      TourRadio_Face_16: -100236887
+      TourRadio_Face_17: 48063281
+      TourRadio_Face_18: -1673039995
+      TourRadio_Face_19: 107837451
+      TourRadio_Face_2: 1360255461
+      TourRadio_Face_20: -112583661
+      TourRadio_Face_21: -773954237
+      TourRadio_Face_22: -1195073299
+      TourRadio_Face_23: -73992879
+      TourRadio_Face_24: 1144336779
+      TourRadio_Face_25: -2071217739
+      TourRadio_Face_26: 1722950907
+      TourRadio_Face_27: -1093497438
+      TourRadio_Face_28: -1650622787
+      TourRadio_Face_29: -696135862
+      TourRadio_Face_3: -1249837279
+      TourRadio_Face_30: -1975303172
+      TourRadio_Face_31: 631900384
+      TourRadio_Face_32: -827290883
+      TourRadio_Face_33: 2068793482
+      TourRadio_Face_34: 2046857997
+      TourRadio_Face_35: -1143814347
+      TourRadio_Face_36: -1565672236
+      TourRadio_Face_37: -587340215
+      TourRadio_Face_38: 758158706
+      TourRadio_Face_39: -1459065911
+      TourRadio_Face_4: -641647893
+      TourRadio_Face_40: -1275880622
+      TourRadio_Face_41: -1166454135
+      TourRadio_Face_42: 1191906391
+      TourRadio_Face_43: 808391215
+      TourRadio_Face_44: 1095015778
+      TourRadio_Face_45: 313524351
+      TourRadio_Face_46: -1960896086
+      TourRadio_Face_47: 1229533870
+      TourRadio_Face_48: 1939293149
+      TourRadio_Face_49: 2138899175
+      TourRadio_Face_5: 697404153
+      TourRadio_Face_50: -647820208
+      TourRadio_Face_51: -1088721895
+      TourRadio_Face_52: 627099724
+      TourRadio_Face_53: -1481544
+      TourRadio_Face_54: -1936566357
+      TourRadio_Face_55: -231407631
+      TourRadio_Face_56: -519675689
+      TourRadio_Face_57: 120231237
+      TourRadio_Face_58: 2074242323
+      TourRadio_Face_59: -1422399227
+      TourRadio_Face_6: -917425785
+      TourRadio_Face_60: 1337198148
+      TourRadio_Face_61: -1432238802
+      TourRadio_Face_62: -296988333
+      TourRadio_Face_7: 886904385
+      TourRadio_Face_8: 1921940256
+      TourRadio_Face_9: 1549899987
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

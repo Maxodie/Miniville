@@ -14,9 +14,9 @@ public class StartGameState : GameState {
 
     //temp
     [SerializeField] Button addPlayerBtn;
-    [SerializeField] TMP_Text playerNbText;
+    [SerializeField] Button removePlayerBtn;
 
-    //MainMenu UI
+    // UI
     [SerializeField] StartScreenManager startScreenManager;
 
     int playerNb = 2;
@@ -30,6 +30,7 @@ public class StartGameState : GameState {
     void InitButtons() {
         startBtn.onClick.AddListener(LoadPlayersBoards);
         addPlayerBtn.onClick.AddListener(AddPlayerNb);
+        removePlayerBtn.onClick.AddListener(RemovePlayerNb);
     }
 
     void InitInitialEstablishments()
@@ -48,7 +49,7 @@ public class StartGameState : GameState {
     }
 
     public override void Start() {
-        playerNbText.text = $"Player : {playerNb}";
+        //playerNbText.text = $"Player : {playerNb}";
     }
 
     public override void Update(float dt) {
@@ -69,12 +70,12 @@ public class StartGameState : GameState {
         for(int i=0; i<playerNb; i++) {
             //TODO load canvas and put it in player
             if(i==0)
-                gameData.players[i] = new Player(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
+                gameData.players[i] = new Player(true, $"Player {i}", 8, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
             else
                 gameData.players[i] = new AIPlayer(true, $"Player {i}", 4, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab);
-        
         }
-
+        
+        startScreenManager.SetupPlayerFrames(game.uiData, gameData);
         EndState();
     }
 
@@ -82,7 +83,16 @@ public class StartGameState : GameState {
         if (playerNb >= game.maxPlayer) return;
         
         playerNb ++;
-        playerNbText.text = $"Player : {playerNb}";
+        startScreenManager.UpdatePlayerFrames(game.uiData, playerNb, addPlayerBtn, removePlayerBtn);
+        //playerNbText.text = $"Player : {playerNb}";
+    }
+    
+    public void RemovePlayerNb() {
+        if (playerNb <= game.minPlayer) return;
+        
+        playerNb --;
+        startScreenManager.UpdatePlayerFrames(game.uiData, playerNb, addPlayerBtn, removePlayerBtn);
+        //playerNbText.text = $"Player : {playerNb}";
     }
 
     void PlayerSelection() {

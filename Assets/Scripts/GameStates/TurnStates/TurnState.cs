@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TurnState : GameState {
     int currentPlayerId;
     ITurnState currentTurnState;
-    float playerBoardDistanceToCenter = 4.5f;
+    [SerializeField] float playerBoardDistanceToCenter = 10.5f;
 
     //Add to upml
     [SerializeField] ThrowDiceBehaviour throwDiceBehaviour;
@@ -28,7 +28,7 @@ public class TurnState : GameState {
         InitButtons();
     }
 
-    void InitButtons() {//add to uml
+    void InitButtons() {
         endTurnBtn.onClick.AddListener(FinishTurn);
     }
 
@@ -68,7 +68,7 @@ public class TurnState : GameState {
             // Apply position and rotation
             playerBoard.transform.position = boardPosition;
             playerBoard.transform.rotation = boardRotation;
-            gameData.players[currentPlayerId].playerBoard = playerBoard;
+            gameData.players[i].Start(playerBoard);
         }
 
         PerformTurn();
@@ -88,12 +88,28 @@ public class TurnState : GameState {
         ThrowDice();
     }
 
-    void FinishTurn() {//Add to uml
+    void FinishTurn() {
         playerDicePanel.SetActive(false);
+
+        if(WinCheck()) {
+
+        }
+
         SwitchCurrentPlayer();
     }
 
-    void SwitchCurrentPlayer() {//Add to uml
+    bool WinCheck() {
+        bool win = true;
+        for(int i=0; i < gameData.players[currentPlayerId].monumentCards.Length; i++) {
+            if(!gameData.players[currentPlayerId].monumentCards[i].built) {
+                win = false;
+            }
+        }
+
+        return win;
+    }
+
+    void SwitchCurrentPlayer() {
         if(gameData.players[currentPlayerId].canReplay) {
             currentPlayerId --;
             gameData.players[currentPlayerId].canReplay = false;
@@ -121,6 +137,7 @@ public class TurnState : GameState {
 
     public void Interaction()
     {
+     
         currentTurnState = interactionBehaviour;
         interactionBehaviour.InitState(gameData, currentPlayerId, this);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class BuildBehaviour : ITurnState {
     [SerializeField] Transform buildableEstablishmentSpawnPoint;
     [SerializeField] Transform buildableMonumentSpawnPoint;
 
-    public CardUIPrefab[] cardPrefabs;
+    CardUIPrefab[] cardPrefabs;
 
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
@@ -31,7 +32,7 @@ public class BuildBehaviour : ITurnState {
     void InitButtons() {
         if(isBtnInit) return;
         
-        stopBuildBtn.onClick.AddListener(QuitState);
+        stopBuildBtn.onClick.AddListener(EndBuild);
 
         isBtnInit = true;
     }
@@ -40,7 +41,7 @@ public class BuildBehaviour : ITurnState {
         transactionPanel.SetActive(true);
         StartBuild();
 
-        gameData.players[playerTurn].OptionalPlayerBuild(this);
+        gameData.players[playerTurn].OptionalPlayerBuild(this, gameData);
     }
 
     public void Update(float dt) {
@@ -61,10 +62,12 @@ public class BuildBehaviour : ITurnState {
             cardPrefabs[j] = new CardUIPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
             cardPrefabs[j].loadedBtn.interactable = CanBuild(et[i]);
 
-            if(gameData.establishments[et[i]] <= 0)
-                cardPrefabs[j].loadedBtn.interactable  = false;
+            Establishment establishmentToBuild = gameData.establishments.Keys.ToArray()[j];
 
-            cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(gameData.establishments.Keys.ToArray()[j]);});
+            if(gameData.establishments[et[i]] <= 0 || establishmentToBuild.cardType == CardType.CITYLIFE && gameData.players[playerTurn].ContainCardName(establishmentToBuild))
+                cardPrefabs[j].loadedBtn.interactable  = false;
+            else
+                cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(establishmentToBuild);});
         }
 
         for(int i=0; i<gameData.monuments.Length; i++) {
@@ -74,37 +77,37 @@ public class BuildBehaviour : ITurnState {
 
             if(gameData.players[playerTurn].monumentCards[i].built)
                 cardPrefabs[et.Length + j].loadedBtn.interactable = false;
-
-            cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuildMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
+            else
+                cardPrefabs[et.Length + j].loadedBtn.onClick.AddListener(() => {BuilddMonumentCard(gameData.players[playerTurn].monumentCards[j]);});
         }
     }
 
     public void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
-        gameData.players[playerTurn].AddCard(card);
         gameData.players[playerTurn].BuildCardForPlayer(card);
+        gameData.players[playerTurn].AddCoin(-card.constructionCost);
         EndBuild();
     }
 
-    public void BuildMonumentCard(Monument card) {
+    public void BuilddMonumentCard(Monument card) {
         card.built = false;
-        gameData.players[playerTurn].BuildMonument(card);
         
+        gameData.players[playerTurn].BuildMonument(card);
         card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
-        gameData.players[playerTurn].BuildCardForPlayer(card);
+        gameData.players[playerTurn].AddCoin(-card.constructionCost);
         EndBuild();
     }
 
-    public bool CanBuild(Card card) {
+    bool CanBuild(Card card) {
         return gameData.players[playerTurn].coins >= card.constructionCost;
     }
 
-    public void EndBuild() {
+    void EndBuild() {
         turnState.UpdateCoinText();
 
-        foreach (var t in cardPrefabs)
+        for (int i = 0; i < cardPrefabs.Length; i++)
         {
-            t.Destroy();
+            cardPrefabs[i].Destroy();
         }
 
         QuitState();

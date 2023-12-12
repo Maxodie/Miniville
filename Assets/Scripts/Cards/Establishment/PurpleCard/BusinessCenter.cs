@@ -5,9 +5,18 @@ public class BusinessCenter : PurpleCard
     {
         
     }
+
+    public BusinessCenter(BusinessCenter copyCard) : base(copyCard) {
+
+    }
+
+    public override Establishment Copy() {
+        return new BusinessCenter(this);
+    }
     
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
+        base.PerformSpecial(player, target, players);
         
     }
 }
