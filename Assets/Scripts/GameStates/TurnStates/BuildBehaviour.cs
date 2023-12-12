@@ -85,6 +85,7 @@ public class BuildBehaviour : ITurnState {
     void BuildEstablishmentCard(Establishment card) {
         gameData.establishments[card]--;
         gameData.players[playerTurn].BuildCardForPlayer(card);
+        gameData.players[playerTurn].AddCoin(-card.constructionCost);
         EndBuild();
     }
 
@@ -93,6 +94,7 @@ public class BuildBehaviour : ITurnState {
         
         gameData.players[playerTurn].BuildMonument(card);
         card.PerformSpecial(gameData.players[playerTurn], gameData.players[playerTurn], gameData.players);
+        gameData.players[playerTurn].AddCoin(-card.constructionCost);
         EndBuild();
     }
 
