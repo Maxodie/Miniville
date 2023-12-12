@@ -1,5 +1,3 @@
-using System;
-
 public class Pizza
 {
     private char[] str = new char[5]

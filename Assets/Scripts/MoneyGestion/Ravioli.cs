@@ -1,5 +1,3 @@
-using System;
-
 public class Ravioli
 {
     private char[] str = new char[7]
