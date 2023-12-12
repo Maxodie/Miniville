@@ -17,6 +17,12 @@ public class AIPlayer : Player {
     }
 
     public override void OptionalPlayerBuild(BuildBehaviour buildBehaviour) { 
+        for(int i=0; i < monumentCards.Length; i++) {
+            if(coins >= monumentCards[i].constructionCost) {
+                
+            }
+        }
+
         buildBehaviour.QuitState();
     }
 
