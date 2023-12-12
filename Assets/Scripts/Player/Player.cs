@@ -17,6 +17,7 @@ public class Player
     public GameObject playerCanvas;
     public GameObject playerBoard;
     public bool isRealPlayer {get; private set;}
+    public PlayerFrame playerFrame;
 
     List<Establishment> startDeck;
 
