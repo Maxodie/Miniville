@@ -75,13 +75,11 @@ public class CardUIPrefab {
 
     void StartDisplayCardRoutine(BaseEventData eventData)
     {
-        Debug.Log("Hey ! Listen");
         monoBehaviour.StartCoroutine(DisplayCard());
     }
 
     void StopDisplayCardRoutine(BaseEventData eventData)
     {
-        Debug.Log("OK OK JE STOP MA TRUC");
         monoBehaviour.StopAllCoroutines();
         
         buildBehaviour?.DisplayUpSizedCard(false);
@@ -91,8 +89,6 @@ public class CardUIPrefab {
     IEnumerator DisplayCard()
     {
         yield return new WaitForSeconds(1);
-        Debug.Log("OUI QUESQUE TU VEU ?");
-        
         buildBehaviour?.DisplayUpSizedCard(true, cardSprite);
         interactionBehaviour?.DisplayUpSizedCard(true, cardSprite);
     }
