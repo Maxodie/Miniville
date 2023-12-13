@@ -109,7 +109,7 @@ public class BuildBehaviour : ITurnState {
         }
     }
 
-    void EndBuild() {
+    public void EndBuild() {
         gameData.players[playerTurn].playerFrame.UpdateUI();
         Dispose();
 
