@@ -131,7 +131,7 @@ public class TurnState : GameState {
     public void ThrowDice() {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
-        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
+        throwDiceBehaviour.InitState(gameData, currentPlayerId, this, game.uiData);
     }
 
     public void Transactions() {
