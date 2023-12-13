@@ -136,6 +136,7 @@ public class InteractionBehaviour : ITurnState
         {
             Object.Destroy(cardSelection.GetChild(i).gameObject);
         }
+        DisplayUpSizedCard(false);
     }
 
     void ConfirmSelection()

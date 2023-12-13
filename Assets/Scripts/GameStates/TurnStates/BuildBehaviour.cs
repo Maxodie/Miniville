@@ -105,6 +105,7 @@ public class BuildBehaviour : ITurnState {
     }
 
     void Dispose() {
+        DisplayUpSizedCard(false);
         for (int i = 0; i < cardPrefabs.Length; i++)
         {
             cardPrefabs[i].Destroy();
