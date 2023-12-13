@@ -89,9 +89,10 @@ public class TransactionBehaviour : ITurnState {
             // if current player owns a business center, init the interaction state
             if (establishment.GetType() == typeof(BusinessCenter))
             {
-                
+                Debug.Log("tt : " + currentPlayer.totalThrowValue);
                 if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
                     turnState.Interaction();
+                    Debug.Log("tt");
                     return;
                 }
             }

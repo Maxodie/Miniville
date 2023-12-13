@@ -34,7 +34,7 @@ public class AIPlayer : Player {
             return;
         }
 
-        buildBehaviour.QuitState();
+        buildBehaviour.EndBuild();
     }
 
     public override void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour, GameData gameData) {
