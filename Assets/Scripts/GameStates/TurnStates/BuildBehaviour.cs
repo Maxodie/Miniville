@@ -49,7 +49,6 @@ public class BuildBehaviour : ITurnState {
     }
 
     public void QuitState() {
-        Debug.Log("finish state");
         transactionPanel.SetActive(false);
         turnState.FinishTurn();
     }
@@ -68,7 +67,7 @@ public class BuildBehaviour : ITurnState {
             if(gameData.establishments[et[i]] <= 0 || establishmentToBuild.cardType == CardType.CITYLIFE && gameData.players[playerTurn].ContainCardName(establishmentToBuild))
                 cardPrefabs[j].loadedBtn.interactable  = false;
             else
-                cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(establishmentToBuild);});
+                cardPrefabs[j].loadedBtn.onClick.AddListener(() => {BuildEstablishmentCard(establishmentToBuild);});
         }
 
         for(int i=0; i<gameData.monuments.Length; i++) {
@@ -103,13 +102,16 @@ public class BuildBehaviour : ITurnState {
         return gameData.players[playerTurn].coins >= card.constructionCost;
     }
 
-    void EndBuild() {
-        gameData.players[playerTurn].playerFrame.UpdateUI();
-
+    void Dispose() {
         for (int i = 0; i < cardPrefabs.Length; i++)
         {
             cardPrefabs[i].Destroy();
         }
+    }
+
+    void EndBuild() {
+        gameData.players[playerTurn].playerFrame.UpdateUI();
+        Dispose();
 
         QuitState();
     }

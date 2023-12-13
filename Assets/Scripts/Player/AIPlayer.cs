@@ -21,9 +21,19 @@ public class AIPlayer : Player {
         foreach (var t in monumentCards)
         {
             if (coins < t.constructionCost) continue;
+
             buildBehaviour.BuilddMonumentCard(t);
             return;
         }
+
+        foreach (var t in gameData.establishments)
+        {
+            if(coins < t.Key.constructionCost) continue;
+
+            buildBehaviour.BuildEstablishmentCard(t.Key);
+            return;
+        }
+
         buildBehaviour.QuitState();
     }
 

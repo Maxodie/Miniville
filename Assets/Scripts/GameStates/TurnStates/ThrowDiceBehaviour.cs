@@ -41,7 +41,6 @@ public class ThrowDiceBehaviour : ITurnState {
             throwTwoDice.interactable = false;
 
         gameData.players[playerTurn].OptionalPlayerThrowDice(this, gameData);
-        Debug.Log(gameData.players[playerTurn]);
     }
     
     void InitButtons() {
@@ -62,7 +61,6 @@ public class ThrowDiceBehaviour : ITurnState {
 
     public void QuitState() {
         playerDicePanel.SetActive(false);
-        Debug.Log("finifsh");
         
         isThrowDiceRestarted = false;
         turnState.Transactions();

@@ -198,6 +198,7 @@ public class Player
         }
     }
 
+    //TODO : function to replace all building by pos in arr
     public void BuildCardForPlayer(Establishment cardToBuild, Vector3 forcedLocalPos = new Vector3()) {
         Vector3 pos = new Vector3(0f, 0f, -zBoradOffset);
         bool spawnBuilding = true;
@@ -213,6 +214,7 @@ public class Player
         
         if(forcedLocalPos != Vector3.zero) {
             buildingCards.Add(new List<Establishment>());
+
             buildingCards[buildingCards.Count - 1].Add(cardToBuild);
             cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, forcedLocalPos, spawnBuilding);
 
