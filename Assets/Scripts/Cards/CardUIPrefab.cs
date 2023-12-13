@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,16 +8,21 @@ using UnityEngine.EventSystems;
 public class CardUIPrefab {
     public GameObject loadedGo;
     [HideInInspector] public Button loadedBtn;
-    public Image cardImg;
+    public Sprite cardSprite;
     public Image iconType;
     public TMP_Text cardName;
     public TMP_Text cardDescription;
     EventTrigger hoverEventCo;
     MonoBehaviour monoBehaviour;
+    BuildBehaviour buildBehaviour;
+    InteractionBehaviour interactionBehaviour;
     
-    public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card, MonoBehaviour monoBehaviour) {
+    public CardUIPrefab(CardUIData cardUIData, Transform spawnPoint, Card card, MonoBehaviour monoBehaviour, BuildBehaviour buildBehaviour = null, InteractionBehaviour interactionBehaviour = null) {
         loadedGo = Object.Instantiate(cardUIData.objectPrefab, spawnPoint);
         this.monoBehaviour = monoBehaviour;
+        this.buildBehaviour = buildBehaviour;
+        this.interactionBehaviour = interactionBehaviour;
+        cardSprite = card.cardSprite;
         LoadGoCard(cardUIData, card);
     }
 
@@ -58,7 +64,7 @@ public class CardUIPrefab {
         {
             eventID = EventTriggerType.PointerExit
         };
-        hoverExitEvent.callback.AddListener(StartDisplayCardRoutine);
+        hoverExitEvent.callback.AddListener(StopDisplayCardRoutine);
         hoverEventCo.triggers.Add(hoverExitEvent);
         
     }
@@ -76,12 +82,18 @@ public class CardUIPrefab {
     void StopDisplayCardRoutine(BaseEventData eventData)
     {
         Debug.Log("OK OK JE STOP MA TRUC");
-        monoBehaviour.StopCoroutine(DisplayCard());
+        monoBehaviour.StopAllCoroutines();
+        
+        buildBehaviour?.DisplayUpSizedCard(false);
+        interactionBehaviour?.DisplayUpSizedCard(false);
     }
 
     IEnumerator DisplayCard()
     {
         yield return new WaitForSeconds(1);
         Debug.Log("OUI QUESQUE TU VEU ?");
+        
+        buildBehaviour?.DisplayUpSizedCard(true, cardSprite);
+        interactionBehaviour?.DisplayUpSizedCard(true, cardSprite);
     }
 }
