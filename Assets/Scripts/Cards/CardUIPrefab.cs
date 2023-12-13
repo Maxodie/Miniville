@@ -81,7 +81,7 @@ public class CardUIPrefab {
 
     IEnumerator DisplayCard()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Debug.Log("OUI QUESQUE TU VEU ?");
     }
 }
