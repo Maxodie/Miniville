@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -796,6 +796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293315220752015310, guid: 48205e52616b7194f9a336bd152c11d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7293315220968508934, guid: 48205e52616b7194f9a336bd152c11d2,
         type: 3}
@@ -3200,6 +3205,7 @@ MonoBehaviour:
       cardUISelectPrefab: {fileID: 11400000, guid: 6a11f4b79b4e3c246a96e3f423ffa328,
         type: 2}
       stopBtn: {fileID: 631601940}
+      upSizedCard: {fileID: 2052871757}
     transactionBehaviour:
       context: {fileID: 1374040004}
       turnInfoPanel: {fileID: 427347221}
@@ -3214,6 +3220,7 @@ MonoBehaviour:
         type: 2}
       buildableEstablishmentSpawnPoint: {fileID: 427347218}
       buildableMonumentSpawnPoint: {fileID: 427347217}
+      upSizedCard: {fileID: 2052871757}
     playerBoardPrefab: {fileID: 5017871081372686519, guid: 1982786e41663e24f8aec51e10d1d1d4,
       type: 3}
     playerDicePanel: {fileID: 427347216}
@@ -9596,6 +9603,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2052871757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1021520286972676370, guid: 48205e52616b7194f9a336bd152c11d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 427347209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2058618688
