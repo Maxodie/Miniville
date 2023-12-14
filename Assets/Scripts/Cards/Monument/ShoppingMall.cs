@@ -7,6 +7,14 @@ public class ShoppingMall : Monument
         
     }
 
+    public ShoppingMall(ShoppingMall copy) : base(copy) {
+        
+    }
+
+    public override Monument Copy() {
+        return new ShoppingMall(this);
+    }
+
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);

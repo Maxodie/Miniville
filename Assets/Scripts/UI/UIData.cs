@@ -8,6 +8,7 @@ public class UIData
     public Sprite redBtnSprite;
     public Sprite yellowBtnSprite;
     public Sprite blueBtnSprite;
+    public UIPlayerFrameScriptableObject uIPlayerFrameScriptableObject;
 
     [Header("Player ui data")] [SerializeField]
     public GameObject[] playerFrames;

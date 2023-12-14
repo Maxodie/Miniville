@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Mine
   cardGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19, type: 3}
-  buildingGo: {fileID: 2455056337841767781, guid: d66875accb7d5e4449dcc2e50e3ec487,
+  buildingGo: {fileID: 2065387162763356933, guid: b16c69ac52863424992c6dbb90b57930,
     type: 3}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Farm
   cardGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19, type: 3}
-  buildingGo: {fileID: 9177096599786168091, guid: 4d3d7e203b8e63d4789ce0e7a4cb655c,
+  buildingGo: {fileID: 1808196041064930473, guid: 696a3fe8e59f97147bfe50704826ebe3,
     type: 3}

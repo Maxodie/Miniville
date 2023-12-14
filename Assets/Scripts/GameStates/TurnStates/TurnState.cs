@@ -20,8 +20,6 @@ public class TurnState : GameState {
     [SerializeField] GameObject playerDicePanel;
     [SerializeField] Button endTurnBtn;
 
-    [SerializeField] TMP_Text playerCoins;
-
     public override void InitGameState(ref GameData gameData, Game game){
         base.InitGameState(ref gameData, game);
         
@@ -83,19 +81,21 @@ public class TurnState : GameState {
     }
 
     public void PerformTurn() {
-        playerDicePanel.SetActive(true);
         gameData.players[currentPlayerId].playerCanvas.SetActive(true);
+        gameData.players[currentPlayerId].playerFrame.SetCurrentActiveFrame(true);
+        playerDicePanel.SetActive(true);
 
         if(WinCheck()) {
             gameData.winPlayerName = gameData.players[currentPlayerId].playerName;
             game.ChangeCurrentState();
+            Debug.Log("win win on a win woow");
             return;
         }
 
         ThrowDice();
     }
 
-    void FinishTurn() {
+    public void FinishTurn() {
         playerDicePanel.SetActive(false);
 
         SwitchCurrentPlayer();
@@ -112,20 +112,19 @@ public class TurnState : GameState {
         return win;
     }
 
-    public void SwitchCurrentPlayer() {
+    void SwitchCurrentPlayer() {
         if(gameData.players[currentPlayerId].canReplay) {
-            currentPlayerId --;
             gameData.players[currentPlayerId].canReplay = false;
+            currentPlayerId --;
         }
 
         gameData.players[currentPlayerId].playerCanvas.SetActive(false);
+        gameData.players[currentPlayerId].playerFrame.SetCurrentActiveFrame(false);
         
         currentPlayerId ++;
 
         if(currentPlayerId > gameData.players.Length -1)
             currentPlayerId = 0;
-
-        Debug.Log(currentPlayerId);
 
         PerformTurn();
     }
@@ -133,7 +132,7 @@ public class TurnState : GameState {
     public void ThrowDice() {
         //give to the player his current dice result
         currentTurnState = throwDiceBehaviour;
-        throwDiceBehaviour.InitState(gameData, currentPlayerId, this);
+        throwDiceBehaviour.InitState(gameData, currentPlayerId, this, game.uiData);
     }
 
     public void Transactions() {
@@ -151,9 +150,5 @@ public class TurnState : GameState {
     public void Build() {
         currentTurnState = buildBehaviour;
         buildBehaviour.InitState(gameData, currentPlayerId, this);
-    }
-
-    public void UpdateCoinText() {
-        playerCoins.text = $"player : {gameData.players[currentPlayerId].playerName} Coins : {gameData.players[currentPlayerId].coins}";
     }
 }

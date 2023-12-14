@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Convenience Store
   cardGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19, type: 3}
-  buildingGo: {fileID: 2455056337841767781, guid: d66875accb7d5e4449dcc2e50e3ec487,
+  buildingGo: {fileID: 4215511853522297862, guid: 0e064297662e8844392f5937e1a38cbd,
     type: 3}

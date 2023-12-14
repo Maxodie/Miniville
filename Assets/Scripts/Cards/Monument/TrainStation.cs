@@ -8,6 +8,15 @@ public class TrainStation : Monument
         
     }
 
+    public TrainStation(TrainStation copy) : base(copy) {
+        
+    }
+
+    public override Monument Copy() {
+        return new TrainStation(this);
+    }
+
+
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);

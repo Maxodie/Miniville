@@ -13,6 +13,8 @@ public class CardBehaviour {
     }
 
     public void InstantiateCard(Transform tr, Vector3 pos, bool activeBuilding) {
+        if(spawnedGoCard) return;
+
         spawnedGoCard = Object.Instantiate(cardGoPrefab.cardGo, tr);
         spawnedGoCard.transform.localPosition = pos;
 
@@ -26,6 +28,8 @@ public class CardBehaviour {
     }
 
     public void InstantiateBuilding(Transform tr, Vector3 pos) {
+        if(spawnedGoBuilding) return;
+
         spawnedGoBuilding = Object.Instantiate(cardGoPrefab.buildingGo, tr);
         spawnedGoBuilding.transform.localPosition = pos;
     }

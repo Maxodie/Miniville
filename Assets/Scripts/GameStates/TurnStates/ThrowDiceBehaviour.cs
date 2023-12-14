@@ -8,6 +8,7 @@ public class ThrowDiceBehaviour : ITurnState {
     GameData gameData;
     int playerTurn;
     TurnState turnState;
+    UIData uiData;
     [SerializeField] Button throwOneDice;
     [SerializeField] Button throwTwoDice;
 
@@ -19,10 +20,11 @@ public class ThrowDiceBehaviour : ITurnState {
     [SerializeField] Button yesRestartBtn;
     [SerializeField] Button noRestartBtn;
 
-    public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
+    public void InitState(GameData gameData, int playerTurn, TurnState turnState, UIData uiData) {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
+        this.uiData = uiData;
 
         restartPanel.SetActive(false);
 
@@ -35,10 +37,16 @@ public class ThrowDiceBehaviour : ITurnState {
         playerDicePanel.SetActive(true);
 
         throwOneDice.interactable = true;
-        if(gameData.players[playerTurn].currentDice > 1) 
+        if (gameData.players[playerTurn].currentDice > 1)
+        {
             throwTwoDice.interactable = true;
+            throwTwoDice.GetComponent<Image>().sprite = uiData.blueBtnSprite;
+        }
         else
+        {
             throwTwoDice.interactable = false;
+            throwTwoDice.GetComponent<Image>().sprite = uiData.grayBtnSprite;
+        }
 
         gameData.players[playerTurn].OptionalPlayerThrowDice(this, gameData);
     }
@@ -61,7 +69,6 @@ public class ThrowDiceBehaviour : ITurnState {
 
     public void QuitState() {
         playerDicePanel.SetActive(false);
-        Debug.Log("finifsh");
         
         isThrowDiceRestarted = false;
         turnState.Transactions();

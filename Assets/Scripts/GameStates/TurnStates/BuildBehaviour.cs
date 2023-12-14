@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class BuildBehaviour : ITurnState {
     [SerializeField] CardUIData buildableMonumentBtnPrefab;
     [SerializeField] Transform buildableEstablishmentSpawnPoint;
     [SerializeField] Transform buildableMonumentSpawnPoint;
+    [SerializeField] Image upSizedCard;
 
     CardUIPrefab[] cardPrefabs;
 
@@ -40,7 +42,6 @@ public class BuildBehaviour : ITurnState {
     public void Start() {
         transactionPanel.SetActive(true);
         StartBuild();
-        Debug.Log("build");
 
         gameData.players[playerTurn].OptionalPlayerBuild(this, gameData);
     }
@@ -51,7 +52,7 @@ public class BuildBehaviour : ITurnState {
 
     public void QuitState() {
         transactionPanel.SetActive(false);
-        turnState.SwitchCurrentPlayer();
+        turnState.FinishTurn();
     }
 
     void StartBuild() {
@@ -60,7 +61,7 @@ public class BuildBehaviour : ITurnState {
 
         for(int i=0; i<et.Length; i++) {
             int j = i;
-            cardPrefabs[j] = new CardUIPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i]);
+            cardPrefabs[j] = new CardUIPrefab(cardPrefab, buildableEstablishmentSpawnPoint, et[i], turnState.game, this);
             cardPrefabs[j].loadedBtn.interactable = CanBuild(et[i]);
 
             Establishment establishmentToBuild = gameData.establishments.Keys.ToArray()[j];
@@ -68,12 +69,12 @@ public class BuildBehaviour : ITurnState {
             if(gameData.establishments[et[i]] <= 0 || establishmentToBuild.cardType == CardType.CITYLIFE && gameData.players[playerTurn].ContainCardName(establishmentToBuild))
                 cardPrefabs[j].loadedBtn.interactable  = false;
             else
-                cardPrefabs[j].loadedBtn.onClick.AddListener(delegate {BuildEstablishmentCard(establishmentToBuild);});
+                cardPrefabs[j].loadedBtn.onClick.AddListener(() => {BuildEstablishmentCard(establishmentToBuild);});
         }
 
         for(int i=0; i<gameData.monuments.Length; i++) {
             int j = i;
-            cardPrefabs[et.Length + j] = new CardUIPrefab(cardPrefab, buildableMonumentSpawnPoint, gameData.monuments[i]);
+            cardPrefabs[et.Length + j] = new CardUIPrefab(cardPrefab, buildableMonumentSpawnPoint, gameData.monuments[i], turnState.game, this);
             cardPrefabs[et.Length + j].loadedBtn.interactable = CanBuild(gameData.monuments[i]);
 
             if(gameData.players[playerTurn].monumentCards[i].built)
@@ -103,14 +104,26 @@ public class BuildBehaviour : ITurnState {
         return gameData.players[playerTurn].coins >= card.constructionCost;
     }
 
-    void EndBuild() {
-        turnState.UpdateCoinText();
-
+    void Dispose() {
+        DisplayUpSizedCard(false);
         for (int i = 0; i < cardPrefabs.Length; i++)
         {
             cardPrefabs[i].Destroy();
         }
+    }
+
+    public void EndBuild() {
+        gameData.players[playerTurn].playerFrame.UpdateUI();
+        Dispose();
 
         QuitState();
+    }
+
+    public void DisplayUpSizedCard(bool value, Sprite imageCard = null)
+    {
+        if (value)
+            upSizedCard.sprite = imageCard;
+        
+        upSizedCard.gameObject.SetActive(value);
     }
 }

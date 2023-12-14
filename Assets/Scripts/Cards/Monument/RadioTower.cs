@@ -9,6 +9,15 @@ public class RadioTower : Monument
         
     }
 
+
+    public RadioTower(RadioTower copy) : base(copy) {
+        
+    }
+
+    public override Monument Copy() {
+        return new RadioTower(this);
+    }
+
     public override void PerformSpecial(Player player, Player target, Player[] players)
     {
         base.PerformSpecial(player, target, players);

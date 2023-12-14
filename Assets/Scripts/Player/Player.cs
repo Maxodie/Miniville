@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player
 {
+    //Variables
     public string playerName;
     public int coins;
     public int currentDice; 
@@ -12,8 +13,8 @@ public class Player
     public int[] throwValue;
     public bool hasBuild;
     public bool canReplay = false;
-    public List<List<Establishment>> buildingCards = new List<List<Establishment>>();
-    public Monument[] monumentCards = new Monument[4];
+    public List<List<Establishment>> buildingCards = new List<List<Establishment>>(); //current player establishments
+    public Monument[] monumentCards = new Monument[4]; //player monuments
     public GameObject playerCanvas;
     public GameObject playerBoard;
     public bool isRealPlayer {get; private set;}
@@ -25,50 +26,63 @@ public class Player
     int cardNewLine = 5;
     int newLineXOffset = 4;
     float buildingsZOffsetInRaw = 3;
-    float cardInPackOffset = 0.3f;
+    float cardInPackZOffset = 0.3f;
+    float cardInPackXOffset = 0.1f;
     int monumentSpace = -10;
-    int currentBuildingXPos = 0;
     float monumentOffset = 2f;
     float zBoradOffset;
-    Vector3 playerBoardCardHoleFromExchange = Vector3.zero;
+    float currentBuildingXPos;
     
-    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> startDeck, Monument[] monument, GameObject playerCanvas) //add
+    //Constructor
+    public Player(bool isRealPlayer, string playerName, int coins, int maxDices, int currentDice, List<Establishment> startDeck, Monument[] monument, GameObject playerCanvas, GameObject playerFrame, UIPlayerFrameScriptableObject uIPlayerFrameScriptableObject) //add
     {
         this.isRealPlayer = isRealPlayer;
         this.playerName = playerName;
         this.coins = coins;
         this.maxDice = maxDices; 
         this.currentDice = currentDice;
-        this.monumentCards = monument;
+        monumentCards = monument;
         this.playerCanvas = playerCanvas;
         this.startDeck = startDeck;
-        
+
         InitMonuments();
+
+        //show the playerFrame
+        playerFrame.SetActive(true);
+        this.playerFrame = new PlayerFrame(this, playerFrame, playerName, uIPlayerFrameScriptableObject);
+    
     }
 
     public void Start(GameObject playerBoard) {
+        //Set the playerBoard with his position and init the deck
         this.playerBoard = playerBoard;
         zBoradOffset = (cardNewLine-1) * buildingsZOffsetInRaw / 2;
         InitStartDeck();
         SpawnMonumentForPlayer();
     }
-
+    
+    //Add the amount of coin to the player
     public void AddCoin(int amount) {
         coins += amount;
+        playerFrame.UpdateUI();
     }
 
+    //do  a copy of the monuments and create a new behaviour to draw them
     void InitMonuments() {
         for(int i=0; i < monumentCards.Length; i++) {
+            monumentCards[i] = monumentCards[i].Copy();
             monumentCards[i].CreateNewCardBehaviour();
         }
     }
 
+    //instantiate and load default cards in the player
     void InitStartDeck() {
         for(int i=0; i < startDeck.Count; i++) {
             BuildCardForPlayer(startDeck[i]);
         }
     }
 
+    //set the monument buildState to true and instantiate the building on it
     public void BuildMonument(Monument monument) {
         for(int i=0; i<monumentCards.Length; i++) {
             if(monumentCards[i] == monument) {
@@ -76,8 +90,11 @@ public class Player
                 monumentCards[i].cardBehaviour.InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
             }
         }
+
+        playerFrame.UpdateUI();
     }
 
+    //Return monument typeof "monumentType" built state
     public bool GetMonumentBuiltByType(Type monumentType) {
         for(int i=0; i < monumentCards.Length; i++) {
             if(monumentCards[i].GetType() == monumentType) {
@@ -88,21 +105,46 @@ public class Player
         return false;
     }
     
-    public int GetCardsNbByName(string cardName) //Since some cards have effects depending on what number of that precise type of card you have, we need a function that count a specific type of card
-    {
-        int count = 0;
-        
+    //Return the number of establishment in the list of the cards named "cardName"
+    bool HasCardsOfName(string cardName) //Since some cards have effects depending on what number of that precise type of card you have, we need a function that count a specific type of card
+    {   
         foreach (var establishment in buildingCards) //We compare all the card type that the player have with the card type we want to check
         {
             if (establishment[0].cardName == cardName)
             {
-                count++;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    //Get the list of cards with the name "cardName" with name
+    public List<Establishment> GetCardStackByName(string cardName) {
+        foreach (var establishment in buildingCards)
+        {
+            if (establishment[0].cardName == cardName)
+            {
+                return establishment;
+            }
+        }
+
+        return null;
+    }
+
+    //return the number of monument built
+    public int GetMonumentBuilt() {
+        int count = 0;
+        for(int i=0; i < monumentCards.Length; i++) {
+            if(monumentCards[i].built) {
+                count ++;
             }
         }
 
         return count;
     }
 
+    //Return true if the player has the "establishment" in his deck
     public bool ContainCardName(Establishment establishment) {
         for (int i=0; i < buildingCards.Count; i++) {
             if(buildingCards[i][0].cardName == establishment.cardName)
@@ -112,64 +154,41 @@ public class Player
         return false;
     }
 
+
+    //exchange the card with the player card "cardID" and the "otherPlayer" in Id "otherPlayerCardID"
     public void ExchangeCard(int cardId, Player otherPlayer, int otherPlayerCardId) {
+        //Store thr card witch willl be exchanged get thanks to the id
         Establishment otherPlayerCard = otherPlayer.buildingCards[otherPlayerCardId][otherPlayer.buildingCards[otherPlayerCardId].Count - 1];
         Establishment playerCard = buildingCards[cardId][buildingCards[cardId].Count - 1];
        
+       //if the exchanged cards are the same then skip
         bool isSameCard = otherPlayerCard.cardName == playerCard.cardName;
 
         if(isSameCard) return; //if the cards are the same just skip
         
-        //Exchange variables
-        Vector3 otherPlayerCardPos = Vector3.zero;
-        
-        Vector3 intermediateOtherPlayerCardPos = otherPlayerCard.cardBehaviour.spawnedGoCard.transform.localPosition;
-        Vector3 intermediatePlayerCardPos = playerCard.cardBehaviour.spawnedGoCard.transform.localPosition;
-        
-        Vector3 playerCardPos = Vector3.zero;
-        
-        //guive card to the player (instantiate one in player board and destroy it in enemy's board)
-        if(buildingCards[cardId].Count == 1) {
-            if(GetCardsNbByName(otherPlayerCard.cardName) == 0) {
-                playerCardPos = intermediatePlayerCardPos;
-            }
-            else {
-                if(playerBoardCardHoleFromExchange == Vector3.zero) {
-                    playerBoardCardHoleFromExchange = intermediatePlayerCardPos;
-                }
-            }
-        }
-        
-        BuildCardForPlayer(otherPlayerCard, playerCardPos);
-
-        //Give card to ohter player
-        if(otherPlayer.buildingCards[otherPlayerCardId].Count == 1) {
-            if(otherPlayer.GetCardsNbByName(playerCard.cardName) == 0) {
-                otherPlayerCardPos = intermediateOtherPlayerCardPos;
-            }
-            else {
-                if(otherPlayer.playerBoardCardHoleFromExchange == Vector3.zero) {
-                    otherPlayer.playerBoardCardHoleFromExchange = intermediateOtherPlayerCardPos;
-                }
-            }
-        }
+        //destroy the building in playerBoard and build the exchanged card (for the two players)
+        RemoveBuilding(cardId);
+        BuildCardForPlayer(otherPlayerCard);
 
         otherPlayer.RemoveBuilding(otherPlayerCardId);
-        otherPlayer.BuildCardForPlayer(playerCard, otherPlayerCardPos);
-        RemoveBuilding(cardId);
+        otherPlayer.BuildCardForPlayer(playerCard);
     }
 
-    public void RemoveBuilding(int otherPlayerCardId) {
-        Establishment establishment = buildingCards[otherPlayerCardId][buildingCards[otherPlayerCardId].Count - 1];
+    //Destroy the model and remove the building from the establishmentCards list
+    public void RemoveBuilding(int playerCardId) {
+        Establishment establishment = buildingCards[playerCardId][buildingCards[playerCardId].Count - 1];
         establishment.DestroyCard();
 
-        buildingCards[otherPlayerCardId].Remove(establishment);
+        buildingCards[playerCardId].Remove(establishment);
 
-        if(buildingCards[otherPlayerCardId].Count == 0)
-            buildingCards.RemoveAt(otherPlayerCardId);
+        //If there are no moe cards then remove the category from the buildingCards list
+        if(buildingCards[playerCardId].Count == 0)
+            buildingCards.RemoveAt(playerCardId);
 
+        UpdatePlayerDeckPos();
     }
     
+    //set the throw diceValue with a int array (result of all dice)
     public void ThrowDice(int[] diceChoice) //We perform a throw depending on how much dices the player want to throw
     {
         totalThrowValue = 0;
@@ -180,62 +199,54 @@ public class Player
         }
     }
 
-    public void BuildCardForPlayer(Establishment cardToBuild, Vector3 forcedLocalPos = new Vector3()) {
-        Vector3 pos = new Vector3(0f, 0f, -zBoradOffset);
-        bool spawnBuilding = true;
-        bool doAnotherColomn = true;
+    //build the card and add it to the establishmentList
+    public void BuildCardForPlayer(Establishment cardToBuild) {
+        bool spawnBuilding;
 
+        //Create a copy of it from the gameData dictionnary to the player
         cardToBuild = cardToBuild.Copy();
         cardToBuild.CreateNewCardBehaviour();
 
-        if(GetCardsNbByName(cardToBuild.cardName) == 0 && forcedLocalPos == Vector3.zero) {
-            forcedLocalPos = playerBoardCardHoleFromExchange;
-            playerBoardCardHoleFromExchange = Vector3.zero;
-        }
-        
-        if(forcedLocalPos != Vector3.zero) {
+        //if there are no cards like this then create a new stack of it
+        if(!HasCardsOfName(cardToBuild.cardName)) {
             buildingCards.Add(new List<Establishment>());
             buildingCards[buildingCards.Count - 1].Add(cardToBuild);
-            cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, forcedLocalPos, spawnBuilding);
-
-            return;
+            spawnBuilding = true;
+        }
+        else {
+            GetCardStackByName(cardToBuild.cardName).Add(cardToBuild);
+            spawnBuilding = false;
         }
 
-        if(buildingCards.Count > 0) {
-            if(buildingCards.Count % cardNewLine == 0) {
-                currentBuildingXPos = buildingCards.Count / cardNewLine;
-            }
-
-            int lastRawBuildingPos = buildingCards.Count - (cardNewLine * currentBuildingXPos) - 1;
-            pos = new Vector3(currentBuildingXPos * newLineXOffset, 0f, buildingCards.Count % cardNewLine == 0 ? -zBoradOffset : buildingCards[lastRawBuildingPos][0].cardBehaviour.spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in front of player
-        }
-
-        for(int i=0; i< buildingCards.Count; i++) {
-
-            if(buildingCards[i][0].cardName == cardToBuild.cardName) {
-                pos = new Vector3(0f, 0f, buildingCards[i][buildingCards[i].Count - 1].cardBehaviour.spawnedGoCard.transform.localPosition.z + cardInPackOffset);
-                spawnBuilding = false;
-                doAnotherColomn = false;
-
-                buildingCards[i].Add(cardToBuild);
-            }
-        }
-
-        if(doAnotherColomn) {
-            buildingCards.Add(new List<Establishment>());
-            buildingCards[buildingCards.Count - 1].Add(cardToBuild);
-        }
-
-        cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, pos, spawnBuilding);
+        cardToBuild.cardBehaviour.InstantiateCard(playerBoard.transform, Vector3.zero, spawnBuilding);
+        playerFrame.UpdateUI();
+        UpdatePlayerDeckPos();
     }
 
+    //draw all cards in the playerBoard
+    void UpdatePlayerDeckPos() {
+        for(int i=0; i < buildingCards.Count; i++) {
+            Vector3 pos = new Vector3(currentBuildingXPos * newLineXOffset, 0f, i % cardNewLine == 0 ? -zBoradOffset : buildingCards[i-1][0].cardBehaviour.spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in front of player
+
+            buildingCards[i][0].cardBehaviour.spawnedGoBuilding.transform.localPosition = pos;
+            buildingCards[i][0].cardBehaviour.spawnedGoCard.transform.localPosition = pos;
+
+            for(int j=1; j < buildingCards[i].Count; j++) {
+                buildingCards[i][j].cardBehaviour.spawnedGoCard.transform.localPosition = pos + new Vector3(cardInPackXOffset * j, .01f * j, cardInPackZOffset * j);
+            }
+        }
+    }
+
+    //instantiate the building of the Monument
     void SpawnMonumentForPlayer() {
         for(int i=0; i < monumentCards.Length; i++) {
-            monumentCards[i].cardBehaviour.InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset), false);
+            monumentCards[i].cardBehaviour.InstantiateCard(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset - (monumentCards.Length / 3 * monumentOffset) ), false);
         }
     }
 
+    //variables call in each state for particular work.
     public virtual void OptionalPlayerThrowDice(ThrowDiceBehaviour throwDiceBehaviour, GameData gameData) { }
     public virtual void OptionalPlayerBuild(BuildBehaviour buildBehaviour, GameData gameData) { }
     public virtual void OptionalPlayerInteraction(InteractionBehaviour interactionBehaviour, GameData gameData) { }
 }
+ 

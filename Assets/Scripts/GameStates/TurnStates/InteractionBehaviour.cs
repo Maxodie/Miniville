@@ -13,10 +13,9 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private Transform playerSelection;
     [SerializeField] private Transform cardSelection;
     [SerializeField] private GameObject playerChoiceButton;
-    [SerializeField] private GameObject cardChoiceButton;
-    [SerializeField] private GameObject ownCardChoiceButton;
     [SerializeField] CardUIData cardUISelectPrefab;
     [SerializeField] Button stopBtn;
+    [SerializeField] Image upSizedCard;
     bool isBtnInit = false;
 
     int playerCardId;
@@ -90,7 +89,7 @@ public class InteractionBehaviour : ITurnState
                 continue;
             
             int jCopy = j;
-            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards, turnState.game, null, this);
             cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
                 selectedCardId = jCopy;
@@ -109,7 +108,7 @@ public class InteractionBehaviour : ITurnState
                 continue;
             
             int jCopy = j;
-            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards);
+            CardUIPrefab cardUIPrefab = new CardUIPrefab(cardUISelectPrefab, cardSelection, cards, turnState.game, null, this);
             cardUIPrefab.loadedGo.GetComponent<Button>().onClick.AddListener(() =>
             {
                 playerCardId = jCopy;
@@ -135,10 +134,19 @@ public class InteractionBehaviour : ITurnState
         {
             Object.Destroy(cardSelection.GetChild(i).gameObject);
         }
+        DisplayUpSizedCard(false);
     }
 
     void ConfirmSelection()
     {
         turnState.Build();
+    }
+    
+    public void DisplayUpSizedCard(bool value, Sprite imageCard = null)
+    {
+        if (value)
+            upSizedCard.sprite = imageCard;
+        
+        upSizedCard.gameObject.SetActive(value);
     }
 }
