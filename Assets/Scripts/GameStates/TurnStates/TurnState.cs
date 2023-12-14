@@ -88,6 +88,7 @@ public class TurnState : GameState {
         if(WinCheck()) {
             gameData.winPlayerName = gameData.players[currentPlayerId].playerName;
             game.ChangeCurrentState();
+            Debug.Log("win win on a win woow");
             return;
         }
 
@@ -113,8 +114,8 @@ public class TurnState : GameState {
 
     void SwitchCurrentPlayer() {
         if(gameData.players[currentPlayerId].canReplay) {
-            currentPlayerId --;
             gameData.players[currentPlayerId].canReplay = false;
+            currentPlayerId --;
         }
 
         gameData.players[currentPlayerId].playerCanvas.SetActive(false);
