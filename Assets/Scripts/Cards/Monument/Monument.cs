@@ -8,6 +8,14 @@ public class Monument : Card
         this.built = built;
     }
 
+    public Monument(Monument copy) : base(copy) {
+        this.built = copy.built;
+    }
+    
+    public virtual Monument Copy() {
+        return new Monument(this);
+    }
+
     public static bool operator==(Monument a, Monument b) {
         return a.GetType() == b.GetType();
     }

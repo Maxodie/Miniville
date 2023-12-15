@@ -13,8 +13,6 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] private Transform playerSelection;
     [SerializeField] private Transform cardSelection;
     [SerializeField] private GameObject playerChoiceButton;
-    [SerializeField] private GameObject cardChoiceButton;
-    [SerializeField] private GameObject ownCardChoiceButton;
     [SerializeField] CardUIData cardUISelectPrefab;
     [SerializeField] Button stopBtn;
     [SerializeField] Image upSizedCard;
