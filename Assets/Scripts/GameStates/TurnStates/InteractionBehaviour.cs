@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class InteractionBehaviour : ITurnState
     [SerializeField] CardUIData cardUISelectPrefab;
     [SerializeField] Button stopBtn;
     [SerializeField] Image upSizedCard;
+    [SerializeField] TMP_Text textinfos;
     bool isBtnInit = false;
 
     int playerCardId;
@@ -67,6 +69,9 @@ public class InteractionBehaviour : ITurnState
             {
                 SelectTargetCard(iCopy);
             });   
+
+            btn.GetComponentInChildren<TMP_Text>().text = "Player : " + i;
+            textinfos.text = "Choose a player to exchange card with";
         }
     }
 
@@ -89,6 +94,7 @@ public class InteractionBehaviour : ITurnState
     {
         Dispose();
         selectedPlayer = playerId;
+        textinfos.text = "Select the target card";
         for (int j=0; j < gameData.players[playerId].buildingCards.Count; j++)
         {
             Establishment cards = gameData.players[playerId].buildingCards[j][0];
@@ -110,6 +116,7 @@ public class InteractionBehaviour : ITurnState
     void SelectOwnCard()
     {
         Dispose();
+        textinfos.text = "Choose one of your cards";
         for (int j=0; j < gameData.players[playerTurn].buildingCards.Count; j++)
         {
             Establishment cards = gameData.players[playerTurn].buildingCards[j][0];

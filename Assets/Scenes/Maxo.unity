@@ -780,6 +780,18 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &426078842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 426078842, guid: 48205e52616b7194f9a336bd152c11d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 427347209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &427347209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -787,18 +799,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1106550922459712994, guid: 48205e52616b7194f9a336bd152c11d2,
-        type: 3}
+    - target: {fileID: 694361841, guid: 48205e52616b7194f9a336bd152c11d2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6979629965056090930, guid: 48205e52616b7194f9a336bd152c11d2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7293315220752015310, guid: 48205e52616b7194f9a336bd152c11d2,
-        type: 3}
+    - target: {fileID: 1687141214, guid: 48205e52616b7194f9a336bd152c11d2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3196,6 +3201,7 @@ MonoBehaviour:
         type: 2}
       stopBtn: {fileID: 631601940}
       upSizedCard: {fileID: 2052871757}
+      textinfos: {fileID: 426078842}
     transactionBehaviour:
       context: {fileID: 1374040004}
       turnInfoPanel: {fileID: 427347221}
