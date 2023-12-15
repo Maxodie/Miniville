@@ -41,11 +41,14 @@ public class Player
         this.coins = coins;
         this.maxDice = maxDices; 
         this.currentDice = currentDice;
-        monumentCards = monument;
         this.playerCanvas = playerCanvas;
         this.startDeck = startDeck;
 
-        InitMonuments();
+        this.monumentCards = new Monument[monument.Length];
+        for(int i=0; i < monumentCards.Length; i++) {
+            monumentCards[i] = monument[i].Copy();
+            monumentCards[i].CreateNewCardBehaviour();
+        }
 
         //show the playerFrame
         playerFrame.SetActive(true);
@@ -67,14 +70,6 @@ public class Player
         playerFrame.UpdateUI();
     }
 
-    //do  a copy of the monuments and create a new behaviour to draw them
-    void InitMonuments() {
-        for(int i=0; i < monumentCards.Length; i++) {
-            monumentCards[i] = monumentCards[i].Copy();
-            monumentCards[i].CreateNewCardBehaviour();
-        }
-    }
-
     //instantiate and load default cards in the player
     void InitStartDeck() {
         for(int i=0; i < startDeck.Count; i++) {
@@ -87,7 +82,7 @@ public class Player
         for(int i=0; i<monumentCards.Length; i++) {
             if(monumentCards[i] == monument) {
                 monumentCards[i].built = true;
-                monumentCards[i].cardBehaviour.InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset));
+                monumentCards[i].cardBehaviour.InstantiateBuilding(playerBoard.transform, new Vector3(monumentSpace, 0f, i * monumentOffset - (monumentCards.Length / 3 * monumentOffset) ));
             }
         }
 

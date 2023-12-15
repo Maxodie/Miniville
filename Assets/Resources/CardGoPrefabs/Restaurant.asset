@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Restaurant
   cardGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19, type: 3}
-  buildingGo: {fileID: 2455056337841767781, guid: d66875accb7d5e4449dcc2e50e3ec487,
+  buildingGo: {fileID: 6307161739500188338, guid: de841f7b2cb388845a8dd48b1d64790b,
     type: 3}

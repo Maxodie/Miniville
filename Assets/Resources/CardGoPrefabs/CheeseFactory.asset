@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Cheese Factory
   cardGo: {fileID: 7640796706177144963, guid: 9ee1a5c16500688478e53b3fe2dc4c19, type: 3}
-  buildingGo: {fileID: 2455056337841767781, guid: d66875accb7d5e4449dcc2e50e3ec487,
+  buildingGo: {fileID: 1813327797096598643, guid: c8b8a79f396dae24084a0ffca34f5760,
     type: 3}
