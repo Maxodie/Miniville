@@ -1,7 +1,5 @@
-// Define a class named TvStation that inherits from the PurpleCard class
 public class TvStation : PurpleCard
 {
-    // Constructor for creating a new instance of TvStation
     public TvStation(
         CardGoPrefab cardGoPrefab, // GameObject prefab for the card's graphical representation
         string cardImgPath, // Path to the card's image
