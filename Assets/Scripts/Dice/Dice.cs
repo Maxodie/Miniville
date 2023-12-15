@@ -71,7 +71,7 @@ public class PlayerDice {
     }
 
     int GetDiceResult(Rigidbody rb) {
-        Vector3[] dieFaces = new Vector3[] {-rb.transform.right, -rb.transform.forward, rb.transform.up, -rb.transform.up, rb.transform.forward, rb.transform.right};
+        Vector3[] dieFaces = new Vector3[] {rb.transform.right, -rb.transform.forward, rb.transform.up, -rb.transform.up, rb.transform.forward, -rb.transform.right};
         for(int i=0; i < dieFaces.Length; i++) {
             if(Physics.Raycast(rb.transform.position, dieFaces[i], 6, groundLayer)) {
                 return i+1;
