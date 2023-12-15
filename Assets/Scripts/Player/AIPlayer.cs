@@ -22,7 +22,7 @@ public class AIPlayer : Player {
         {
             if (coins < t.constructionCost) continue;
 
-            buildBehaviour.BuilddMonumentCard(t);
+            buildBehaviour.BuildMonumentCard(t);
             return;
         }
 

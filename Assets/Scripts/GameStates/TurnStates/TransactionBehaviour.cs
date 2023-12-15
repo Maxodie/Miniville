@@ -3,53 +3,22 @@ using TMPro;
 using System.Collections;
 using System.Linq;
 
+// Serializable class implementing behavior for handling transactions during a turn state
 [System.Serializable]
 public class TransactionBehaviour : ITurnState {
-    /*GameData gameData;
-    int playerTurn;
-    TurnState turnState;
-
-    [SerializeField] GameObject transactionPanel;
-
-    public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
-        this.gameData = gameData;
-        this.playerTurn = playerTurn;
-        this.turnState = turnState;
-
-        Start();
-        QuitState();
-    }
-
-    public void Start() {
-        transactionPanel.SetActive(true);
-    }
-
-    public void Update(float dt) {
-
-    }
-
-    public void QuitState() {
-        transactionPanel.SetActive(false);
-        turnState.Build();
-    }
-
-    void Transactions() {
-        QuitState();
-    }
-    */
-    
-    [SerializeField] MonoBehaviour context;
+    [SerializeField] MonoBehaviour context; // Reference to a MonoBehaviour context
     GameData gameData;
     int playerTurn;
     TurnState turnState;
-    [SerializeField] GameObject turnInfoPanel; 
-    [SerializeField] TMP_Text firstDice;
-    [SerializeField] TMP_Text secondDice;
-    WaitForSeconds waitForTransaction;
-    [SerializeField] float timeBetweenTransactions = 1f;
+    [SerializeField] GameObject turnInfoPanel; // Panel to display turn information
+    [SerializeField] TMP_Text firstDice; // Text field for the first dice value
+    [SerializeField] TMP_Text secondDice; // Text field for the second dice value
+    WaitForSeconds waitForTransaction; // WaitForSeconds object for transaction delays
+    [SerializeField] float timeBetweenTransactions = 1f; // Time delay between transactions
+
+    // Method to initialize the state with necessary data
     public void InitState(GameData gameData, int playerTurn, TurnState turnState) {
         this.gameData = gameData;
-        // current player's id
         this.playerTurn = playerTurn;
         this.turnState = turnState;
         waitForTransaction = new WaitForSeconds(timeBetweenTransactions);
@@ -57,10 +26,11 @@ public class TransactionBehaviour : ITurnState {
         Start();
     }
 
+    // Method invoked at the start of the transaction phase
     public void Start() {
         ref int[] throwValue = ref gameData.players[playerTurn].throwValue;
         firstDice.text = "D1 : " + throwValue[0];
-        if(throwValue.Length > 1)
+        if (throwValue.Length > 1)
             secondDice.text = "D2 : " + gameData.players[playerTurn].throwValue[1];
         else
             secondDice.text = "";
@@ -69,27 +39,25 @@ public class TransactionBehaviour : ITurnState {
         context.StartCoroutine(PayTransaction());
     }
 
-    public void Update(float dt)
-    {
-        
+    // Method for update operations during the transaction phase
+    public void Update(float dt) {
+        // Perform necessary update operations if any
     }
 
-    public void QuitState()
-    {
+    // Method to exit the transaction state
+    public void QuitState() {
         turnInfoPanel.SetActive(false);
         QuitPath();
     }
 
-    private void QuitPath()
-    {
+    // Method to handle the appropriate game state after transactions
+    private void QuitPath() {
         Player currentPlayer = gameData.players[playerTurn];
-        for(int i=0; i < currentPlayer.buildingCards.Count; i++)
-        {
+        for (int i = 0; i < currentPlayer.buildingCards.Count; i++) {
             Establishment establishment = currentPlayer.buildingCards[i][0];
             // if current player owns a business center, init the interaction state
-            if (establishment.GetType() == typeof(BusinessCenter))
-            {
-                if(establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
+            if (establishment.GetType() == typeof(BusinessCenter)) {
+                if (establishment.canPerformEffect(currentPlayer.totalThrowValue)) {
                     turnState.Interaction();
                     return;
                 }
@@ -99,16 +67,16 @@ public class TransactionBehaviour : ITurnState {
         turnState.Build();
     }
 
-    IEnumerator PayTransaction()
-    {
+    // Coroutine for handling money transactions among players
+    IEnumerator PayTransaction() {
         Player currentPlayer;
 
-        //Check red cards on other players 
-        for(int i=gameData.players.Length-1; i >= 0; i--) {
+        // Check red cards on other players
+        for (int i = gameData.players.Length - 1; i >= 0; i--) {
             currentPlayer = gameData.players[i];
 
-            //don't active currentPlayer red cards
-            if(i != playerTurn) {
+            // Don't activate currentPlayer red cards
+            if (i != playerTurn) {
                 yield return context.StartCoroutine(MoneyTransaction(CardPriority.FIRSt, currentPlayer, gameData.players[playerTurn]));
             }
         }
@@ -116,13 +84,11 @@ public class TransactionBehaviour : ITurnState {
         context.StartCoroutine(PlayerPaid());
     }
 
-    IEnumerator MoneyTransaction(CardPriority cardPriority, Player currentPlayer, Player target)
-    {
-        for(int i=0; i < currentPlayer.buildingCards.Count; i++)
-        {
-            for(int j=0; j < currentPlayer.buildingCards[i].Count; j++)
-            {//pn d'enfant qui appel pas perform effect
-                if(currentPlayer.buildingCards[i][j].cardPriority == cardPriority && currentPlayer.buildingCards[i][j].canPerformEffect(currentPlayer.totalThrowValue)) {
+    // Coroutine for handling money transactions based on card priority
+    IEnumerator MoneyTransaction(CardPriority cardPriority, Player currentPlayer, Player target) {
+        for (int i = 0; i < currentPlayer.buildingCards.Count; i++) {
+            for (int j = 0; j < currentPlayer.buildingCards[i].Count; j++) {
+                if (currentPlayer.buildingCards[i][j].cardPriority == cardPriority && currentPlayer.buildingCards[i][j].canPerformEffect(currentPlayer.totalThrowValue)) {
                     currentPlayer.buildingCards[i][j].PerformSpecial(currentPlayer, target, gameData.players);
                     yield return waitForTransaction;
                 }
@@ -130,6 +96,7 @@ public class TransactionBehaviour : ITurnState {
         }
     }
 
+    // Coroutine to handle player payments after transactions
     IEnumerator PlayerPaid() {
         yield return context.StartCoroutine(MoneyTransaction(CardPriority.SECOND, gameData.players[0], gameData.players[playerTurn]));
         gameData.players[playerTurn].playerFrame.UpdateUI();
