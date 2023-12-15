@@ -930,12 +930,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 427347209}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &427347222 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7293315220198621951, guid: 48205e52616b7194f9a336bd152c11d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 427347209}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &427347223 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7293315220361938663, guid: 48205e52616b7194f9a336bd152c11d2,
@@ -3195,7 +3189,7 @@ MonoBehaviour:
       playerTurn: 0
       uiPanel: {fileID: 427347224}
       playerSelection: {fileID: 427347223}
-      cardSelection: {fileID: 427347222}
+      cardSelection: {fileID: 427347223}
       playerChoiceButton: {fileID: 3862485852202559690, guid: ee75b9ce44b8d11458104328a10f1350,
         type: 3}
       cardChoiceButton: {fileID: 2732622890101022515, guid: 20ebce6563041f6478e3001b9ae7ad2a,
