@@ -24,19 +24,22 @@ public class InteractionBehaviour : ITurnState
     int selectedCardId;
     private int selectedPlayer;
     
+    // Initializing the InteractionBehaviour state
     public void InitState(GameData gameData, int playerTurn, TurnState turnState)
     {
         this.gameData = gameData;
         this.playerTurn = playerTurn;
         this.turnState = turnState;
 
-        if(!isBtnInit) {
+        // If buttons are not initialized, initialize them
+        if (!isBtnInit) {
             InitButton();
         }
 
         Start();
     }
 
+    // Starting the interaction state
     public void Start()
     {
         uiPanel.SetActive(true);
@@ -45,11 +48,13 @@ public class InteractionBehaviour : ITurnState
         gameData.players[playerTurn].OptionalPlayerInteraction(this, gameData);
     }
 
+    // Initializing the stop button
     void InitButton() {
         stopBtn.onClick.AddListener(() => QuitState());
         isBtnInit = true;
     }
 
+    // Loading the player choices for interaction
     public void LoadPlayers()
     {
         for (int i = 0; i < gameData.players.Length; i++)
@@ -70,11 +75,13 @@ public class InteractionBehaviour : ITurnState
         }
     }
 
+    // Updating the interaction state
     public void Update(float dt)
     {
 
     }
 
+    // Quitting the interaction state
     public void QuitState()
     {
         Dispose();
@@ -82,6 +89,7 @@ public class InteractionBehaviour : ITurnState
         turnState.Build();
     }
     
+    // Selecting the target card for interaction
     void SelectTargetCard(int playerId)
     {
         Dispose();
@@ -104,6 +112,7 @@ public class InteractionBehaviour : ITurnState
         }
     }
 
+    // Selecting the own card for interaction
     void SelectOwnCard()
     {
         Dispose();
@@ -124,12 +133,14 @@ public class InteractionBehaviour : ITurnState
         }
     }
 
+    // Switching the cards between players
     public void SwitchCards()
     {
         gameData.players[playerTurn].ExchangeCard(playerCardId, gameData.players[selectedPlayer], selectedCardId);
         QuitState();
     }
 
+    // Disposing of buttons and card selections
     void Dispose()
     {
         for(int i=0; i<playerSelection.childCount; i++)
@@ -144,11 +155,13 @@ public class InteractionBehaviour : ITurnState
         DisplayUpSizedCard(false);
     }
 
+    // Confirming the card selection and continuing to build state
     void ConfirmSelection()
     {
         turnState.Build();
     }
     
+    // Displaying the upsized card
     public void DisplayUpSizedCard(bool value, Sprite imageCard = null)
     {
         if (value)
