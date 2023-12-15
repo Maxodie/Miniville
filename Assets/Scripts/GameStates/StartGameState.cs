@@ -50,7 +50,23 @@ public class StartGameState : GameState {
         for(int i=0; i<playerNb; i++)
             gameData.players.Add(new Player($"Player {i}", 4, 2, 1, initialDeck, initialMonuments));
 
+<<<<<<< Updated upstream
         EndState();
+=======
+        playerCanvasPrefab.SetActive(false); // Disable the player canvas prefab
+
+        for (int i = 0; i < playerNb; i++) {
+            // Create players with initial settings and decks
+            if (i == 0)
+                gameData.players[i] = new Player(true, $"Player {i + 1}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
+            else
+                gameData.players[i] = new AIPlayer(true, $"Player {i + 1}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
+        }
+        
+        // Setup player frames on the UI
+        startScreenManager.SetupPlayerFrames(game.uiData, gameData);
+        EndState(); // End the current state
+>>>>>>> Stashed changes
     }
 
     public void AddPlayerNb() {
