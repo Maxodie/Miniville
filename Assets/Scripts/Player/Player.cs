@@ -27,7 +27,7 @@ public class Player
     int newLineXOffset = 4;
     float buildingsZOffsetInRaw = 3;
     float cardInPackZOffset = 0.3f;
-    float cardInPackXOffset = 0.1f;
+    float cardInPackXOffset = 4f;
     int monumentSpace = -10;
     float monumentOffset = 2f;
     float zBoradOffset;
@@ -220,14 +220,19 @@ public class Player
 
     //draw all cards in the playerBoard
     void UpdatePlayerDeckPos() {
+        float xOffset = -cardInPackXOffset;
         for(int i=0; i < buildingCards.Count; i++) {
-            Vector3 pos = new Vector3(currentBuildingXPos * newLineXOffset, 0f, i % cardNewLine == 0 ? -zBoradOffset : buildingCards[i-1][0].cardBehaviour.spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in front of player
+            if(i % (cardNewLine) == 0) {
+                xOffset += cardInPackXOffset;
+            }
+
+            Vector3 pos = new Vector3(xOffset, 0f, i % cardNewLine == 0 ? -zBoradOffset : buildingCards[i-1][0].cardBehaviour.spawnedGoBuilding.transform.localPosition.z + buildingsZOffsetInRaw); //set the position of the buildings in front of player
 
             buildingCards[i][0].cardBehaviour.spawnedGoBuilding.transform.localPosition = pos;
             buildingCards[i][0].cardBehaviour.spawnedGoCard.transform.localPosition = pos;
 
             for(int j=1; j < buildingCards[i].Count; j++) {
-                buildingCards[i][j].cardBehaviour.spawnedGoCard.transform.localPosition = pos + new Vector3(cardInPackXOffset * j, .01f * j, cardInPackZOffset * j);
+                buildingCards[i][j].cardBehaviour.spawnedGoCard.transform.localPosition = pos + new Vector3(0f, .01f * j, cardInPackZOffset * j);
             }
         }
     }
