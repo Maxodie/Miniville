@@ -41,14 +41,8 @@ public class ThrowDiceBehaviour : ITurnState {
 
     }
 
-<<<<<<< Updated upstream
     public void QuitState() {
         playerDicePanel.SetActive(false);
-=======
-    // Method to exit the throw dice state
-    public void QuitState() {        
-        isThrowDiceRestarted = false;
->>>>>>> Stashed changes
         turnState.Transactions();
     }
 
@@ -58,20 +52,7 @@ public class ThrowDiceBehaviour : ITurnState {
     }
 
     public void PlayerThrowTwoDice() {
-<<<<<<< Updated upstream
         gameData.players[playerTurn].ThrowDice(2);
         QuitState();
-=======
-        playerDice.ThrowDice(2, gameData.players[playerTurn].ThrowDice, EndThrow);
-        DisableBtn();
-    }
-
-    // Method to disable dice throw buttons
-    void DisableBtn() {
-        throwOneDice.interactable = false;
-        throwTwoDice.interactable = false;
-
-        playerDicePanel.SetActive(false);
->>>>>>> Stashed changes
     }
 }
