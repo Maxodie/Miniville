@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CDGRz3E_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942fd78c3e08d401989330feb2c4ff0e
+      internalID: 1294471616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9eec4f36df6594ce489ef82ba67d1284
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CDGRz3E_0: 1294471616
+      CDGRz3E_1: 2115484838
+      CDGRz3E_10: 1201253253
+      CDGRz3E_11: -1272707624
+      CDGRz3E_12: 811966825
+      CDGRz3E_13: -2128633656
+      CDGRz3E_14: -1917317948
+      CDGRz3E_15: 1029308468
+      CDGRz3E_16: -1764611980
+      CDGRz3E_17: 88684692
+      CDGRz3E_18: -1756784176
+      CDGRz3E_19: 704400262
+      CDGRz3E_2: 883991683
+      CDGRz3E_20: -1449599961
+      CDGRz3E_21: -1128982332
+      CDGRz3E_22: 1357405319
+      CDGRz3E_23: -976919773
+      CDGRz3E_24: -2085776847
+      CDGRz3E_25: -1964625901
+      CDGRz3E_26: -1892614581
+      CDGRz3E_27: -679684216
+      CDGRz3E_28: 891530027
+      CDGRz3E_29: 1160036900
+      CDGRz3E_3: -1978724573
+      CDGRz3E_30: 1095176389
+      CDGRz3E_31: 996366142
+      CDGRz3E_32: -475460288
+      CDGRz3E_33: 1123842914
+      CDGRz3E_34: 128351256
+      CDGRz3E_35: 1886888494
+      CDGRz3E_36: 885244662
+      CDGRz3E_37: 1297290028
+      CDGRz3E_38: 1581264485
+      CDGRz3E_39: 414832913
+      CDGRz3E_4: 1267112350
+      CDGRz3E_40: -1457222562
+      CDGRz3E_41: -2001656450
+      CDGRz3E_42: -490457686
+      CDGRz3E_43: -718768856
+      CDGRz3E_44: -1624696645
+      CDGRz3E_45: 31375224
+      CDGRz3E_46: 1813007499
+      CDGRz3E_47: 450958310
+      CDGRz3E_48: -216456176
+      CDGRz3E_49: -1075692087
+      CDGRz3E_5: 1977476372
+      CDGRz3E_50: -54332145
+      CDGRz3E_51: -51674181
+      CDGRz3E_52: -321917217
+      CDGRz3E_53: 560769413
+      CDGRz3E_54: 642802980
+      CDGRz3E_55: -277672761
+      CDGRz3E_56: 1923694584
+      CDGRz3E_57: -1405655465
+      CDGRz3E_58: 236516738
+      CDGRz3E_59: 934727741
+      CDGRz3E_6: -1400853171
+      CDGRz3E_60: -2007199095
+      CDGRz3E_61: 819860189
+      CDGRz3E_62: -977350146
+      CDGRz3E_7: -429868202
+      CDGRz3E_8: -778229523
+      CDGRz3E_9: 1291186949
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

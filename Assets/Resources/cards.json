@@ -1,38 +1,47 @@
-{
+ {
   "monumentHolders": [
     {
+      "cardImgPath" : "CardMonumentImg/TrainStation",
       "cardName": "Train Station",
       "cardEffectDescription": "You can throw 2 dice.",
       "requiredDiceValues": 4,
       "gains": 0,
       "requiredCardTypeID": 0,
+      "constructionCost": 4,
       "cardPriorityID": 1
     },{
+      "cardImgPath" : "CardMonumentImg/ShoppingMall",
       "cardName": "Shopping Mall",
       "cardEffectDescription": "Your BUSINESS and GROCERYSTORE type establishments' gains are increased by 1.",
       "requiredDiceValues": 10,
       "gains": 0,
       "requiredCardTypeID": 0,
+      "constructionCost": 10,
       "cardPriorityID": 1
     },{
+      "cardImgPath" : "CardMonumentImg/RadioTower",
       "cardName": "Radio Tower",
       "cardEffectDescription": "Once per turn, you can re-roll the dice.",
       "requiredDiceValues": 22,
       "gains": 0,
       "requiredCardTypeID": 0,
+      "constructionCost": 22,
       "cardPriorityID": 1
     },{
+      "cardImgPath" : "CardMonumentImg/AmusementPark",
       "cardName": "Amusement Park",
       "cardEffectDescription": "If your dice roll is a double, play again.",
       "requiredDiceValues": 16,
       "gains": 0,
       "requiredCardTypeID": 0,
+      "constructionCost": 16,
       "cardPriorityID": 2
     }
   ],
   
     "establishmentHolders": [
       {
+        "cardImgPath" : "CardEstablishmentImg/WheatField",
         "cardName": "Wheat Field",
         "cardColor": "blue",
         "cardTypeID": 5,
@@ -41,8 +50,10 @@
         "gains": 1,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 1
+        "constructionCost": 1,
+        "startCard": true 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Farm",
         "cardName": "Farm",
         "cardColor": "blue",
         "cardTypeID": 6,
@@ -51,8 +62,10 @@
         "gains": 1,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 1
+        "constructionCost": 1,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Bakery",
         "cardName": "Bakery",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -61,8 +74,10 @@
         "gains": 1,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 1
+        "constructionCost": 1,
+        "startCard": true 
       },{
+        "cardImgPath" : "CardEstablishmentImg/CoffeeShop",
         "cardName": "Coffee Shop",
         "cardColor": "red",
         "cardTypeID": 2,
@@ -71,8 +86,10 @@
         "gains": 1,
         "requiredCardTypeID": 0,
         "cardPriorityID": 0,
-        "constructionCost": 2
+        "constructionCost": 2,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/ConvenienceStore",
         "cardName": "Convenience Store",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -81,8 +98,10 @@
         "gains": 3,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 2
+        "constructionCost": 2,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Forest",
         "cardName": "Forest",
         "cardColor": "blue",
         "cardTypeID": 1,
@@ -91,8 +110,10 @@
         "gains": 1,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 3
+        "constructionCost": 3,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Stadium",
         "cardName": "Stadium",
         "cardColor": "purple",
         "cardTypeID": 4,
@@ -101,18 +122,22 @@
         "gains": 2,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 6
+        "constructionCost": 6,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/BusinessCenter",
         "cardName": "Business Center",
         "cardColor": "purple",
         "cardTypeID": 4,
-        "cardEffectDescription": "You can trade with any one player an establishement whose type isn't CITYLIFE.",
+        "cardEffectDescription": "You can trade with any one player an establishment whose type isn't CITYLIFE.",
         "requiredDiceValues": [6],
         "gains": 0,
         "requiredCardTypeID": 4,
         "cardPriorityID": 1,
-        "constructionCost": 8
+        "constructionCost": 8,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/TVStation",
         "cardName": "TV Station",
         "cardColor": "purple",
         "cardTypeID": 4,
@@ -121,8 +146,10 @@
         "gains": 5,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 7
+        "constructionCost": 7,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/CheeseFactory",
         "cardName": "Cheese Factory",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -131,8 +158,10 @@
         "gains": 3,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 5
+        "constructionCost": 5,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/FurnitureFactory",
         "cardName": "Furniture Factory",
         "cardColor": "green",
         "cardTypeID": 8,
@@ -141,8 +170,10 @@
         "gains": 3,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 3
+        "constructionCost": 3,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Mine",
         "cardName": "Mine",
         "cardColor": "blue",
         "cardTypeID": 1,
@@ -151,8 +182,10 @@
         "gains": 5,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 6
+        "constructionCost": 6,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Restaurant",
         "cardName": "Restaurant",
         "cardColor": "red",
         "cardTypeID": 2,
@@ -161,8 +194,10 @@
         "gains": 2,
         "requiredCardTypeID": 0,
         "cardPriorityID": 0,
-        "constructionCost": 3
+        "constructionCost": 3,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/Orchard",
         "cardName": "Orchard",
         "cardColor": "blue",
         "cardTypeID": 5,
@@ -171,8 +206,10 @@
         "gains": 3,
         "requiredCardTypeID": 0,
         "cardPriorityID": 1,
-        "constructionCost": 3
+        "constructionCost": 3,
+        "startCard": false 
       },{
+        "cardImgPath" : "CardEstablishmentImg/GroceryStore",
         "cardName": "Grocery Store",
         "cardColor": "green",
         "cardTypeID": 7,
@@ -181,7 +218,8 @@
         "gains": 2,
         "requiredCardTypeID": 5,
         "cardPriorityID": 1,
-        "constructionCost": 2
+        "constructionCost": 2,
+        "startCard": false 
       }
     ]
-}
+  }

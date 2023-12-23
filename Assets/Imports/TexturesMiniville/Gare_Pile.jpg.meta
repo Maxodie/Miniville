@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Gare_Pile_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8296ed9d76a5e4512b28b5d822245f94
+      internalID: -1978653185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 124edcdaf017342aba3b7a3222edfc08
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gare_Pile_0: -1978653185
+      Gare_Pile_1: -1642133606
+      Gare_Pile_10: -1750070653
+      Gare_Pile_11: 581147134
+      Gare_Pile_12: 1434437115
+      Gare_Pile_13: -1232094448
+      Gare_Pile_14: -456356697
+      Gare_Pile_15: -565957701
+      Gare_Pile_16: 1627306397
+      Gare_Pile_17: -95911135
+      Gare_Pile_18: 1555117411
+      Gare_Pile_19: -1025354376
+      Gare_Pile_2: 2091677934
+      Gare_Pile_20: -275535263
+      Gare_Pile_21: 1711201924
+      Gare_Pile_22: -595587117
+      Gare_Pile_23: 2105343210
+      Gare_Pile_24: -1252156692
+      Gare_Pile_25: -1479545982
+      Gare_Pile_26: 1296943811
+      Gare_Pile_27: -1067321328
+      Gare_Pile_28: 518043999
+      Gare_Pile_29: -401649200
+      Gare_Pile_3: -94205054
+      Gare_Pile_30: -982120559
+      Gare_Pile_31: 1791698180
+      Gare_Pile_32: 1179183452
+      Gare_Pile_33: 1286838070
+      Gare_Pile_34: 2009738338
+      Gare_Pile_35: -868477339
+      Gare_Pile_36: 644134539
+      Gare_Pile_37: -1629359817
+      Gare_Pile_38: -998448416
+      Gare_Pile_39: 565398148
+      Gare_Pile_4: 465300830
+      Gare_Pile_40: 1793107184
+      Gare_Pile_41: 1437622111
+      Gare_Pile_42: 1804130375
+      Gare_Pile_43: -1301931179
+      Gare_Pile_44: -1363423204
+      Gare_Pile_45: -1801518785
+      Gare_Pile_46: 2126062762
+      Gare_Pile_47: 169316313
+      Gare_Pile_48: 1526585978
+      Gare_Pile_49: 1280211666
+      Gare_Pile_5: 583976122
+      Gare_Pile_50: 834750284
+      Gare_Pile_51: -516923363
+      Gare_Pile_52: -2086950224
+      Gare_Pile_53: 1559159009
+      Gare_Pile_54: 1656338703
+      Gare_Pile_55: -268265448
+      Gare_Pile_56: 1839579720
+      Gare_Pile_57: 345981585
+      Gare_Pile_58: 586970731
+      Gare_Pile_59: -2008506795
+      Gare_Pile_6: -104754416
+      Gare_Pile_60: -1814213972
+      Gare_Pile_61: 703738722
+      Gare_Pile_62: 498690136
+      Gare_Pile_7: -1958361736
+      Gare_Pile_8: 1181009642
+      Gare_Pile_9: 1043127640
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AmusementPark_Pile_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41944d2ba0c994fe3a372cf45a22bdfc
+      internalID: -1302186956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 55d563384f7394ed5a5c9345feef93b6
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AmusementPark_Pile_0: -1302186956
+      AmusementPark_Pile_1: 2069922427
+      AmusementPark_Pile_10: -1545099158
+      AmusementPark_Pile_11: -1762145887
+      AmusementPark_Pile_12: -403497109
+      AmusementPark_Pile_13: -1746596407
+      AmusementPark_Pile_14: -662309984
+      AmusementPark_Pile_15: -1880602595
+      AmusementPark_Pile_16: -1006902492
+      AmusementPark_Pile_17: 931854137
+      AmusementPark_Pile_18: 1625413102
+      AmusementPark_Pile_19: -773887312
+      AmusementPark_Pile_2: -900223512
+      AmusementPark_Pile_20: -1908521755
+      AmusementPark_Pile_21: -2055635945
+      AmusementPark_Pile_22: -1092691860
+      AmusementPark_Pile_23: 819850307
+      AmusementPark_Pile_24: 1777596752
+      AmusementPark_Pile_25: 1834617024
+      AmusementPark_Pile_26: 842596893
+      AmusementPark_Pile_27: 903553052
+      AmusementPark_Pile_28: -1359047438
+      AmusementPark_Pile_29: 933551616
+      AmusementPark_Pile_3: 1396765992
+      AmusementPark_Pile_30: 1757773187
+      AmusementPark_Pile_31: -1865858900
+      AmusementPark_Pile_32: 709669642
+      AmusementPark_Pile_33: -2099045712
+      AmusementPark_Pile_34: -744089393
+      AmusementPark_Pile_35: -150797754
+      AmusementPark_Pile_36: 212044229
+      AmusementPark_Pile_37: 1970215224
+      AmusementPark_Pile_38: 171817129
+      AmusementPark_Pile_39: -78920691
+      AmusementPark_Pile_4: 603532381
+      AmusementPark_Pile_40: 1715782246
+      AmusementPark_Pile_41: 754654137
+      AmusementPark_Pile_42: 449509264
+      AmusementPark_Pile_43: -357141512
+      AmusementPark_Pile_44: 1605034477
+      AmusementPark_Pile_45: 713065859
+      AmusementPark_Pile_46: 251410555
+      AmusementPark_Pile_47: -834289468
+      AmusementPark_Pile_48: 1006891194
+      AmusementPark_Pile_49: -1690128575
+      AmusementPark_Pile_5: -2050638294
+      AmusementPark_Pile_50: -1320195549
+      AmusementPark_Pile_51: -1555427616
+      AmusementPark_Pile_52: 1415967102
+      AmusementPark_Pile_53: 337964443
+      AmusementPark_Pile_54: 2004678624
+      AmusementPark_Pile_55: -2039175576
+      AmusementPark_Pile_56: 382314810
+      AmusementPark_Pile_57: 334399712
+      AmusementPark_Pile_58: -1255163211
+      AmusementPark_Pile_59: -1732886564
+      AmusementPark_Pile_6: 1634178324
+      AmusementPark_Pile_60: 797852609
+      AmusementPark_Pile_61: -1335030298
+      AmusementPark_Pile_62: -770557608
+      AmusementPark_Pile_7: 3106338
+      AmusementPark_Pile_8: 1049836372
+      AmusementPark_Pile_9: 263677252
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

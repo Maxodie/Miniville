@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -103,18 +103,102 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Gare_Face_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3223
+        width: 357
+        height: 536
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f80f7c67c28f94a32abdeb7c2ef3522e
+      internalID: -838048145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 322a0e0690b9346b3be7c588996af9f2
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gare_Face_0: -838048145
+      Gare_Face_1: 307238717
+      Gare_Face_10: 770098570
+      Gare_Face_11: -139687306
+      Gare_Face_12: -671450807
+      Gare_Face_13: 2105840621
+      Gare_Face_14: 1486860791
+      Gare_Face_15: 1887132535
+      Gare_Face_16: -1855572263
+      Gare_Face_17: 2087895542
+      Gare_Face_18: 767255125
+      Gare_Face_19: 943544580
+      Gare_Face_2: 311531634
+      Gare_Face_20: 61919331
+      Gare_Face_21: -725984552
+      Gare_Face_22: 1321107533
+      Gare_Face_23: -1088164110
+      Gare_Face_24: 681847890
+      Gare_Face_25: -132134195
+      Gare_Face_26: 328967015
+      Gare_Face_27: 2048143575
+      Gare_Face_28: -2001623891
+      Gare_Face_29: -1321148948
+      Gare_Face_3: -2001213930
+      Gare_Face_30: -815228639
+      Gare_Face_31: 525048128
+      Gare_Face_32: -789607076
+      Gare_Face_33: -1970304050
+      Gare_Face_34: -1382816155
+      Gare_Face_35: -433945879
+      Gare_Face_36: 1255260616
+      Gare_Face_37: 232142028
+      Gare_Face_38: -2081828799
+      Gare_Face_39: 1482520024
+      Gare_Face_4: 552870368
+      Gare_Face_40: 431602069
+      Gare_Face_41: -1360714714
+      Gare_Face_42: -1361088833
+      Gare_Face_43: 1566665652
+      Gare_Face_44: 361217981
+      Gare_Face_45: -2085842986
+      Gare_Face_46: -1567801704
+      Gare_Face_47: -555657377
+      Gare_Face_48: -585884461
+      Gare_Face_49: -541306811
+      Gare_Face_5: -1327541092
+      Gare_Face_50: 1197568633
+      Gare_Face_51: 1385496479
+      Gare_Face_52: 1577618638
+      Gare_Face_53: -1022995792
+      Gare_Face_54: 2028262706
+      Gare_Face_55: -2067447146
+      Gare_Face_56: 1064362907
+      Gare_Face_57: -1064372168
+      Gare_Face_58: 1141982529
+      Gare_Face_59: 1994497376
+      Gare_Face_6: 1194608019
+      Gare_Face_60: -1730954136
+      Gare_Face_61: 599777042
+      Gare_Face_62: 1940457462
+      Gare_Face_7: 1293027651
+      Gare_Face_8: 1127458171
+      Gare_Face_9: 874012167
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

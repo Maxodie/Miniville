@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public class EstablishmentHolder
 {
+    public string cardImgPath;
     public string cardName;
     public string cardColor;
     public int cardTypeID;
@@ -12,4 +13,6 @@ public class EstablishmentHolder
     public int requiredCardTypeID;
     public int cardPriorityID;
     public int constructionCost;
+
+    public bool startCard;
 }

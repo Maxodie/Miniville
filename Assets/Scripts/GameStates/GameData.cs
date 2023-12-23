@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 
 public class GameData {
-    public List<Player> players = new List<Player>();
-    public List<Monument> monuments = new List<Monument>();
+    public Player[] players;
+    public Monument[] monuments = new Monument[4];
     public Dictionary<Establishment, int> establishments = new Dictionary<Establishment, int>();
-    
+    public CardGoPrefab[] cardGoPrefabs;
+    public string winPlayerName;
     const string jsonPath = "cards";
 
     public GameData()
@@ -26,6 +25,8 @@ public class GameData {
         TextAsset jsonData = Resources.Load<TextAsset>(jsonPath);
         // Convert json text to CardHolder
         CardsHolder cardsHolder = JsonUtility.FromJson<CardsHolder>(jsonData.text);
+
+        cardGoPrefabs = Resources.LoadAll<CardGoPrefab>("CardGoPrefabs");
         
         SetMonumentList(cardsHolder.monumentHolders);
         SetEstablishmentDictionary(cardsHolder.establishmentHolders);
@@ -55,7 +56,9 @@ public class GameData {
             }
             
             // Create instance of each card with right Type and add it to monuments List
-            monuments.Add((Monument)Activator.CreateInstance(monumentType, 
+            monuments[i] = (Monument)Activator.CreateInstance(monumentType, 
+                GetBuildingPrefabScriptableObject(card.cardName),
+                card.cardImgPath,
                 card.cardName,
                 CardType.CITYLIFE,
                 card.cardEffectDescription,
@@ -63,7 +66,7 @@ public class GameData {
                 card.gains,
                 (CardType)card.requiredCardTypeID,
                 false,
-                (CardPriority)card.requiredCardTypeID));
+                (CardPriority)card.requiredCardTypeID);
         }
     }
 
@@ -108,7 +111,9 @@ public class GameData {
             }
             
             // Create instance of each card with right Type and add it to establishment Dictionary
-            establishments.Add((Establishment)Activator.CreateInstance(establishmentType, 
+            establishments.Add((Establishment)Activator.CreateInstance(establishmentType,
+                GetBuildingPrefabScriptableObject(card.cardName),
+                card.cardImgPath, 
                 card.cardName,
                 (CardType)card.cardTypeID,
                 card.cardEffectDescription,
@@ -116,8 +121,18 @@ public class GameData {
                 card.gains,
                 (CardType)card.requiredCardTypeID,
                 (CardPriority)card.cardPriorityID,
-                card.requiredDiceValues), nbCard);
+                card.requiredDiceValues, card.startCard), nbCard
+                );
         }
+    }
+
+    CardGoPrefab GetBuildingPrefabScriptableObject(string cardName) {
+        foreach(CardGoPrefab item in cardGoPrefabs) {
+            if(item.cardName == cardName)
+                return item;
+        }
+
+        return null;
     }
 }
 
