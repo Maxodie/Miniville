@@ -76,9 +76,9 @@ public class StartGameState : GameState {
         for (int i = 0; i < playerNb; i++) {
             // Create players with initial settings and decks
             if (i == 0)
-                gameData.players[i] = new Player(true, $"Player {i}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
+                gameData.players[i] = new Player(true, $"Player {i + 1}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
             else
-                gameData.players[i] = new AIPlayer(true, $"Player {i}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
+                gameData.players[i] = new AIPlayer(true, $"Player {i + 1}", 3, 2, 1, initialDeck.ToList(), gameData.monuments, playerCanvasPrefab, game.uiData.playerFrames[i], game.uiData.uIPlayerFrameScriptableObject);
         }
         
         // Setup player frames on the UI

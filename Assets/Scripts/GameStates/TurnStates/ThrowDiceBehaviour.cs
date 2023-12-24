@@ -108,7 +108,6 @@ public class ThrowDiceBehaviour : ITurnState {
 
     // Method to disable dice throw buttons
     void DisableBtn() {
-        throwOneDice.interactable = false;
-        throwTwoDice.interactable = false;
+        playerDicePanel.SetActive(false);
     }
 }
