@@ -29,7 +29,7 @@ public class Player
     float cardInPackZOffset = 0.3f;
     float cardInPackXOffset = 4f;
     int monumentSpace = -10;
-    float monumentOffset = 2f;
+    float monumentOffset = 4f;
     float zBoradOffset;
     float currentBuildingXPos;
     
